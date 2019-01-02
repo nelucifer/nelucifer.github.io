@@ -454,34 +454,17 @@ daovoice('update');
 
       
         
-          
-            <h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><p>当被观察者(Observable)的生成速度大于观察者(Observer)的处理速度会出现 Backpressure 现象(只有在异步环境下会发生).<br>会抛出 MissingBackpressureException 异常信息,</p>
-<h2 id="Hot-and-Cold-Observables"><a href="#Hot-and-Cold-Observables" class="headerlink" title="Hot and Cold Observables"></a>Hot and Cold Observables</h2><ul>
-<li>Cold Observables：当被订阅后才开始发送事件的Observable(每个Subscriber都能接收到完整的事件)</li>
-<li>Hot Observables:  不管有没有被订阅,都会去发送事件的 Observable</li>
-</ul>
-<p>Hot Observable 是不支持背压的,Cold Observable 有一部分并不支持背压(比如interval，timer等操作符创建的Observable)<br>rxJava2.0 已经解决了这个问题(?:Observable,有的支持背压,有的不支持)</p>
-<p>cold observable 相当于响应式拉(就是observer处理完了一个事件就从observable拉取下一个事件),hot observable通常不能很好的处理响应式拉模型,例如使用onBackpressureBuffer或者onBackpressureDrop 操作符,和其他操作符比<br>如operators, throttling, buffers, or windows.</p>
-<p>observeOn这个操作符内部有一个缓冲区，默认长度是16.经常用到的Observable.create 就是 Cold Observable,而 just, range, timer 和 from 这些创建的同样是 Cold Observable.我们一般使用的都是Cold Observable,除非特殊需求,才会使用Hot Observable</p>
-<h2 id="背压操作符"><a href="#背压操作符" class="headerlink" title="背压操作符"></a>背压操作符</h2><p>rxJava1.X 针对不支持背压提供的操作符有：sample(),throttleLast(),throttleFirst(),throttleWithTimeout(),debounce(),onBackpressurebuffer(),onBackpressureDrop()</p>
-<h2 id="RxJava1-x-vs-RxJava2-x"><a href="#RxJava1-x-vs-RxJava2-x" class="headerlink" title="RxJava1.x vs RxJava2.x"></a>RxJava1.x vs RxJava2.x</h2><ul>
-<li>2.x 发送事件时不能传 null,否则会抛出空指针异常</li>
-<li>2.x 中 Observable 不再支持背压, 用 Flowable 来支持背压</li>
-<li>线程调度方面 2.x 取消 Schedulers.immediate()</li>
-</ul>
-<h2 id="RxJava2-Backpressure"><a href="#RxJava2-Backpressure" class="headerlink" title="RxJava2 Backpressure"></a>RxJava2 Backpressure</h2><p>Observable拆分成了新的 Observable 和 Flowable,Observable 不具备处理背压能力,Flowable 解决了背压问题,Backpressure 只在异步情况下产生,RxJava2 的处理策略仅仅是对观察者接收事件的处理</p>
-<p>1.ERROR<br>产生背压问题会抛出 MissingBackpressureException 异常信息<br>在异步调用时,RxJava中有个缓存池，用来缓存消费者处理不了暂时缓存下来的数据,缓存池的默认大小为128,即只能<br>缓存128个事件.无论request()中传入的数字比128大或小,缓存池中在刚开始都会存入128个事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create(new FlowableOnSubscribe&lt;&gt;(),BackpressureStrategy.ERROR)</span><br><span class="line">	.subscribe(new Subscriber());</span><br></pre></td></tr></table></figure></p>
-<ol start="2">
-<li><p>BUFFER<br>把RxJava中默认的只能存128个事件的缓存池换成一个大的缓存池，支持存很多很多的数据,比较消耗内存</p>
-</li>
-<li><p>DROP  LATEST<br>DROP 丢弃事件,LATEST使消费者能够接收到生产者产生的最后一个事件</p>
-</li>
-</ol>
-
-          
+          <h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><p>当被观察者(Observable)的生成速度大于观察者(Observer)的处理速度会出现 Backpressure 现象(只有在异步环境下会发生).<br>会抛出 MissingBackpressureException 异常信息<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/02/rxjava/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -1180,7 +1163,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//穷人的美德-201882901554.jpg" rel="gallery_cjqfbkr9m000r5olxzooq994c" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//穷人的美德-201882901554.jpg" rel="gallery_cjqfbt4ej000nq8lxnkr3h3xh" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//穷人的美德-201882901554.jpg" itemprop="contentUrl">
               </a>
             
@@ -1371,7 +1354,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//jdk-201882903342.jpg" rel="gallery_cjqfbkr9c000a5olxr7ci24no" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//jdk-201882903342.jpg" rel="gallery_cjqfbt4e30002q8lxvinp2dld" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//jdk-201882903342.jpg" itemprop="contentUrl">
               </a>
             
@@ -1742,7 +1725,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//oracle_logo-201882903737.jpg" rel="gallery_cjqfbkr9a00075olxojrvqc5a" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//oracle_logo-201882903737.jpg" rel="gallery_cjqfbt4e80006q8lxaa3r52cu" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//oracle_logo-201882903737.jpg" itemprop="contentUrl">
               </a>
             

@@ -106,7 +106,7 @@ daovoice('update');
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A61.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-1.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-2.png">
-<meta property="og:updated_time" content="2019-01-03T13:44:39.813Z">
+<meta property="og:updated_time" content="2019-01-03T15:57:14.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客-报错集锦">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;使用hexo+github/coding+next搭建个人博客过程中遇到的一些问题集中整理，包括：  报错一：TypeError: Cannot set property ‘lastIndex’ of undefined 报错二：Permission denied (publickey). 报错三：Error: ERROR: Repository not found. fa">
@@ -423,7 +423,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  588 字
+                  586 字
                 </span>
               
 
@@ -462,37 +462,21 @@ daovoice('update');
       
         <p>&emsp;&emsp;使用hexo+github/coding+next搭建个人博客过程中遇到的一些问题集中整理，包括：</p>
 <ul>
-<li>报错一：TypeError: Cannot set property ‘lastIndex’ of undefined</li>
-<li>报错二：Permission denied (publickey).</li>
-<li><p>报错三：Error: ERROR: Repository not found. fatal: Could not read from remote repository.</p>
-<a id="more"></a>
+<li>报错一：<code>TypeError: Cannot set property ‘lastIndex’ of undefined</code></li>
+<li>报错二：<code>Permission denied (publickey).</code></li>
+<li>报错三：<code>Error: ERROR: Repository not found. fatal: Could not read from remote repository.</code><a id="more"></a>
 </li>
-<li><h4 id="报错一：TypeError-Cannot-set-property-‘lastIndex’-of-undefined"><a href="#报错一：TypeError-Cannot-set-property-‘lastIndex’-of-undefined" class="headerlink" title="报错一：TypeError: Cannot set property ‘lastIndex’ of undefined"></a>报错一：TypeError: Cannot set property ‘lastIndex’ of undefined</h4></li>
 </ul>
-<p>&emsp;&emsp;问题描述：使用<code>hexo g</code> 报错<code>TypeError: Cannot set property ‘lastIndex’ of undefined</code></p>
-<p><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A61.png" alt="hexo-coding-github-报错集锦"><br>&emsp;&emsp;问题原因：在hexo中的<code>_config.yml</code> 文件中的高亮功能设置错了，不是主题的<code>_config.yml</code>，其中的 auto_detect 应该设置为 false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: true</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace:</span><br></pre></td></tr></table></figure>
+<h4 id="报错一：TypeError-Cannot-set-property-‘lastIndex’-of-undefined"><a href="#报错一：TypeError-Cannot-set-property-‘lastIndex’-of-undefined" class="headerlink" title="报错一：TypeError: Cannot set property ‘lastIndex’ of undefined"></a>报错一：TypeError: Cannot set property ‘lastIndex’ of undefined</h4><p>问题描述：使用<code>hexo g</code> 报错</p>
+<blockquote>
+<p>TypeError: Cannot set property ‘lastIndex’ of undefined</p>
+</blockquote>
+<p><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A61.png" alt="hexo-coding-github-报错集锦"><br>问题处理：在hexo中的<code>_config.yml</code> 文件中的高亮功能设置错了，不是主题的<code>_config.yml</code>，其中的 auto_detect 应该设置为 false。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: true</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace:</span><br></pre></td></tr></table></figure></p>
 <p>改过之后再执行就好了。</p>
-<ul>
-<li><h4 id="报错二：-Permission-denied-publickey"><a href="#报错二：-Permission-denied-publickey" class="headerlink" title="报错二： Permission denied (publickey)."></a>报错二： Permission denied (publickey).</h4><ul>
-<li><p>第一步：创建SSH Key。windows下的目录<code>C:\Users\用户名.ssh</code>，看看有没有.ssh目录，，如果有，再看看这个目录下有没有<code>id_rsa<code>和</code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"ne_lucifer@163.com"</span></span><br></pre></td></tr></table></figure>
-<p>  你需要把邮件地址换成你自己的邮件地址，然后点击回车，使用默认值即可。</p>
-</li>
-<li>第二步：登录Github（登录后路径<code><a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a></code>）或者Coding(登录后路径<code></code>)，按如下步骤操作，用记事本打开<code>id_rsa.pub</code>，全选，把里面的内容粘贴到公钥内容里，title随便起一个<br><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-1.png" alt="hexo-coding-github-报错集锦2-1"><br><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-2.png" alt="hexo-coding-github-报错集锦2-2"><br>即可推送。</li>
-</ul>
-</li>
-<li><h4 id="报错三：-Error-ERROR-Repository-not-found-fatal-Could-not-read-from-remote-repository"><a href="#报错三：-Error-ERROR-Repository-not-found-fatal-Could-not-read-from-remote-repository" class="headerlink" title="报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository."></a>报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository.</h4><ul>
-<li><p>报错内容：使用<code>hexo d</code>部署项目到pages服务时报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: ERROR: Repository not found.</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (F:\WorkSpaces\hexo\blog\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at ChildProcess.emit (events.js:182:13)</span><br><span class="line">    at ChildProcess.cp.emit (F:\WorkSpaces\hexo\blog\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:962:16)</span><br><span class="line">    at Socket.stream.socket.on (internal/child_process.js:381:11)</span><br><span class="line">    at Socket.emit (events.js:182:13)</span><br><span class="line">    at Pipe._handle.close (net.js:606:12)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看远端有没有这个分支；</p>
-</li>
-<li>使用<code>ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a></code>命令，会出现下面信息，输入yes然后回车即可部署。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;git.coding.net (118.25.166.124)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:这块是一串编码.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
+<h4 id="报错二：-Permission-denied-publickey"><a href="#报错二：-Permission-denied-publickey" class="headerlink" title="报错二： Permission denied (publickey)."></a>报错二： Permission denied (publickey).</h4><p>问题处理：<br>第一步：创建SSH Key。windows下的目录<code>C:\Users\用户名.ssh</code>，看看有没有.ssh目录，，如果有，再看看这个目录下有没有<code>id_rsa<code>和</code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"ne_lucifer@163.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>你需要把邮件地址换成你自己的邮件地址，然后点击回车，使用默认值即可。<br>第二步：登录Github（登录后路径<code><a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a></code>）或者Coding(登录后路径<code></code>)，按如下步骤操作，用记事本打开<code>id_rsa.pub</code>，全选，把里面的内容粘贴到公钥内容里，title随便起一个<br><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-1.png" alt="hexo-coding-github-报错集锦2-1"><br><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-2.png" alt="hexo-coding-github-报错集锦2-2"></p>
+<h4 id="报错三：-Error-ERROR-Repository-not-found-fatal-Could-not-read-from-remote-repository"><a href="#报错三：-Error-ERROR-Repository-not-found-fatal-Could-not-read-from-remote-repository" class="headerlink" title="报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository."></a>报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository.</h4><p>问题描述：使用<code>hexo d</code>部署项目到pages服务时报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: ERROR: Repository not found.</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (F:\WorkSpaces\hexo\blog\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at ChildProcess.emit (events.js:182:13)</span><br><span class="line">    at ChildProcess.cp.emit (F:\WorkSpaces\hexo\blog\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:962:16)</span><br><span class="line">    at Socket.stream.socket.on (internal/child_process.js:381:11)</span><br><span class="line">    at Socket.emit (events.js:182:13)</span><br><span class="line">    at Pipe._handle.close (net.js:606:12)</span><br></pre></td></tr></table></figure></p>
+<p>查看远端有没有这个分支；<br>使用<code>ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a></code>命令，会出现下面信息，输入yes然后回车即可部署。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;git.coding.net (118.25.166.124)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:这块是一串编码.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -652,7 +636,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -663,7 +647,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -674,7 +658,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -763,7 +747,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">5.8k</span>
+    <span title="网站总字数">6.2k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

@@ -109,7 +109,7 @@ daovoice('update');
 <meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_new_proj.png">
 <meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_static_pages.png">
 <meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_ssh_key1.png">
-<meta property="og:updated_time" content="2019-01-03T13:44:39.793Z">
+<meta property="og:updated_time" content="2019-01-03T15:22:27.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（一）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上.">
@@ -426,7 +426,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,001 字
+                  984 字
                 </span>
               
 
@@ -473,12 +473,13 @@ daovoice('update');
 <li>hexo: 3.7.1</li>
 <li>hexo-cli: 1.1.0</li>
 </ul>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>&emsp;&emsp;到此步骤已经认为你已经安装了git和node.js。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>到此步骤已经认为你已经安装了git和node.js。</p>
 <ol>
 <li>创建一个目录，比如在E盘根目录下，创建一个hexo文件夹，使用命令行进入此文件夹，(也可以进入此文件夹，右键Git Bash Here)输入：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">npm install hexo --save</span><br></pre></td></tr></table></figure>
-<p>命令执行后的效果参考：<br><img src="http://img.wanglixia.top//hexo_install-20189921255.png" alt="hexo命令执行完毕效果"></p>
+<p>命令执行后的效果参考：</p>
+<p><img src="http://img.wanglixia.top//hexo_install-20189921255.png" alt="hexo命令执行完毕效果"></p>
 <ol start="2">
 <li>初始化项目，输入hexo init 项目名，如hexo init blog,将会自动生成blog目录，并自动生成一些目录及文件；</li>
 </ol>
@@ -494,25 +495,23 @@ daovoice('update');
 <li>hexo clean ：清除缓存文件 (db.json) 和已生成的静态文件 (public)。</li>
 <li>hexo g ：生成静态文件。</li>
 <li>hexo s ：本地发布预览。</li>
-<li>hexo d ：远程发布。<h3 id="在coding上部署"><a href="#在coding上部署" class="headerlink" title="在coding上部署"></a>在coding上部署</h3>&emsp;&emsp;访问<a href="https://coding.net/" target="_blank" rel="noopener">coding官网</a>，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。</li>
+<li>hexo d ：远程发布。</li>
 </ul>
 </li>
 </ul>
-<ol>
-<li>创建项目:<br><img src="/images/blog/hexo_install_new_proj.png" alt="coding上创建项目"></li>
-<li>查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：<br><img src="/images/blog/hexo_install_static_pages.png" alt="coding上查看静态pages服务"></li>
-<li>接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；<br> 3.1 设置Git的user name和email：</li>
-</ol>
+<h3 id="在coding上部署"><a href="#在coding上部署" class="headerlink" title="在coding上部署"></a>在coding上部署</h3><p>&emsp;&emsp;访问<a href="https://coding.net/" target="_blank" rel="noopener">coding官网</a>，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。</p>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目:"></a>创建项目:</h4><p>   <img src="/images/blog/hexo_install_new_proj.png" alt="coding上创建项目"></p>
+<h4 id="查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："><a href="#查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：" class="headerlink" title="查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："></a>查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：</h4><p>   <img src="/images/blog/hexo_install_static_pages.png" alt="coding上查看静态pages服务"></p>
+<h4 id="接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"><a href="#接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；" class="headerlink" title="接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"></a>接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；</h4><p><em>设置Git的user name和email：</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的git用户名，可以随便起一个"</span></span><br><span class="line">git config --global user.email <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure>
-<pre><code>3.2 执行以下命令，查看是否已经有了ssh密钥：cd ~/.ssh，输入第二条命令之后，连续3次enter，
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure>
-<pre><code>3.3 在C:\Users\你的电脑用户名\.ssh 目录下，会有两个文件id_rsa和id_rsa.pub，使用记事本打开id_rsa.pub，复制里面的值，然后浏览器打开你的coding到如下页面，将复制的内容粘贴到公钥内容的文本框里面，点击保存。如下图：
-</code></pre><p>   <img src="/images/blog/hexo_install_ssh_key1.png" alt="coding上粘贴ssh值"><br>    3.4 测试公钥是否配置成功：ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a>，输入之后，会提示你是否确认，输入yes，回车；提示你通过ssh协议认证。<br>    3.5 修改你的站点配置文件，这个是在你的本地配置远程服务器地址，hexo项目根目录下的_config.yml，这种文件的格式非常严格，多一个空格就可能会报错。</p>
+<p><em>执行以下命令，查看是否已经有了ssh密钥：cd ~/.ssh，输入第二条命令之后，连续3次enter</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure>
+<p><em>在<code>C:\Users\你的电脑用户名.ssh</code> 目录下，会有两个文件id_rsa和id_rsa.pub，使用记事本打开id_rsa.pub，复制里面的值，然后浏览器打开你的coding到如下页面，将复制的内容粘贴到公钥内容的文本框里面，点击保存。如下图：</em><br><img src="/images/blog/hexo_install_ssh_key1.png" alt="coding上粘贴ssh值"><br><em>测试公钥是否配置成功：<code>ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a></code>，输入之后，会提示你是否确认，输入yes，回车；提示你通过ssh协议认证。</em><br><em>修改你的站点配置文件，这个是在你的本地配置远程服务器地址，hexo项目根目录下的_config.yml，这种文件的格式非常严格，多一个空格就可能会报错。</em></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@git.coding.net:[你的用户名]/[你的用户名].coding.me.git</span></span><br><span class="line"><span class="comment">#  repository: git@github.com:[你的用户名]/[你的用户名].github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<pre><code>3.6 执行命令,就将你的博客部署到coding上了，如果要解析为自己的域名的话，可以百度、google查看步骤。
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<pre><code>3.7 github 的部署和在coding上部署基本是一样的 
-</code></pre>
+<p><em>执行命令,就将你的博客部署到coding上了，如果要解析为自己的域名的话，可以百度、google查看步骤。</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p><em>github 的部署和在coding上部署基本是一样的</em> </p>
+
       
     </div>
     
@@ -570,6 +569,10 @@ daovoice('update');
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/04/PowerDesigner-export-PDM-rtf/" rel="next" title="PowerDesigner导出PDM和rtf文件">
+                <i class="fa fa-chevron-left"></i> PowerDesigner导出PDM和rtf文件
+              </a>
             
           </div>
 
@@ -661,7 +664,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +675,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -683,7 +686,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -738,7 +741,7 @@ daovoice('update');
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo是什么？"><span class="nav-number">1.</span> <span class="nav-text">Hexo是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境及版本"><span class="nav-number">2.</span> <span class="nav-text">环境及版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在coding上部署"><span class="nav-number">5.</span> <span class="nav-text">在coding上部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo是什么？"><span class="nav-number">1.</span> <span class="nav-text">Hexo是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境及版本"><span class="nav-number">2.</span> <span class="nav-text">环境及版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在coding上部署"><span class="nav-number">5.</span> <span class="nav-text">在coding上部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建项目"><span class="nav-number">5.1.</span> <span class="nav-text">创建项目:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："><span class="nav-number">5.2.</span> <span class="nav-text">查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"><span class="nav-number">5.3.</span> <span class="nav-text">接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -772,7 +775,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">5.8k</span>
+    <span title="网站总字数">6.2k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

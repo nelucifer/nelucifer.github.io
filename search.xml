@@ -1,160 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[mybatis常见错误记录]]></title>
-    <url>%2F2019%2F01%2F03%2Fmybatis%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;Mybatis使用过程中，常见的一些问题汇总记录。 Mybatis执行SQL，查出来的比使用PL/SQL等工具查出来的记录多。问题描述：由于查询要使用到not in，因此 not in ()括号里面的东西自己使用了前端拼接传值，传值格式为’’,’’问题处理：在Mapper.xml中使用了#{}，这块涉及到#{}和${}的区别。替换成${} 就好了。]]></content>
+<search> 
+  
+    
+    <entry>
+      <title>mybatis常见错误记录</title>
+      <link href="/2019/01/03/mybatis%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/"/>
+      <url>/2019/01/03/mybatis%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;Mybatis使用过程中，常见的一些问题汇总记录。<br><a id="more"></a></p><ol><li>Mybatis执行SQL，查出来的比使用PL/SQL等工具查出来的记录多。<br>问题描述：由于查询要使用到not in，因此 not in ()括号里面的东西自己使用了前端拼接传值，传值格式为’’,’’<br>问题处理：在Mapper.xml中使用了#{}，这块涉及到#{}和${}的区别。替换成${} 就好了。</li></ol>]]></content>
+      
       <categories>
-        <category>错误</category>
+          
+          <category> 错误 </category>
+          
       </categories>
-      <tags>
-        <tag>mybatis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[RxJava]]></title>
-    <url>%2F2019%2F01%2F02%2Frxjava%2F</url>
-    <content type="text"><![CDATA[RxJava当被观察者(Observable)的生成速度大于观察者(Observer)的处理速度会出现 Backpressure 现象(只有在异步环境下会发生).会抛出 MissingBackpressureException 异常信息 Hot and Cold Observables Cold Observables：当被订阅后才开始发送事件的Observable(每个Subscriber都能接收到完整的事件) Hot Observables: 不管有没有被订阅,都会去发送事件的 Observable Hot Observable 是不支持背压的,Cold Observable 有一部分并不支持背压(比如interval，timer等操作符创建的Observable)rxJava2.0 已经解决了这个问题(?:Observable,有的支持背压,有的不支持) cold observable 相当于响应式拉(就是observer处理完了一个事件就从observable拉取下一个事件),hot observable通常不能很好的处理响应式拉模型,例如使用onBackpressureBuffer或者onBackpressureDrop 操作符,和其他操作符比如operators, throttling, buffers, or windows. observeOn这个操作符内部有一个缓冲区，默认长度是16.经常用到的Observable.create 就是 Cold Observable,而 just, range, timer 和 from 这些创建的同样是 Cold Observable.我们一般使用的都是Cold Observable,除非特殊需求,才会使用Hot Observable 背压操作符rxJava1.X 针对不支持背压提供的操作符有：sample(),throttleLast(),throttleFirst(),throttleWithTimeout(),debounce(),onBackpressurebuffer(),onBackpressureDrop() RxJava1.x vs RxJava2.x 2.x 发送事件时不能传 null,否则会抛出空指针异常 2.x 中 Observable 不再支持背压, 用 Flowable 来支持背压 线程调度方面 2.x 取消 Schedulers.immediate() RxJava2 BackpressureObservable拆分成了新的 Observable 和 Flowable,Observable 不具备处理背压能力,Flowable 解决了背压问题,Backpressure 只在异步情况下产生,RxJava2 的处理策略仅仅是对观察者接收事件的处理 1.ERROR产生背压问题会抛出 MissingBackpressureException 异常信息在异步调用时,RxJava中有个缓存池，用来缓存消费者处理不了暂时缓存下来的数据,缓存池的默认大小为128,即只能缓存128个事件.无论request()中传入的数字比128大或小,缓存池中在刚开始都会存入128个事件12Flowable.create(new FlowableOnSubscribe&lt;&gt;(),BackpressureStrategy.ERROR) .subscribe(new Subscriber()); BUFFER把RxJava中默认的只能存128个事件的缓存池换成一个大的缓存池，支持存很多很多的数据,比较消耗内存 DROP LATESTDROP 丢弃事件,LATEST使消费者能够接收到生产者产生的最后一个事件]]></content>
+      
+      
+        <tags>
+            
+            <tag> mybatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>RxJava</title>
+      <link href="/2019/01/02/rxjava/"/>
+      <url>/2019/01/02/rxjava/</url>
+      <content type="html"><![CDATA[<h2 id="RxJava"><a href="#RxJava" class="headerlink" title="RxJava"></a>RxJava</h2><p>当被观察者(Observable)的生成速度大于观察者(Observer)的处理速度会出现 Backpressure 现象(只有在异步环境下会发生).<br>会抛出 MissingBackpressureException 异常信息<br><a id="more"></a></p><h2 id="Hot-and-Cold-Observables"><a href="#Hot-and-Cold-Observables" class="headerlink" title="Hot and Cold Observables"></a>Hot and Cold Observables</h2><ul><li>Cold Observables：当被订阅后才开始发送事件的Observable(每个Subscriber都能接收到完整的事件)</li><li>Hot Observables:  不管有没有被订阅,都会去发送事件的 Observable</li></ul><p>Hot Observable 是不支持背压的,Cold Observable 有一部分并不支持背压(比如interval，timer等操作符创建的Observable)<br>rxJava2.0 已经解决了这个问题(?:Observable,有的支持背压,有的不支持)</p><p>cold observable 相当于响应式拉(就是observer处理完了一个事件就从observable拉取下一个事件),hot observable通常不能很好的处理响应式拉模型,例如使用onBackpressureBuffer或者onBackpressureDrop 操作符,和其他操作符比<br>如operators, throttling, buffers, or windows.</p><p>observeOn这个操作符内部有一个缓冲区，默认长度是16.经常用到的Observable.create 就是 Cold Observable,而 just, range, timer 和 from 这些创建的同样是 Cold Observable.我们一般使用的都是Cold Observable,除非特殊需求,才会使用Hot Observable</p><h2 id="背压操作符"><a href="#背压操作符" class="headerlink" title="背压操作符"></a>背压操作符</h2><p>rxJava1.X 针对不支持背压提供的操作符有：sample(),throttleLast(),throttleFirst(),throttleWithTimeout(),debounce(),onBackpressurebuffer(),onBackpressureDrop()</p><h2 id="RxJava1-x-vs-RxJava2-x"><a href="#RxJava1-x-vs-RxJava2-x" class="headerlink" title="RxJava1.x vs RxJava2.x"></a>RxJava1.x vs RxJava2.x</h2><ul><li>2.x 发送事件时不能传 null,否则会抛出空指针异常</li><li>2.x 中 Observable 不再支持背压, 用 Flowable 来支持背压</li><li>线程调度方面 2.x 取消 Schedulers.immediate()</li></ul><h2 id="RxJava2-Backpressure"><a href="#RxJava2-Backpressure" class="headerlink" title="RxJava2 Backpressure"></a>RxJava2 Backpressure</h2><p>Observable拆分成了新的 Observable 和 Flowable,Observable 不具备处理背压能力,Flowable 解决了背压问题,Backpressure 只在异步情况下产生,RxJava2 的处理策略仅仅是对观察者接收事件的处理</p><p>1.ERROR<br>产生背压问题会抛出 MissingBackpressureException 异常信息<br>在异步调用时,RxJava中有个缓存池，用来缓存消费者处理不了暂时缓存下来的数据,缓存池的默认大小为128,即只能<br>缓存128个事件.无论request()中传入的数字比128大或小,缓存池中在刚开始都会存入128个事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create(new FlowableOnSubscribe&lt;&gt;(),BackpressureStrategy.ERROR)</span><br><span class="line">.subscribe(new Subscriber());</span><br></pre></td></tr></table></figure></p><ol start="2"><li><p>BUFFER<br>把RxJava中默认的只能存128个事件的缓存池换成一个大的缓存池，支持存很多很多的数据,比较消耗内存</p></li><li><p>DROP  LATEST<br>DROP 丢弃事件,LATEST使消费者能够接收到生产者产生的最后一个事件</p></li></ol>]]></content>
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>RxJava</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[记使用hexo搭建个人博客-报错集锦]]></title>
-    <url>%2F2018%2F12%2F29%2Fhexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A6%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;使用hexo+github/coding+next搭建个人博客过程中遇到的一些问题集中整理，包括： 报错一：TypeError: Cannot set property ‘lastIndex’ of undefined 报错二：Permission denied (publickey). 报错三：Error: ERROR: Repository not found. fatal: Could not read from remote repository. 报错一：TypeError: Cannot set property ‘lastIndex’ of undefined &emsp;&emsp;问题描述：使用hexo g 报错TypeError: Cannot set property ‘lastIndex’ of undefined &emsp;&emsp;问题原因：在hexo中的_config.yml 文件中的高亮功能设置错了，不是主题的_config.yml，其中的 auto_detect 应该设置为 false。 12345highlight: enable: true line_number: true auto_detect: false tab_replace: 改过之后再执行就好了。 报错二： Permission denied (publickey). 第一步：创建SSH Key。windows下的目录C:\Users\用户名.ssh，看看有没有.ssh目录，，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key： 1ssh-keygen -t rsa -C "ne_lucifer@163.com" 你需要把邮件地址换成你自己的邮件地址，然后点击回车，使用默认值即可。 第二步：登录Github（登录后路径https://github.com/settings/keys）或者Coding(登录后路径)，按如下步骤操作，用记事本打开id_rsa.pub，全选，把里面的内容粘贴到公钥内容里，title随便起一个即可推送。 报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository. 报错内容：使用hexo d部署项目到pages服务时报错 12345678910111213141516Please make sure you have the correct access rightsand the repository exists.FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.htmlError: ERROR: Repository not found.fatal: Could not read from remote repository.Please make sure you have the correct access rightsand the repository exists. at ChildProcess.&lt;anonymous&gt; (F:\WorkSpaces\hexo\blog\node_modules\hexo-util\lib\spawn.js:37:17) at ChildProcess.emit (events.js:182:13) at ChildProcess.cp.emit (F:\WorkSpaces\hexo\blog\node_modules\cross-spawn\lib\enoent.js:40:29) at maybeClose (internal/child_process.js:962:16) at Socket.stream.socket.on (internal/child_process.js:381:11) at Socket.emit (events.js:182:13) at Pipe._handle.close (net.js:606:12) 查看远端有没有这个分支； 使用ssh -T git@git.coding.net命令，会出现下面信息，输入yes然后回车即可部署。123The authenticity of host &apos;git.coding.net (118.25.166.124)&apos; can&apos;t be established.RSA key fingerprint is SHA256:这块是一串编码.Are you sure you want to continue connecting (yes/no)?]]></content>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> RxJava </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>记使用hexo搭建个人博客-报错集锦</title>
+      <link href="/2018/12/29/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A6/"/>
+      <url>/2018/12/29/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A6/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;使用hexo+github/coding+next搭建个人博客过程中遇到的一些问题集中整理，包括：</p><ul><li>报错一：TypeError: Cannot set property ‘lastIndex’ of undefined</li><li>报错二：Permission denied (publickey).</li><li><p>报错三：Error: ERROR: Repository not found. fatal: Could not read from remote repository.</p><a id="more"></a></li><li><h4 id="报错一：TypeError-Cannot-set-property-‘lastIndex’-of-undefined"><a href="#报错一：TypeError-Cannot-set-property-‘lastIndex’-of-undefined" class="headerlink" title="报错一：TypeError: Cannot set property ‘lastIndex’ of undefined"></a>报错一：TypeError: Cannot set property ‘lastIndex’ of undefined</h4></li></ul><p>&emsp;&emsp;问题描述：使用<code>hexo g</code> 报错<code>TypeError: Cannot set property ‘lastIndex’ of undefined</code></p><p><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A61.png" alt="hexo-coding-github-报错集锦"><br>&emsp;&emsp;问题原因：在hexo中的<code>_config.yml</code> 文件中的高亮功能设置错了，不是主题的<code>_config.yml</code>，其中的 auto_detect 应该设置为 false。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: true</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace:</span><br></pre></td></tr></table></figure><p>改过之后再执行就好了。</p><ul><li><h4 id="报错二：-Permission-denied-publickey"><a href="#报错二：-Permission-denied-publickey" class="headerlink" title="报错二： Permission denied (publickey)."></a>报错二： Permission denied (publickey).</h4><ul><li><p>第一步：创建SSH Key。windows下的目录<code>C:\Users\用户名.ssh</code>，看看有没有.ssh目录，，如果有，再看看这个目录下有没有<code>id_rsa<code>和</code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"ne_lucifer@163.com"</span></span><br></pre></td></tr></table></figure><p>  你需要把邮件地址换成你自己的邮件地址，然后点击回车，使用默认值即可。</p></li><li>第二步：登录Github（登录后路径<code><a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a></code>）或者Coding(登录后路径<code></code>)，按如下步骤操作，用记事本打开<code>id_rsa.pub</code>，全选，把里面的内容粘贴到公钥内容里，title随便起一个<br><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-1.png" alt="hexo-coding-github-报错集锦2-1"><br><img src="http://img.wanglixia.top/hexo-coding-github-%E6%8A%A5%E9%94%99%E9%9B%86%E9%94%A62-2.png" alt="hexo-coding-github-报错集锦2-2"><br>即可推送。</li></ul></li><li><h4 id="报错三：-Error-ERROR-Repository-not-found-fatal-Could-not-read-from-remote-repository"><a href="#报错三：-Error-ERROR-Repository-not-found-fatal-Could-not-read-from-remote-repository" class="headerlink" title="报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository."></a>报错三： Error: ERROR: Repository not found. fatal: Could not read from remote repository.</h4><ul><li><p>报错内容：使用<code>hexo d</code>部署项目到pages服务时报错</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: ERROR: Repository not found.</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (F:\WorkSpaces\hexo\blog\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at ChildProcess.emit (events.js:182:13)</span><br><span class="line">    at ChildProcess.cp.emit (F:\WorkSpaces\hexo\blog\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:962:16)</span><br><span class="line">    at Socket.stream.socket.on (internal/child_process.js:381:11)</span><br><span class="line">    at Socket.emit (events.js:182:13)</span><br><span class="line">    at Pipe._handle.close (net.js:606:12)</span><br></pre></td></tr></table></figure></li><li><p>查看远端有没有这个分支；</p></li><li>使用<code>ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a></code>命令，会出现下面信息，输入yes然后回车即可部署。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;git.coding.net (118.25.166.124)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:这块是一串编码.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></li></ul></li></ul>]]></content>
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>hexo</tag>
-        <tag>github</tag>
-        <tag>coding</tag>
-        <tag>next</tag>
-        <tag>gitalk</tag>
-        <tag>报错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[记使用hexo搭建个人博客（三）]]></title>
-    <url>%2F2018%2F12%2F29%2Fhexo-coding-github-3%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。 next主题添加gitalk ###准备 在使用gitalk作为评论系统之前，需要在github上注册新的应用； 注册GitHub应用链接。按如下描述填写: 填写完成后，点击绿色按钮，跳转到一下页面，可以看到Client ID和Client Secret，后面会用到。 在项目目录下执行如下命令npm install gitalk –save 安装gitalk； ###修改的内容如下： 新建文件gitalk.swig；路径themes/next/layout/_third-party/comments/gitalk.swig，内容如下： 12345678910111213141516&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125; &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt; &lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt; var gitalk = new Gitalk(&#123; clientID: &apos;&#123;&#123; theme.gitalk.ClientID &#125;&#125;&apos;, clientSecret: &apos;&#123;&#123; theme.gitalk.ClientSecret &#125;&#125;&apos;, repo: &apos;&#123;&#123; theme.gitalk.repo &#125;&#125;&apos;, owner: &apos;&#123;&#123; theme.gitalk.githubID &#125;&#125;&apos;, admin: [&apos;&#123;&#123; theme.gitalk.adminUser &#125;&#125;&apos;], id: location.pathname, distractionFreeMode: &apos;&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;&apos; &#125;) gitalk.render(&apos;gitalk-container&apos;) &lt;/script&gt;&#123;% endif %&#125; 修改文件comments.swig；路径themes/next/layout/_partials/comments.swig，在最后一个div里面加上如下内容： 12&#123;% elseif theme.gitalk.enable %&#125; &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt; * ### 修改文件&lt;code&gt;index.swig&lt;/code&gt;； 路径&lt;code&gt;themes/next/layout/_third-party/comments/index.swig&lt;/code&gt;，在最后一行加上如下内容： 1&#123;% include &apos;gitalk.swig&apos; %&#125; * ### 新建文件&lt;code&gt;gitalk.styl&lt;/code&gt;； 路径&lt;code&gt;themes/next/source/css/_common/components/third-party/gitalk.styl&lt;/code&gt;，内容如下： 1234.gt-header a, .gt-comments a, .gt-popup a border-bottom: none;.gt-container .gt-popup .gt-action.is--active:before top: 0.7em; * ### 修改文件&lt;code&gt;third-party.styl&lt;/code&gt;； 路径&lt;code&gt;themes/next/source/css/_common/components/third-party/gitalk.styl&lt;/code&gt;，在最后一行加上如下内容： 1@import &quot;gitalk&quot;; * ### 主题配置，修改文件&lt;code&gt;_config.yml&lt;/code&gt;； 路径&lt;code&gt;themes/next/_config.yml&lt;/code&gt;，增加内容如下： 12345678910gitalk: enable: true githubID: nelucifer # 例：nelucifer repo: nelucifer.github.io # 存储你评论 issue 的 Github 仓库名（建议直接用 GitHub Page 的仓库名） 例：nelucifer.github.io ClientID: 这块填注册Github应用成功之后的ClientID ClientSecret: 注册Github应用成功之后的ClientSecret #owner: 'Github 用户名', adminUser: ['nelucifer'] #指定可初始化评论账户，Github仓库的管理员，可以有多个 distractionFreeMode: true #id: 'window.location.pathname' #页面的唯一标识，gitalk根据这个标识自动创建的issue的标签,此处使用页面的相对路径作为标识 ###参考文章： &emsp;&emsp;在使用gitalk作为评论系统的时候，参考了以下文章，特此添加链接，表示感谢： hexo 博客next主题集成gitment或者gitalk评论系统 hexo next主题深度优化(五)，评论系统换成gittalk]]></content>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> coding </tag>
+            
+            <tag> next </tag>
+            
+            <tag> gitalk </tag>
+            
+            <tag> 报错 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>记使用hexo搭建个人博客（三）</title>
+      <link href="/2018/12/29/hexo-coding-github-3/"/>
+      <url>/2018/12/29/hexo-coding-github-3/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。</p><a id="more"></a><h2 id="next主题添加gitalk"><a href="#next主题添加gitalk" class="headerlink" title="next主题添加gitalk"></a>next主题添加gitalk</h2><ul><li><p>###准备</p><ul><li>在使用gitalk作为评论系统之前，需要在github上注册新的应用； <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">注册GitHub应用链接</a>。<br>按如下描述填写:<br><img src="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8.png" alt="github注册应用"></li><li>填写完成后，点击绿色按钮，跳转到一下页面，<br>可以看到<code>Client ID</code>和<code>Client Secret</code>，后面会用到。<br><img src="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8%E4%BF%9D%E5%AD%98%E5%90%8E.png" alt="github注册应用保存后跳转的页面"></li><li>在项目目录下执行如下命令<code>npm install gitalk –save</code> 安装<code>gitalk</code>；</li></ul></li><li><p>###修改的内容如下：</p><ul><li><h3 id="新建文件gitalk-swig；"><a href="#新建文件gitalk-swig；" class="headerlink" title="新建文件gitalk.swig；"></a>新建文件<code>gitalk.swig</code>；</h3><p>路径<code>themes/next/layout/_third-party/comments/gitalk.swig</code>，内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;</span><br><span class="line">  &lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">   &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        var gitalk = new Gitalk(&#123;</span><br><span class="line">          clientID: &apos;&#123;&#123; theme.gitalk.ClientID &#125;&#125;&apos;,</span><br><span class="line">          clientSecret: &apos;&#123;&#123; theme.gitalk.ClientSecret &#125;&#125;&apos;,</span><br><span class="line">          repo: &apos;&#123;&#123; theme.gitalk.repo &#125;&#125;&apos;,</span><br><span class="line">          owner: &apos;&#123;&#123; theme.gitalk.githubID &#125;&#125;&apos;,</span><br><span class="line">          admin: [&apos;&#123;&#123; theme.gitalk.adminUser &#125;&#125;&apos;],</span><br><span class="line">          id: location.pathname,</span><br><span class="line">          distractionFreeMode: &apos;&#123;&#123; theme.gitalk.distractionFreeMode &#125;&#125;&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">        gitalk.render(&apos;gitalk-container&apos;)           </span><br><span class="line">       &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></li><li><h3 id="修改文件comments-swig；"><a href="#修改文件comments-swig；" class="headerlink" title="修改文件comments.swig；"></a>修改文件<code>comments.swig</code>；</h3><p>路径<code>themes/next/layout/_partials/comments.swig</code>，在最后一个<code>div</code>里面加上如下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line">    &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></li></ul></li></ul><pre><code>* ### 修改文件&lt;code&gt;index.swig&lt;/code&gt;；路径&lt;code&gt;themes/next/layout/_third-party/comments/index.swig&lt;/code&gt;，在最后一行加上如下内容：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include &apos;gitalk.swig&apos; %&#125;</span><br></pre></td></tr></table></figure>* ### 新建文件&lt;code&gt;gitalk.styl&lt;/code&gt;；路径&lt;code&gt;themes/next/source/css/_common/components/third-party/gitalk.styl&lt;/code&gt;，内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.gt-header a, .gt-comments a, .gt-popup a</span><br><span class="line">  border-bottom: none;</span><br><span class="line">.gt-container .gt-popup .gt-action.is--active:before</span><br><span class="line">  top: 0.7em;</span><br></pre></td></tr></table></figure>* ### 修改文件&lt;code&gt;third-party.styl&lt;/code&gt;；路径&lt;code&gt;themes/next/source/css/_common/components/third-party/gitalk.styl&lt;/code&gt;，在最后一行加上如下内容：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;gitalk&quot;;</span><br></pre></td></tr></table></figure>* ### 主题配置，修改文件&lt;code&gt;_config.yml&lt;/code&gt;；路径&lt;code&gt;themes/next/_config.yml&lt;/code&gt;，增加内容如下：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitalk:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  githubID:</span> <span class="string">nelucifer</span>  <span class="comment"># 例：nelucifer</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">nelucifer.github.io</span>   <span class="comment"># 存储你评论 issue 的 Github 仓库名（建议直接用 GitHub Page 的仓库名） 例：nelucifer.github.io </span></span><br><span class="line"><span class="attr">  ClientID:</span> <span class="string">这块填注册Github应用成功之后的ClientID</span></span><br><span class="line"><span class="attr">  ClientSecret:</span> <span class="string">注册Github应用成功之后的ClientSecret</span></span><br><span class="line">  <span class="comment">#owner: 'Github 用户名',</span></span><br><span class="line"><span class="attr">  adminUser:</span> <span class="string">['nelucifer']</span> <span class="comment">#指定可初始化评论账户，Github仓库的管理员，可以有多个</span></span><br><span class="line"><span class="attr">  distractionFreeMode:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">#id: 'window.location.pathname' #页面的唯一标识，gitalk根据这个标识自动创建的issue的标签,此处使用页面的相对路径作为标识</span></span><br></pre></td></tr></table></figure></code></pre><ul><li>###参考文章：<br>  &emsp;&emsp;在使用gitalk作为评论系统的时候，参考了以下文章，特此添加链接，表示感谢：<ul><li><a href="https://blog.csdn.net/hyb612/article/details/78299971" target="_blank" rel="noopener">hexo 博客next主题集成gitment或者gitalk评论系统</a><br></li><li><a href="https://blog.csdn.net/dataiyangu/article/details/84961965" target="_blank" rel="noopener">hexo next主题深度优化(五)，评论系统换成gittalk</a></li></ul></li></ul>]]></content>
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>hexo</tag>
-        <tag>github</tag>
-        <tag>coding</tag>
-        <tag>next</tag>
-        <tag>gitalk</tag>
-        <tag>gitee</tag>
-        <tag>码云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[npm常用命令]]></title>
-    <url>%2F2018%2F12%2F28%2Fnpm-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp; 使用npm的时候，有一些命令及配置常用到，记录。 npm修改源&emsp;&emsp;使用npm在npm install时，速度特别慢，因此修改npm的数据源1npm config set registry https://registry.npm.taobao.org 修改后，即可进行下载啦，速度快了好多~~]]></content>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> coding </tag>
+            
+            <tag> next </tag>
+            
+            <tag> gitalk </tag>
+            
+            <tag> gitee </tag>
+            
+            <tag> 码云 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>npm常用命令</title>
+      <link href="/2018/12/28/npm-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/2018/12/28/npm-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp; 使用npm的时候，有一些命令及配置常用到，记录。</p><a id="more"></a><h3 id="npm修改源"><a href="#npm修改源" class="headerlink" title="npm修改源"></a>npm修改源</h3><p>&emsp;&emsp;使用npm在npm install时，速度特别慢，因此修改npm的数据源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p><p>修改后，即可进行下载啦，速度快了好多~~</p>]]></content>
+      
       <categories>
-        <category>技术，笔记</category>
+          
+          <category> 技术，笔记 </category>
+          
       </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[读书笔记之陀氏-穷人的美德]]></title>
-    <url>%2F2018%2F08%2F20%2F%E7%9C%8B%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%99%80%E6%B0%8F-%E7%A9%B7%E4%BA%BA%E7%9A%84%E7%BE%8E%E5%BE%B7%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;陀氏的《穷人的美德》，摘部分内容于此文中。 目录穷人的美德就是会赚钱 穷人最重要的美德就是会赚钱，道德就是一个人不该成为其他人的累赘 。 要爱别人，首先爱自己，因为世界上的一切都是以个人利益为基础的。 有几个人的表现特别突出，自然招来一些流言蜚语。因为没有流言蜚语，世界就无法存在，千百万人就会像苍蝇一样，因为寂寞无聊而死去。 用千万件好事去抵一桩小罪 命定的事总是会实现的，有价值的人将占有他应有的位置，而无价值的人将永远躲进小胡同，躲进他肮脏的小胡同，他喜爱而且正适合于他的小胡同，并且就在那污秽和臭气中，心甘情愿而且愉快地结束他的生命。 我们每个人都应该对世上一切人和一切事物负责，这一点是毫无疑义的，这不但是因为大家都参与了整个世界的罪恶，也是因为个人本来就应该为世上的一切人和一切事物负责。 在这种放荡生活里至少有一种固定不变的东西，它甚至是以天性为基础，而不是为幻想所左右的，它犹如血液中永不熄灭的炭火，永远燃烧着，还要燃烧很久很久，随着年龄的增长，或许也不能让它很快熄灭。 一时糊涂与意志衰退天才人物与犯罪的权利 总而言之，我得出结论，所有这些人，不仅是那些伟大的，就连那些稍微越出常轨的人，也就是说，就连那些稍微能提出点儿什么新见解的人，就其天性来说，必须是罪人–当然，只是在一定程度上，不然，他们就难以越出常轨；而让他们循规蹈矩，不越雷池一步，他们当然不会同意，这又是由于他们的天性，而照我看，他们甚至有责任不同意。 按照自然规律，人一般可以分作两类：一类是低级的（平凡的），也可以这么说吧。仅仅是一种繁殖同类的材料；另一类是名副其实的人，也就是有天赋或天才，能在自己的社会上发表新见解的人。……第一类人永远是当代的主人，第二类人却是未来的主人。第一类人保全世界，增加人的数量；第二类人则推动世界向前发展，引导它达到自己的目的。无论是这一类人，还是那一类人，都有完全同等的生存权利。 我杀死的只是原则 一般说，有新思想的人，即使只是稍微能发表某种新见解的人，通常是生得很少的，甚至少得出奇。明确的只有一点：必须有某种自然法则来正确无误地确定人的出生规律，正确无误地确定分类和区分他们的规律。 对于一个知识全面、思想深刻的人，痛苦是必然的，既有精神上的痛苦，也有肉体上的痛苦，我觉得，真正的伟人应该察觉到人世间极大地忧虑。 ……“单就这一点来说，我就是一只虱子，因为，第一，现在我认为我是只虱子；第二，因为整整一个月来，我一直在打搅仁慈的上帝，请他作证，说是，我这么做不是为了自己肉体上的享受和满足自己的淫欲，而是有一个让人感到高兴的崇高目的–哈–哈！… …” 谁能敢作敢为，谁就最最正确 权力只会给予敢于觊觎并夺取它的人。这里只有一个条件，仅仅一个条件：只要敢作敢为！ 既然我反复自问：我有没有权利掌握权力？–那么，这就是说，我没有权利掌握权力。 总是希望生命有更大的意义 他一向认为，单单生存是不够的，他总是希望生命有更大的意义。也许只是由于他抱有希望，当时他才自认为是一个比别人享有更多权利的人吧！]]></content>
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> npm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>读书笔记之陀氏-穷人的美德</title>
+      <link href="/2018/08/20/%E7%9C%8B%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%99%80%E6%B0%8F-%E7%A9%B7%E4%BA%BA%E7%9A%84%E7%BE%8E%E5%BE%B7/"/>
+      <url>/2018/08/20/%E7%9C%8B%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%99%80%E6%B0%8F-%E7%A9%B7%E4%BA%BA%E7%9A%84%E7%BE%8E%E5%BE%B7/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;陀氏的《穷人的美德》，摘部分内容于此文中。</p><a id="more"></a><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h4 id="穷人的美德就是会赚钱"><a href="#穷人的美德就是会赚钱" class="headerlink" title="穷人的美德就是会赚钱"></a>穷人的美德就是会赚钱</h4><ul><li>穷人最重要的美德就是会赚钱，道德就是一个人不该成为其他人的累赘 。</li><li>要爱别人，首先爱自己，因为世界上的一切都是以个人利益为基础的。</li><li>有几个人的表现特别突出，自然招来一些流言蜚语。因为没有流言蜚语，世界就无法存在，千百万人就会像苍蝇一样，因为寂寞无聊而死去。</li></ul><h4 id="用千万件好事去抵一桩小罪"><a href="#用千万件好事去抵一桩小罪" class="headerlink" title="用千万件好事去抵一桩小罪"></a>用千万件好事去抵一桩小罪</h4><ul><li>命定的事总是会实现的，有价值的人将占有他应有的位置，而无价值的人将永远躲进小胡同，躲进他肮脏的小胡同，他喜爱而且正适合于他的小胡同，并且就在那污秽和臭气中，心甘情愿而且愉快地结束他的生命。</li><li>我们每个人都应该对世上一切人和一切事物负责，这一点是毫无疑义的，这不但是因为大家都参与了整个世界的罪恶，也是因为个人本来就应该为世上的一切人和一切事物负责。</li><li>在这种放荡生活里至少有一种固定不变的东西，它甚至是以天性为基础，而不是为幻想所左右的，它犹如血液中永不熄灭的炭火，永远燃烧着，还要燃烧很久很久，随着年龄的增长，或许也不能让它很快熄灭。</li></ul><h4 id="一时糊涂与意志衰退"><a href="#一时糊涂与意志衰退" class="headerlink" title="一时糊涂与意志衰退"></a>一时糊涂与意志衰退</h4><h4 id="天才人物与犯罪的权利"><a href="#天才人物与犯罪的权利" class="headerlink" title="天才人物与犯罪的权利"></a>天才人物与犯罪的权利</h4><ul><li>总而言之，我得出结论，所有这些人，不仅是那些伟大的，就连那些稍微越出常轨的人，也就是说，就连那些稍微能提出点儿什么新见解的人，就其天性来说，必须是罪人–当然，只是在一定程度上，不然，他们就难以越出常轨；而让他们循规蹈矩，不越雷池一步，他们当然不会同意，这又是由于他们的天性，而照我看，他们甚至有责任不同意。</li><li>按照自然规律，人一般可以分作两类：一类是低级的（平凡的），也可以这么说吧。仅仅是一种繁殖同类的材料；另一类是名副其实的人，也就是有天赋或天才，能在自己的社会上发表新见解的人。……第一类人永远是当代的主人，第二类人却是未来的主人。第一类人保全世界，增加人的数量；第二类人则推动世界向前发展，引导它达到自己的目的。无论是这一类人，还是那一类人，都有完全同等的生存权利。</li></ul><h4 id="我杀死的只是原则"><a href="#我杀死的只是原则" class="headerlink" title="我杀死的只是原则"></a>我杀死的只是原则</h4><ul><li>一般说，有新思想的人，即使只是稍微能发表某种新见解的人，通常是生得很少的，甚至少得出奇。明确的只有一点：必须有某种自然法则来正确无误地确定人的出生规律，正确无误地确定分类和区分他们的规律。</li><li>对于一个知识全面、思想深刻的人，痛苦是必然的，既有精神上的痛苦，也有肉体上的痛苦，我觉得，真正的伟人应该察觉到人世间极大地忧虑。</li><li>……“单就这一点来说，我就是一只虱子，因为，第一，现在我认为我是只虱子；第二，因为整整一个月来，我一直在打搅仁慈的上帝，请他作证，说是，我这么做不是为了自己肉体上的享受和满足自己的淫欲，而是有一个让人感到高兴的崇高目的–哈–哈！… …”</li></ul><h4 id="谁能敢作敢为，谁就最最正确"><a href="#谁能敢作敢为，谁就最最正确" class="headerlink" title="谁能敢作敢为，谁就最最正确"></a>谁能敢作敢为，谁就最最正确</h4><ul><li>权力只会给予敢于觊觎并夺取它的人。这里只有一个条件，仅仅一个条件：只要敢作敢为！</li><li>既然我反复自问：我有没有权利掌握权力？–那么，这就是说，我没有权利掌握权力。</li></ul><h4 id="总是希望生命有更大的意义"><a href="#总是希望生命有更大的意义" class="headerlink" title="总是希望生命有更大的意义"></a>总是希望生命有更大的意义</h4><ul><li>他一向认为，单单生存是不够的，他总是希望生命有更大的意义。也许只是由于他抱有希望，当时他才自认为是一个比别人享有更多权利的人吧！</li></ul>]]></content>
+      
       <categories>
-        <category>阅读，笔记</category>
+          
+          <category> 阅读，笔记 </category>
+          
       </categories>
-      <tags>
-        <tag>陀思妥耶夫斯基</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[学习jdk1.8-Lambda 表达式 与Collections]]></title>
-    <url>%2F2018%2F08%2F13%2F2018813214038%E5%AD%A6%E4%B9%A0jdk1-8%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;直到现在jdk1.8版本已经发布了有近5个年头了。今天做一个浅显的学习和记录，便于后面的查找。如果你也有兴趣，不妨一起交流交流，如有不对之处，还请指点指点… 写在前面&emsp;&emsp;看牛逼的代码，到处都是知识点。咱研究研究一些简单的，使用一些示例代码来进行操作。 Lambda 表达式老版本的Java中的排序方式,实现一组字符串按照字典反序排列，排序结果[“peter”,”jany”,”brain”,”anna”,”alex”]：12345678List&lt;String&gt; names = Arrays.asList("peter","anna","brain","jany","alex");Collections.sort(names, new Comparator&lt;String&gt;()&#123; @Override public int compare(String a, String b)&#123; return b.compareTo(a); &#125;&#125;) Comparator 中 compare方法介绍：Collections 中 sort方法介绍：该方法默认的排序是正序String的compareTo方法：public int compareTo(String anotherString)如果参数字符串等于此字符串，则值为0 ; 如果这个字符串的字典比字符串参数小，则值小于0; 如果此字符串的字典大小超过字符串参数，则值大于0 。Java8中的lambda表达式：123Collections.sort(names,(String a, String b) -&gt; &#123; return b.compareTo(a);&#125;) 更简单的方式:1Collections.sort(names,(String a, String b) -&gt; b.compareTo(a)); 更更简单的方式：1Collections.sort(names,(a,b) -&gt; b.compareTo(a)); 一种不使用lambda表达式的方法，reverseOrder() 以反字典（字母顺序）排列阵列：1Collections.sort(names, Comparator.reverseOrder()); Stream 接口&emsp;&emsp;Java8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性，串行Stream上的操作是在一个线程中依次完成，而并行Stream则是在多个线程上同时执行。 创建一个stream的方式,Collection.stream()创建了一个串行的stream；Collection.parallelStream()创建了一个并行的stream；：1234567List&lt;String&gt; stringCollection = new ArrayList&lt;&gt;();stringCollection.add("ddd");stringCollection.add("ccc");stringCollection.add("bbb");stringCollection.add("aaa");Stream&lt;String&gt; stream = stringCollection.stream();Stream&lt;String&gt; stringStream = stringCollection.parallelStream();]]></content>
+      
+      
+        <tags>
+            
+            <tag> 陀思妥耶夫斯基 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>学习jdk1.8-Lambda 表达式 与Collections</title>
+      <link href="/2018/08/13/2018813214038%E5%AD%A6%E4%B9%A0jdk1-8/"/>
+      <url>/2018/08/13/2018813214038%E5%AD%A6%E4%B9%A0jdk1-8/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;直到现在jdk1.8版本已经发布了有近5个年头了。今天做一个浅显的学习和记录，便于后面的查找。如果你也有兴趣，不妨一起交流交流，如有不对之处，还请指点指点…</p><a id="more"></a><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>&emsp;&emsp;看牛逼的代码，到处都是知识点。咱研究研究一些简单的，使用一些示例代码来进行操作。</p><h3 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h3><p>老版本的Java中的排序方式,实现一组字符串按照字典反序排列，排序结果<code>[“peter”,”jany”,”brain”,”anna”,”alex”]</code>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; names = Arrays.asList(<span class="string">"peter"</span>,<span class="string">"anna"</span>,<span class="string">"brain"</span>,<span class="string">"jany"</span>,<span class="string">"alex"</span>);</span><br><span class="line"></span><br><span class="line">Collections.sort(names, <span class="keyword">new</span> Comparator&lt;String&gt;()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String a, String b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b.compareTo(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p>Comparator 中 compare方法介绍：<br><img src="http://img.wanglixia.top//Comparator-compare-2018813224649.png" alt="Comparator-compare-2018813224649"><br>Collections 中 sort方法介绍：<br>该方法默认的排序是正序<br><img src="http://img.wanglixia.top//Collections_sort_1-2018813225316.png" alt="Collections_sort_1-2018813225316"><br><img src="http://img.wanglixia.top//Collections_sort_2-2018813225325.png" alt="Collections_sort_2-2018813225325"><br>String的compareTo方法：<br><code>public int compareTo(String anotherString)</code>如果参数字符串等于此字符串，则值为0 ; 如果这个字符串的字典比字符串参数小，则值小于0; 如果此字符串的字典大小超过字符串参数，则值大于0 。<br>Java8中的lambda表达式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names,(String a, String b) -&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> b.compareTo(a);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p>更简单的方式:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names,(String a, String b) -&gt; b.compareTo(a));</span><br></pre></td></tr></table></figure></p><p>更更简单的方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names,(a,b) -&gt; b.compareTo(a));</span><br></pre></td></tr></table></figure></p><p>一种不使用lambda表达式的方法，<code>reverseOrder()</code> 以反字典（字母顺序）排列阵列：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(names, Comparator.reverseOrder());</span><br></pre></td></tr></table></figure></p><h3 id="Stream-接口"><a href="#Stream-接口" class="headerlink" title="Stream 接口"></a>Stream 接口</h3><p>&emsp;&emsp;Java8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性，串行Stream上的操作是在一个线程中依次完成，而并行Stream则是在多个线程上同时执行。</p><ol><li>创建一个stream的方式,<code>Collection.stream()</code>创建了一个串行的stream；<code>Collection.parallelStream()</code>创建了一个并行的stream；：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringCollection = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">stringCollection.add(<span class="string">"ddd"</span>);</span><br><span class="line">stringCollection.add(<span class="string">"ccc"</span>);</span><br><span class="line">stringCollection.add(<span class="string">"bbb"</span>);</span><br><span class="line">stringCollection.add(<span class="string">"aaa"</span>);</span><br><span class="line">Stream&lt;String&gt; stream = stringCollection.stream();</span><br><span class="line">Stream&lt;String&gt; stringStream = stringCollection.parallelStream();</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
       <categories>
-        <category>技术，笔记</category>
+          
+          <category> 技术，笔记 </category>
+          
       </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>jdk1.8</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[windows server 2012 的一些使用记录]]></title>
-    <url>%2F2018%2F07%2F23%2Fwindows-server-2012%2F</url>
-    <content type="text"><![CDATA[写在前面windows server 2012 的一些操作记录。 关闭IIS服务器 关闭IIS服务器&emsp;&emsp;win+r输入services.msc打开服务，找到 World Wide Web Publishing Service 选择停止，用不到的话，选择禁用，然后确定；]]></content>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> jdk1.8 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>windows server 2012 的一些使用记录</title>
+      <link href="/2018/07/23/windows-server-2012/"/>
+      <url>/2018/07/23/windows-server-2012/</url>
+      <content type="html"><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>windows server 2012 的一些操作记录。</p><ul><li><a href="#关闭IIS服务器">关闭IIS服务器</a></li></ul><a id="more"></a><h3 id="关闭IIS服务器"><a href="#关闭IIS服务器" class="headerlink" title="关闭IIS服务器"></a>关闭IIS服务器</h3><p>&emsp;&emsp;win+r输入services.msc打开服务，找到 <code>World Wide Web Publishing Service</code> 选择停止，用不到的话，选择禁用，然后确定；<br><img src="http://img.wanglixia.top//windows_server_stop_w3svc-201872323230.png" alt="windows_server_stop_w3svc-201872323230"></p>]]></content>
+      
       <categories>
-        <category>server</category>
+          
+          <category> server </category>
+          
       </categories>
-      <tags>
-        <tag>windows</tag>
-        <tag>server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Oracle中的常用函数]]></title>
-    <url>%2F2018%2F07%2F23%2FOracle%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[写在前面整理一些oracle中最常用的方法，以作记录，便于使用时进行查找。 常用的一些函数 nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值； 有一个参数为null的情况，返回不为null的那个值；下例返回的就是 1; 1select nvl(1, null) from dual; 两个参数都为null的情况，返回值为null；下例返回的结果就是null; 1select nvl(null,null) from dual; 两个参数都不为null的情况，返回第一个参数；下例返回的结果就是1; 1select nvl(1,2) from dual;]]></content>
+      
+      
+        <tags>
+            
+            <tag> windows </tag>
+            
+            <tag> server </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Oracle中的常用函数</title>
+      <link href="/2018/07/23/Oracle%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/"/>
+      <url>/2018/07/23/Oracle%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+      <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>整理一些oracle中最常用的方法，以作记录，便于使用时进行查找。</p><h2 id="常用的一些函数"><a href="#常用的一些函数" class="headerlink" title="常用的一些函数"></a>常用的一些函数</h2><ul><li><h3 id="nvl函数的使用-nvl-paramA-paramA-用于返回一个不为null的值；"><a href="#nvl函数的使用-nvl-paramA-paramA-用于返回一个不为null的值；" class="headerlink" title="nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值；"></a>nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值；</h3><ol><li><p>有一个参数为null的情况，返回不为null的那个值；下例返回的就是 <code>1</code>;</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> nvl(<span class="number">1</span>, <span class="literal">null</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure></li><li><p>两个参数都为null的情况，返回值为null；下例返回的结果就是<code>null</code>;</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> nvl(<span class="literal">null</span>,<span class="literal">null</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure></li><li><p>两个参数都不为null的情况，返回第一个参数；下例返回的结果就是<code>1</code>;</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> nvl(<span class="number">1</span>,<span class="number">2</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure></li></ol></li></ul>]]></content>
+      
       <categories>
-        <category>技术，笔记</category>
+          
+          <category> 技术，笔记 </category>
+          
       </categories>
-      <tags>
-        <tag>oracle</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[winsows10环境下解决vmware中windows server服务器ping不通]]></title>
-    <url>%2F2018%2F07%2F22%2F2018-07-22-vmware-ping%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;使用vmware安装了windows server 2012，安装完毕之后，想从宿主机上远程到虚拟机中，发现本地网络和虚拟机网络不能ping通，试用了一个办法，可以ping通了，特意记录一下。 环境参考 VMware® Workstation 14 Pro：14.1.1 build-7528167 宿主机：windows 10 虚拟机：windows server 2012 解决办法 下面是宿主机的ip，即现在使用的是本地的主机： 打开VMware-编辑-虚拟网络编辑器，选择右下角更改设置，设置NAT模式的子网地址跟主机一样，这里设置为192.168.2.0 NAT设置 网关IP 也为192.168.2.***，DHCP的起始IP和结束IP的前三段也设置成跟主机一样的。然后就可以主机就可以ping通虚拟机了。 在远程的过程中还有一个问题&emsp;&emsp;就是在远程的时候提示“出现身份验证错误，要求的函数不受支持…可能是由于CredSSP加密Oracle修正”，错误如下：处理这个问题是应该在本地机器进行修改，修改的方法是： win+r键打开运行框，然后输入gpedit.msc，回车，打开本地组策略编辑器； 在 “计算机配置-管理模板-系统-凭据分配”中 找到允许Oracle修正，之后双击，打开如下界面，点击已启用，保护级别选择易受攻击，保存即可。 修正 2018-07-22 22:10&emsp;&emsp;上述方法会导致虚拟机不能联网，以下能够保证虚拟机上网，且主机能够远程虚拟机的办法。本次不使用虚拟机进行网络设置，改为使用windows自带的网络设置。该方法，主机修改为静态IP。首先，在主机命令行中执行ipconfig/all命令，查看本机IP，默认网关、以及DNS服务器地址。再将本机TCP/IPv4设置为以下属性：主机TCP/IPv4共享属性：即可。]]></content>
+      
+      
+        <tags>
+            
+            <tag> oracle </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>winsows10环境下解决vmware中windows server服务器ping不通</title>
+      <link href="/2018/07/22/2018-07-22-vmware-ping/"/>
+      <url>/2018/07/22/2018-07-22-vmware-ping/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;使用vmware安装了windows server 2012，安装完毕之后，想从宿主机上远程到虚拟机中，发现本地网络和虚拟机网络不能ping通，试用了一个办法，可以ping通了，特意记录一下。<br><a id="more"></a></p><h3 id="环境参考"><a href="#环境参考" class="headerlink" title="环境参考"></a>环境参考</h3><ul><li>VMware® Workstation 14 Pro：14.1.1 build-7528167</li><li>宿主机：windows 10 </li><li>虚拟机：windows server 2012</li></ul><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ul><li>下面是宿主机的ip，即现在使用的是本地的主机：<br><img src="/images/blog/宿主机的ip.png" alt="宿主机的ip地址"></li><li>打开VMware-编辑-虚拟网络编辑器，选择右下角更改设置，设置NAT模式的子网地址跟主机一样，这里设置为192.168.2.0<br><img src="/images/blog/vmware的子网地址.png" alt="vmware的子网地址"></li><li>NAT设置 网关IP 也为192.168.2.***，DHCP的起始IP和结束IP的前三段也设置成跟主机一样的。然后就可以主机就可以ping通虚拟机了。</li></ul><h3 id="在远程的过程中还有一个问题"><a href="#在远程的过程中还有一个问题" class="headerlink" title="在远程的过程中还有一个问题"></a>在远程的过程中还有一个问题</h3><p>&emsp;&emsp;就是在远程的时候提示“出现身份验证错误，要求的函数不受支持…可能是由于CredSSP加密Oracle修正”，错误如下：<br><img src="/images/blog/CredSSP加密Oracle修正.png" alt="要求的函数不受支持"><br>处理这个问题是应该在<b style="color='red'">本地机器</b>进行修改，修改的方法是：</p><ul><li>win+r键打开运行框，然后输入<code>gpedit.msc</code>，回车，打开本地组策略编辑器；</li><li>在 “计算机配置-管理模板-系统-凭据分配”中 找到允许Oracle修正，之后双击，打开如下界面，点击已启用，保护级别选择易受攻击，保存即可。<br><img src="/images/blog/20180722050250.png" alt="修改允许Oracle修正"></li></ul><hr><h3 id="修正-2018-07-22-22-10"><a href="#修正-2018-07-22-22-10" class="headerlink" title="修正 2018-07-22 22:10"></a>修正 2018-07-22 22:10</h3><p>&emsp;&emsp;上述方法会导致虚拟机不能联网，以下能够<b>保证虚拟机上网，且主机能够远程虚拟机</b>的办法。本次不使用虚拟机进行网络设置，改为使用windows自带的网络设置。<br>该方法，主机修改为静态IP。首先，在主机命令行中执行<code>ipconfig/all</code>命令，查看本机IP，默认网关、以及DNS服务器地址。再将本机TCP/IPv4设置为以下属性：<br><img src="/images/blog/主机的静态ip设置.png" alt="主机的静态ip设置.png"><br>主机TCP/IPv4共享属性：<br><img src="/images/blog/主机的静态ip共享设置.png" alt="主机的静态ip共享设置.png"><br>即可。</p>]]></content>
+      
       <categories>
-        <category>vmware</category>
+          
+          <category> vmware </category>
+          
       </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[记使用hexo搭建个人博客（二）]]></title>
-    <url>%2F2018%2F07%2F21%2Fhexo-coding-github-2%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;使用hexo+github/coding免费搭建个人博客，本文记录hexo博客的一些个性化配置。包括： 修改主题、 头像、 评论、 搜索、 DaoVoice在线联系、 顶部加载条、 访问量统计、 第三方统计、 添加热度等等 个性化配置 修改主题 下载next主题，完成后，修改站点配置文件的 theme: landscape 为 theme: next，然后执行 hexo s 预览 1git clone https://github.com/iissnan/hexo-theme-next themes/next 增加头像并加旋转特效增加统计字数、阅读时长 &emsp;&emsp;在主题配置文件themes/next/_config.yml中找到以下内容：将wordcount、min2read修改为true 123456post_wordcount: item_text: true wordcount: true min2read: true totalcount: true separated_meta: true 本地完成以上配置之后还需要增加hexo-wordcount插件，在命令行中执行以下命令： 1npm i --save hexo-wordcount 安装完毕之后，就可以预览了效果了。 自定义样式，如字数统计:修改为字数统计:字,在themes/next/layout/_macro/post.swig中找到以下内容 123&lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt; &#123;&#123; wordcount(post.content) &#125;&#125;&lt;/span&gt; 修改为123&lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt; &#123;&#123; wordcount(post.content) &#125;&#125; 字&lt;/span&gt; 阅读时长:修改为阅读时长:分钟 123&lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt; &#123;&#123; min2read(post.content) &#125;&#125; &lt;/span&gt; 修改为123&lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt; &#123;&#123; min2read(post.content) &#125;&#125; 分钟&lt;/span&gt; 即可。 hexo增加七牛云图床及上传参考自： 使用VSCode+七牛云图床插件+自定义快捷键配置Hexo博文编写环境 工具： 使用VSCode进行博客编写； qiniu-upload-image插件，需要进行配置； vscode-Hexo插件； 使用七牛云,点击访问作为图床，这个需要自己申请和认证哈，我的认证花了两天时间~~]]></content>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>记使用hexo搭建个人博客（二）</title>
+      <link href="/2018/07/21/hexo-coding-github-2/"/>
+      <url>/2018/07/21/hexo-coding-github-2/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;使用hexo+github/coding免费搭建个人博客，本文记录hexo博客的一些个性化配置。包括：</p><ul><li>修改主题、</li><li>头像、</li><li>评论、</li><li>搜索、</li><li>DaoVoice在线联系、</li><li>顶部加载条、</li><li>访问量统计、</li><li>第三方统计、</li><li>添加热度等等<a id="more"></a><h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2></li><li>修改主题<br>  下载next主题，完成后，修改站点配置文件的 theme: landscape 为 theme: next，然后执行 hexo s 预览</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure><h3 id="增加头像并加旋转特效"><a href="#增加头像并加旋转特效" class="headerlink" title="增加头像并加旋转特效"></a>增加头像并加旋转特效</h3><h3 id="增加统计字数、阅读时长"><a href="#增加统计字数、阅读时长" class="headerlink" title="增加统计字数、阅读时长"></a>增加统计字数、阅读时长</h3><ul><li>&emsp;&emsp;在主题配置文件themes/next/_config.yml中找到以下内容：将wordcount、min2read修改为true</li></ul><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_wordcount:</span></span><br><span class="line"><span class="attr">  item_text:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  wordcount:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  min2read:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  totalcount:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  separated_meta:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><ul><li>本地完成以上配置之后还需要增加<code>hexo-wordcount</code>插件，在命令行中执行以下命令：</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save hexo-wordcount</span><br></pre></td></tr></table></figure><p>安装完毕之后，就可以预览了效果了。</p><ul><li>自定义样式，如<code>字数统计:<strong><em></em></strong></code>修改为<code>字数统计:字</code>,在themes/next/layout/_macro/post.swig中找到以下内容</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123; wordcount(post.content) &#125;&#125;</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure><p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p><ul><li><code>阅读时长:<strong><em></em></strong></code>修改为<code>阅读时长:分钟</code></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123; min2read(post.content) &#125;&#125; </span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure><p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p><p>即可。</p><h3 id="hexo增加七牛云图床及上传"><a href="#hexo增加七牛云图床及上传" class="headerlink" title="hexo增加七牛云图床及上传"></a>hexo增加七牛云图床及上传</h3><p>参考自： <a href="https://blog.csdn.net/qq_32454537/article/details/79482850" target="_blank" rel="noopener">使用VSCode+七牛云图床插件+自定义快捷键配置Hexo博文编写环境</a></p><p>工具：</p><ul><li>使用VSCode进行博客编写；</li><li><code>qiniu-upload-image</code>插件，需要进行配置；</li><li><code>vscode-Hexo</code>插件；</li><li>使用<a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛云,点击访问</a>作为图床，这个需要自己申请和认证哈，我的认证花了两天时间~~</li></ul><p><img src="http://img.wanglixia.top//七牛云新建存储空间-201872223148.png" alt="七牛云新建存储空间-201872223148"></p>]]></content>
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>hexo</tag>
-        <tag>github</tag>
-        <tag>coding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[记使用hexo搭建个人博客（一）]]></title>
-    <url>%2F2018%2F07%2F18%2Fhexo-coding-github-1%2F</url>
-    <content type="text"><![CDATA[&emsp;&emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上. Hexo是什么？&emsp;&emsp;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&emsp;&emsp;详情可参考Hexo官方文档 环境及版本 系统: windows 10 git: version 2.9.0.windows.1 node: v10.6.0 hexo: 3.7.1 hexo-cli: 1.1.0 安装&emsp;&emsp;到此步骤已经认为你已经安装了git和node.js。 创建一个目录，比如在E盘根目录下，创建一个hexo文件夹，使用命令行进入此文件夹，(也可以进入此文件夹，右键Git Bash Here)输入： 12npm install -g hexo-clinpm install hexo --save 命令执行后的效果参考： 初始化项目，输入hexo init 项目名，如hexo init blog,将会自动生成blog目录，并自动生成一些目录及文件； 123hexo init blogcd blognpm install 现在可以开始预览了,会出现提示在网址http://localhost:4000/预览 12hexo ghexo s 常用命令&emsp;&emsp;在项目根目录，有个_config.yml,这个是站点配置文件，一些重要的配置都是在这里进行的。 详细的通用配置就参考官网吧，就不重复说了。下面主要记录一下一些个性化的功能。 常用命令： hexo clean ：清除缓存文件 (db.json) 和已生成的静态文件 (public)。 hexo g ：生成静态文件。 hexo s ：本地发布预览。 hexo d ：远程发布。在coding上部署&emsp;&emsp;访问coding官网，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。 创建项目: 查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示： 接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址； 3.1 设置Git的user name和email： 12git config --global user.name "你的git用户名，可以随便起一个"git config --global user.email "你的邮箱地址" 3.2 执行以下命令，查看是否已经有了ssh密钥：cd ~/.ssh，输入第二条命令之后，连续3次enter， 12cd ~/.sshssh-keygen -t rsa -C "你的邮箱地址" 3.3 在C:\Users\你的电脑用户名\.ssh 目录下，会有两个文件id_rsa和id_rsa.pub，使用记事本打开id_rsa.pub，复制里面的值，然后浏览器打开你的coding到如下页面，将复制的内容粘贴到公钥内容的文本框里面，点击保存。如下图： 3.4 测试公钥是否配置成功：ssh -T git@git.coding.net，输入之后，会提示你是否确认，输入yes，回车；提示你通过ssh协议认证。 3.5 修改你的站点配置文件，这个是在你的本地配置远程服务器地址，hexo项目根目录下的_config.yml，这种文件的格式非常严格，多一个空格就可能会报错。 12345deploy: type: git repository: git@git.coding.net:[你的用户名]/[你的用户名].coding.me.git# repository: git@github.com:[你的用户名]/[你的用户名].github.io.git branch: master 3.6 执行命令,就将你的博客部署到coding上了，如果要解析为自己的域名的话，可以百度、google查看步骤。 123hexo cleanhexo ghexo d 3.7 github 的部署和在coding上部署基本是一样的]]></content>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> coding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>记使用hexo搭建个人博客（一）</title>
+      <link href="/2018/07/18/hexo-coding-github-1/"/>
+      <url>/2018/07/18/hexo-coding-github-1/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上.</p><a id="more"></a><h3 id="Hexo是什么？"><a href="#Hexo是什么？" class="headerlink" title="Hexo是什么？"></a>Hexo是什么？</h3><p>&emsp;&emsp;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>&emsp;&emsp;<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">详情可参考Hexo官方文档</a></p><h3 id="环境及版本"><a href="#环境及版本" class="headerlink" title="环境及版本"></a>环境及版本</h3><ul><li>系统: windows 10 </li><li>git: version 2.9.0.windows.1</li><li>node: v10.6.0</li><li>hexo: 3.7.1</li><li>hexo-cli: 1.1.0</li></ul><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>&emsp;&emsp;到此步骤已经认为你已经安装了git和node.js。</p><ol><li>创建一个目录，比如在E盘根目录下，创建一个hexo文件夹，使用命令行进入此文件夹，(也可以进入此文件夹，右键Git Bash Here)输入：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">npm install hexo --save</span><br></pre></td></tr></table></figure><p>命令执行后的效果参考：<br><img src="http://img.wanglixia.top//hexo_install-20189921255.png" alt="hexo命令执行完毕效果"></p><ol start="2"><li>初始化项目，输入hexo init 项目名，如hexo init blog,将会自动生成blog目录，并自动生成一些目录及文件；</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>   <img src="/images/blog/hexo_install_2.png" alt="hexo项目初始化完成"><br>   <img src="/images/blog/hexo_install_3.png" alt="hexo项目初始化完成生成目录结构"></p><ol start="3"><li>现在可以开始预览了,会出现提示在网址<a href="http://localhost:4000/预览" target="_blank" rel="noopener">http://localhost:4000/预览</a></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>&emsp;&emsp;在项目根目录，有个_config.yml,这个是站点配置文件，一些重要的配置都是在这里进行的。 详细的通用配置就参考官网吧，就不重复说了。下面主要记录一下一些个性化的功能。</p><ul><li>常用命令：<ul><li>hexo clean ：清除缓存文件 (db.json) 和已生成的静态文件 (public)。</li><li>hexo g ：生成静态文件。</li><li>hexo s ：本地发布预览。</li><li>hexo d ：远程发布。<h3 id="在coding上部署"><a href="#在coding上部署" class="headerlink" title="在coding上部署"></a>在coding上部署</h3>&emsp;&emsp;访问<a href="https://coding.net/" target="_blank" rel="noopener">coding官网</a>，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。</li></ul></li></ul><ol><li>创建项目:<br><img src="/images/blog/hexo_install_new_proj.png" alt="coding上创建项目"></li><li>查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：<br><img src="/images/blog/hexo_install_static_pages.png" alt="coding上查看静态pages服务"></li><li>接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；<br> 3.1 设置Git的user name和email：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的git用户名，可以随便起一个"</span></span><br><span class="line">git config --global user.email <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure><pre><code>3.2 执行以下命令，查看是否已经有了ssh密钥：cd ~/.ssh，输入第二条命令之后，连续3次enter，</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure><pre><code>3.3 在C:\Users\你的电脑用户名\.ssh 目录下，会有两个文件id_rsa和id_rsa.pub，使用记事本打开id_rsa.pub，复制里面的值，然后浏览器打开你的coding到如下页面，将复制的内容粘贴到公钥内容的文本框里面，点击保存。如下图：</code></pre><p>   <img src="/images/blog/hexo_install_ssh_key1.png" alt="coding上粘贴ssh值"><br>    3.4 测试公钥是否配置成功：ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a>，输入之后，会提示你是否确认，输入yes，回车；提示你通过ssh协议认证。<br>    3.5 修改你的站点配置文件，这个是在你的本地配置远程服务器地址，hexo项目根目录下的_config.yml，这种文件的格式非常严格，多一个空格就可能会报错。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@git.coding.net:[你的用户名]/[你的用户名].coding.me.git</span></span><br><span class="line"><span class="comment">#  repository: git@github.com:[你的用户名]/[你的用户名].github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure><pre><code>3.6 执行命令,就将你的博客部署到coding上了，如果要解析为自己的域名的话，可以百度、google查看步骤。</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><pre><code>3.7 github 的部署和在coding上部署基本是一样的 </code></pre>]]></content>
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>hexo</tag>
-        <tag>github</tag>
-        <tag>coding</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> github </tag>
+            
+            <tag> coding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+  
+  
 </search>

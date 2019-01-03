@@ -452,9 +452,6 @@ body {
     width: 900px;
   }
 }
-.main {
-  padding-bottom: 150px;
-}
 .main-inner {
   margin: 0 auto;
   width: 700px;
@@ -465,7 +462,7 @@ body {
   }
 }
 .footer {
-  position: absolute;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -1868,7 +1865,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1a4b11;
+  background: #1416cd;
 }
 .links-of-blogroll {
   font-size: 13px;

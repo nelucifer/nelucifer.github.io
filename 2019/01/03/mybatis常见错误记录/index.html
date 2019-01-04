@@ -103,10 +103,12 @@ daovoice('update');
 <meta property="og:site_name" content="Mr.wang&#39;s Note">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;Mybatis使用过程中，常见的一些问题汇总记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T13:44:39.795Z">
+<meta property="og:image" content="https://img.wanglixia.top/mybatis-1-20191504549.png">
+<meta property="og:updated_time" content="2019-01-04T16:45:51.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis常见错误记录">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;Mybatis使用过程中，常见的一些问题汇总记录。">
+<meta name="twitter:image" content="https://img.wanglixia.top/mybatis-1-20191504549.png">
 
 
 
@@ -419,7 +421,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  107 字
+                  493 字
                 </span>
               
 
@@ -435,7 +437,7 @@ daovoice('update');
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -457,9 +459,22 @@ daovoice('update');
 
       
         <p>&emsp;&emsp;Mybatis使用过程中，常见的一些问题汇总记录。<br><a id="more"></a></p>
-<ol>
-<li>Mybatis执行SQL，查出来的比使用PL/SQL等工具查出来的记录多。<br>问题描述：由于查询要使用到not in，因此 not in ()括号里面的东西自己使用了前端拼接传值，传值格式为’’,’’<br>问题处理：在Mapper.xml中使用了#{}，这块涉及到#{}和${}的区别。替换成${} 就好了。</li>
-</ol>
+<h3 id="1-Mybatis执行SQL，查出来的比使用PL-SQL等工具查出来的记录多。"><a href="#1-Mybatis执行SQL，查出来的比使用PL-SQL等工具查出来的记录多。" class="headerlink" title="1. Mybatis执行SQL，查出来的比使用PL/SQL等工具查出来的记录多。"></a>1. Mybatis执行SQL，查出来的比使用PL/SQL等工具查出来的记录多。</h3><ul>
+<li>问题描述：由于查询要使用到not in，因此 not in ()括号里面的东西自己使用了前端拼接传值，传值格式为’’,’’</li>
+<li>问题处理：在Mapper.xml中使用了#{}，这块涉及到#{}和${}的区别。替换成${} 就好了。<h3 id="2-MyBatis-mapper文件中的变量引用方式-与-的差别"><a href="#2-MyBatis-mapper文件中的变量引用方式-与-的差别" class="headerlink" title="2. MyBatis mapper文件中的变量引用方式#{}与${}的差别"></a>2. MyBatis mapper文件中的变量引用方式#{}与${}的差别</h3>默认情况下,使用#{}语法,MyBatis会产生PreparedStatement语句中，并且安全的设置PreparedStatement参数，这个过程中MyBatis会进行必要的安全检查和转义。<br>示例1：<br>执行SQL：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">name</span> = #&#123;employeeName&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参数：<code>employeeName</code>传入值为：<code>Smith</code><br>解析后执行的SQL：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">name</span> = ?</span><br></pre></td></tr></table></figure></p>
+<p>执行SQL：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">name</span> = $&#123;employeeName&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参数：<code>employeeName</code>传入值为：<code>Smith</code><br>解析后执行的SQL：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> <span class="keyword">name</span> = Smith</span><br></pre></td></tr></table></figure></p>
+<p>综上所述、${}方式会引发SQL注入的问题、同时也会影响SQL语句的预编译，所以从安全性和性能的角度出发，能使用#{}的情况下就不要使用${}<br>${}的使用场景：<br>有时候可能需要直接插入一个不做任何修改的字符串到SQL语句中。这时候应该使用${}语法。<br>比如，动态SQL中的字段名，如：<code>ORDER BY ${columnName}，not in ${items}</code><br>注意：当使用${}参数作为字段名或表名时、需指定statementType为“STATEMENT”，如：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryMetaList"</span> <span class="attr">resultType</span>=<span class="string">"Map"</span> <span class="attr">statementType</span>=<span class="string">"STATEMENT"</span>&gt;</span></span><br><span class="line">    Select * from emp where name = $&#123;employeeName&#125; ORDER BY $&#123;columnName&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-ssm-web项目启动报错（一）"><a href="#3-ssm-web项目启动报错（一）" class="headerlink" title="3. ssm-web项目启动报错（一）"></a>3. ssm-web项目启动报错（一）</h3><blockquote>
+<p>Could not resolve type alias ‘map ‘. Cause: java.lang.ClassNotFoundException: Cannot find class: map<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectByCode"</span> <span class="attr">resultType</span>=<span class="string">"com.lucifer.pojo.BaseParams"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.map"</span>&gt;</span></span><br><span class="line">    SELECT BP.ID,BP.NAME FROM BASE_PARAMS BP WHERE BP.DOMAIN=#&#123;domain&#125; AND BP.IS_CANCEL='N'</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>处理方式：把resultType改为resultMap，把parameterType改为parameterMap，重新发布并运行。</p>
+<h3 id="4-ssm-web项目启动报错（二）"><a href="#4-ssm-web项目启动报错（二）" class="headerlink" title="4. ssm-web项目启动报错（二）"></a>4. ssm-web项目启动报错（二）</h3><blockquote>
+<p>org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [<strong><em>**</em></strong>] will not be managed by Spring<br>处理方式：<br><img src="https://img.wanglixia.top/mybatis-1-20191504549.png" alt="mybatis-1-20191504549"></p>
+</blockquote>
 
       
     </div>
@@ -576,8 +591,17 @@ daovoice('update');
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -594,7 +618,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -616,7 +640,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -662,6 +686,22 @@ daovoice('update');
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Mybatis执行SQL，查出来的比使用PL-SQL等工具查出来的记录多。"><span class="nav-number">1.</span> <span class="nav-text">1. Mybatis执行SQL，查出来的比使用PL/SQL等工具查出来的记录多。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MyBatis-mapper文件中的变量引用方式-与-的差别"><span class="nav-number">2.</span> <span class="nav-text">2. MyBatis mapper文件中的变量引用方式#{}与${}的差别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ssm-web项目启动报错（一）"><span class="nav-number">3.</span> <span class="nav-text">3. ssm-web项目启动报错（一）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ssm-web项目启动报错（二）"><span class="nav-number">4.</span> <span class="nav-text">4. ssm-web项目启动报错（二）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -689,7 +729,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">6.2k</span>
+    <span title="网站总字数">11.3k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

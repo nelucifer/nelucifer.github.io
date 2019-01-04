@@ -103,18 +103,18 @@ daovoice('update');
 <meta property="og:site_name" content="Mr.wang&#39;s Note">
 <meta property="og:description" content="最近项目中经常要调试webservice接口，从朋友处了解到他们调试webservice接口时使用SoapUI，觉得十分好用，个人也对此十分感兴趣，因此简要记录一下这个工具的使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-1-20191423308.png">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-2-201914233049.png">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-3-201914233131.png">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-4-201914233313.png">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-5-201914233350.png">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-6-201914233419.png">
-<meta property="og:image" content="https://img.wanglixia.top/soapUI-webservice-7-201914233447.png">
-<meta property="og:updated_time" content="2019-01-04T15:35:44.540Z">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-1-20191423308.png">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-2-201914233049.png">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-3-201914233131.png">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-4-201914233313.png">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-5-201914233350.png">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-6-201914233419.png">
+<meta property="og:image" content="http://img.wanglixia.top/soapUI-webservice-7-201914233447.png">
+<meta property="og:updated_time" content="2019-01-04T17:24:58.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用SoapUI 5.3.0调试webservice接口（参数格式XML）">
 <meta name="twitter:description" content="最近项目中经常要调试webservice接口，从朋友处了解到他们调试webservice接口时使用SoapUI，觉得十分好用，个人也对此十分感兴趣，因此简要记录一下这个工具的使用。">
-<meta name="twitter:image" content="https://img.wanglixia.top/soapUI-webservice-1-20191423308.png">
+<meta name="twitter:image" content="http://img.wanglixia.top/soapUI-webservice-1-20191423308.png">
 
 
 
@@ -467,7 +467,7 @@ daovoice('update');
         <p>最近项目中经常要调试webservice接口，从朋友处了解到他们调试webservice接口时使用SoapUI，觉得十分好用，个人也对此十分感兴趣，因此简要记录一下这个工具的使用。<br><a id="more"></a></p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
 <li>下载SoapUI，我使用的是5.3.0 <a href="https://www.soapui.org/downloads/latest-release.html" target="_blank" rel="noopener">下载SoapUI传送门</a></li>
-<li>WebService 服务接口<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h3 id="新建调试项目"><a href="#新建调试项目" class="headerlink" title="新建调试项目"></a>新建调试项目</h3><img src="https://img.wanglixia.top/soapUI-webservice-1-20191423308.png" alt="soapUI-webservice-1-20191423308"><h4 id="输入项目名称及要调试的接口有效地址，输入完毕点击OK"><a href="#输入项目名称及要调试的接口有效地址，输入完毕点击OK" class="headerlink" title="输入项目名称及要调试的接口有效地址，输入完毕点击OK"></a>输入项目名称及要调试的接口有效地址，输入完毕点击OK</h4><img src="https://img.wanglixia.top/soapUI-webservice-2-201914233049.png" alt="soapUI-webservice-2-201914233049"><h4 id="soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new-request-输入名称后如下图会自动生成如下格式代码；其中-web-in0中填写入参"><a href="#soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new-request-输入名称后如下图会自动生成如下格式代码；其中-web-in0中填写入参" class="headerlink" title="soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new request,输入名称后如下图会自动生成如下格式代码；其中 web:in0中填写入参"></a>soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new request,输入名称后如下图会自动生成如下格式代码；其中 <a href="web:in0" target="_blank" rel="noopener">web:in0</a>中填写入参</h4><img src="https://img.wanglixia.top/soapUI-webservice-3-201914233131.png" alt="soapUI-webservice-3-201914233131"><br><em>注意：xml格式的入参最好使用 &lt;[CDATA[]]&gt; 包起来。点击左上角的绿色三角就可以调试接口了。</em><h3 id="新建测试套件-New-TestSuite"><a href="#新建测试套件-New-TestSuite" class="headerlink" title="新建测试套件 New TestSuite"></a>新建测试套件 New TestSuite</h3><h4 id="在项目名称上右击，选择-New-TestSuite-输入名称保存"><a href="#在项目名称上右击，选择-New-TestSuite-输入名称保存" class="headerlink" title="在项目名称上右击，选择 New TestSuite,输入名称保存"></a>在项目名称上右击，选择 New TestSuite,输入名称保存</h4><img src="https://img.wanglixia.top/soapUI-webservice-4-201914233313.png" alt="soapUI-webservice-4-201914233313"><h4 id="在自己新建的TestSuite名称上右击，选择-New-TestCase-输入名称保存"><a href="#在自己新建的TestSuite名称上右击，选择-New-TestCase-输入名称保存" class="headerlink" title="在自己新建的TestSuite名称上右击，选择 New TestCase,输入名称保存"></a>在自己新建的TestSuite名称上右击，选择 New TestCase,输入名称保存</h4><img src="https://img.wanglixia.top/soapUI-webservice-5-201914233350.png" alt="soapUI-webservice-5-201914233350"><h4 id="在Test-Steps上右击-选择-Add-Step-–-gt-SOAP-Request-输入名称并选择接口，名称最好容易识别一点"><a href="#在Test-Steps上右击-选择-Add-Step-–-gt-SOAP-Request-输入名称并选择接口，名称最好容易识别一点" class="headerlink" title="在Test Steps上右击 选择 Add Step –&gt;SOAP Request,输入名称并选择接口，名称最好容易识别一点"></a>在Test Steps上右击 选择 Add Step –&gt;SOAP Request,输入名称并选择接口，名称最好容易识别一点</h4><img src="https://img.wanglixia.top/soapUI-webservice-6-201914233419.png" alt="soapUI-webservice-6-201914233419"><br><img src="https://img.wanglixia.top/soapUI-webservice-7-201914233447.png" alt="soapUI-webservice-7-201914233447"><h4 id="接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。"><a href="#接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。" class="headerlink" title="接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。"></a>接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。</h4></li>
+<li>WebService 服务接口<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h3 id="新建调试项目"><a href="#新建调试项目" class="headerlink" title="新建调试项目"></a>新建调试项目</h3><img src="http://img.wanglixia.top/soapUI-webservice-1-20191423308.png" alt="soapUI-webservice-1-20191423308"><h4 id="输入项目名称及要调试的接口有效地址，输入完毕点击OK"><a href="#输入项目名称及要调试的接口有效地址，输入完毕点击OK" class="headerlink" title="输入项目名称及要调试的接口有效地址，输入完毕点击OK"></a>输入项目名称及要调试的接口有效地址，输入完毕点击OK</h4><img src="http://img.wanglixia.top/soapUI-webservice-2-201914233049.png" alt="soapUI-webservice-2-201914233049"><h4 id="soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new-request-输入名称后如下图会自动生成如下格式代码；其中-web-in0中填写入参"><a href="#soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new-request-输入名称后如下图会自动生成如下格式代码；其中-web-in0中填写入参" class="headerlink" title="soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new request,输入名称后如下图会自动生成如下格式代码；其中 web:in0中填写入参"></a>soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new request,输入名称后如下图会自动生成如下格式代码；其中 <a href="web:in0" target="_blank" rel="noopener">web:in0</a>中填写入参</h4><img src="http://img.wanglixia.top/soapUI-webservice-3-201914233131.png" alt="soapUI-webservice-3-201914233131"><br><em>注意：xml格式的入参最好使用 &lt;[CDATA[]]&gt; 包起来。点击左上角的绿色三角就可以调试接口了。</em><h3 id="新建测试套件-New-TestSuite"><a href="#新建测试套件-New-TestSuite" class="headerlink" title="新建测试套件 New TestSuite"></a>新建测试套件 New TestSuite</h3><h4 id="在项目名称上右击，选择-New-TestSuite-输入名称保存"><a href="#在项目名称上右击，选择-New-TestSuite-输入名称保存" class="headerlink" title="在项目名称上右击，选择 New TestSuite,输入名称保存"></a>在项目名称上右击，选择 New TestSuite,输入名称保存</h4><img src="http://img.wanglixia.top/soapUI-webservice-4-201914233313.png" alt="soapUI-webservice-4-201914233313"><h4 id="在自己新建的TestSuite名称上右击，选择-New-TestCase-输入名称保存"><a href="#在自己新建的TestSuite名称上右击，选择-New-TestCase-输入名称保存" class="headerlink" title="在自己新建的TestSuite名称上右击，选择 New TestCase,输入名称保存"></a>在自己新建的TestSuite名称上右击，选择 New TestCase,输入名称保存</h4><img src="http://img.wanglixia.top/soapUI-webservice-5-201914233350.png" alt="soapUI-webservice-5-201914233350"><h4 id="在Test-Steps上右击-选择-Add-Step-–-gt-SOAP-Request-输入名称并选择接口，名称最好容易识别一点"><a href="#在Test-Steps上右击-选择-Add-Step-–-gt-SOAP-Request-输入名称并选择接口，名称最好容易识别一点" class="headerlink" title="在Test Steps上右击 选择 Add Step –&gt;SOAP Request,输入名称并选择接口，名称最好容易识别一点"></a>在Test Steps上右击 选择 Add Step –&gt;SOAP Request,输入名称并选择接口，名称最好容易识别一点</h4><img src="http://img.wanglixia.top/soapUI-webservice-6-201914233419.png" alt="soapUI-webservice-6-201914233419"><br><img src="http://img.wanglixia.top/soapUI-webservice-7-201914233447.png" alt="soapUI-webservice-7-201914233447"><h4 id="接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。"><a href="#接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。" class="headerlink" title="接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。"></a>接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。</h4></li>
 </ul>
 
       
@@ -528,8 +528,8 @@ daovoice('update');
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/25/mysql-export-database/" rel="next" title="Mysql导出导入数据库">
-                <i class="fa fa-chevron-left"></i> Mysql导出导入数据库
+              <a href="/2016/12/25/javascript-array/" rel="next" title="javascript操作数组array">
+                <i class="fa fa-chevron-left"></i> javascript操作数组array
               </a>
             
           </div>

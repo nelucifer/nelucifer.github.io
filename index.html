@@ -1344,7 +1344,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//穷人的美德-201882901554.jpg" rel="gallery_cjqib98hp001iuklxyo7vxntm" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//穷人的美德-201882901554.jpg" rel="gallery_cjqjb1h6r001gl4lx5e4zfj0t" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//穷人的美德-201882901554.jpg" itemprop="contentUrl">
               </a>
             
@@ -1535,7 +1535,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//jdk-201882903342.jpg" rel="gallery_cjqib98gq0001uklxu417w5ob" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//jdk-201882903342.jpg" rel="gallery_cjqjb1h630008l4lxez2lzrvn" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//jdk-201882903342.jpg" itemprop="contentUrl">
               </a>
             
@@ -1867,7 +1867,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  160 字
+                  170 字
                 </span>
               
 
@@ -1906,7 +1906,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//oracle_logo-201882903737.jpg" rel="gallery_cjqib98h00007uklxwznidbz9" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//oracle_logo-201882903737.jpg" rel="gallery_cjqjb1h5x0003l4lx2xzeutg4" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//oracle_logo-201882903737.jpg" itemprop="contentUrl">
               </a>
             
@@ -1920,21 +1920,19 @@ daovoice('update');
       
         
           
-            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>整理一些oracle中最常用的方法，以作记录，便于使用时进行查找。</p>
-<h2 id="常用的一些函数"><a href="#常用的一些函数" class="headerlink" title="常用的一些函数"></a>常用的一些函数</h2><ul>
-<li><h3 id="nvl函数的使用-nvl-paramA-paramA-用于返回一个不为null的值；"><a href="#nvl函数的使用-nvl-paramA-paramA-用于返回一个不为null的值；" class="headerlink" title="nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值；"></a>nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值；</h3><ol>
-<li><p>有一个参数为null的情况，返回不为null的那个值；下例返回的就是 <code>1</code>;</p>
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>整理一些oracle中最常用的方法，以作记录，便于使用时进行查找。（持续更新…）</p>
+<h2 id="常用的一些函数"><a href="#常用的一些函数" class="headerlink" title="常用的一些函数"></a>常用的一些函数</h2><h3 id="nvl函数的使用-nvl-paramA-paramA-用于返回一个不为null的值；"><a href="#nvl函数的使用-nvl-paramA-paramA-用于返回一个不为null的值；" class="headerlink" title="nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值；"></a>nvl函数的使用:nvl(paramA,paramA)用于返回一个不为null的值；</h3><pre><code>1. 有一个参数为null的情况，返回不为null的那个值；下例返回的就是 &lt;code&gt;1&lt;/code&gt;;
+
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> nvl(<span class="number">1</span>, <span class="literal">null</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两个参数都为null的情况，返回值为null；下例返回的结果就是<code>null</code>;</p>
+
+2. 两个参数都为null的情况，返回值为null；下例返回的结果就是&lt;code&gt;null&lt;/code&gt;;
+
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> nvl(<span class="literal">null</span>,<span class="literal">null</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两个参数都不为null的情况，返回第一个参数；下例返回的结果就是<code>1</code>;</p>
+
+3. 两个参数都不为null的情况，返回第一个参数；下例返回的结果就是&lt;code&gt;1&lt;/code&gt;;
+
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> nvl(<span class="number">1</span>,<span class="number">2</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
+</code></pre><p>### </p>
 
           
         
@@ -2294,7 +2292,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">11.3k</span>
+    <span title="网站总字数">11.6k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

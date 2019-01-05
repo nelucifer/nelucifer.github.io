@@ -103,17 +103,17 @@ daovoice('update');
 <meta property="og:site_name" content="Mr.wang&#39;s Note">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.wanglixia.top//hexo_install-20189921255.png">
-<meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_2.png">
-<meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_3.png">
-<meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_new_proj.png">
-<meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_static_pages.png">
-<meta property="og:image" content="//wanglixia.top/images/blog/hexo_install_ssh_key1.png">
-<meta property="og:updated_time" content="2019-01-03T15:22:27.971Z">
+<meta property="og:image" content="http://img.wanglixia.top/hexo_install-20189921255.png">
+<meta property="og:image" content="http://img.wanglixia.top/hexo_install_2-201915162144.png">
+<meta property="og:image" content="http://img.wanglixia.top/hexo_install_3-20191516220.png">
+<meta property="og:image" content="http://img.wanglixia.top/hexo_install_new_proj-201915162221.png">
+<meta property="og:image" content="http://img.wanglixia.top/hexo_install_static_pages-201915162251.png">
+<meta property="og:image" content="http://img.wanglixia.top/hexo_install_ssh_key1-201915162310.png">
+<meta property="og:updated_time" content="2019-01-05T08:30:32.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（一）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上.">
-<meta name="twitter:image" content="http://img.wanglixia.top//hexo_install-20189921255.png">
+<meta name="twitter:image" content="http://img.wanglixia.top/hexo_install-20189921255.png">
 
 
 
@@ -479,12 +479,12 @@ daovoice('update');
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">npm install hexo --save</span><br></pre></td></tr></table></figure>
 <p>命令执行后的效果参考：</p>
-<p><img src="http://img.wanglixia.top//hexo_install-20189921255.png" alt="hexo命令执行完毕效果"></p>
+<p><img src="http://img.wanglixia.top/hexo_install-20189921255.png" alt="hexo命令执行完毕效果"></p>
 <ol start="2">
 <li>初始化项目，输入hexo init 项目名，如hexo init blog,将会自动生成blog目录，并自动生成一些目录及文件；</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>   <img src="/images/blog/hexo_install_2.png" alt="hexo项目初始化完成"><br>   <img src="/images/blog/hexo_install_3.png" alt="hexo项目初始化完成生成目录结构"></p>
+<p>   <img src="http://img.wanglixia.top/hexo_install_2-201915162144.png" alt="hexo_install_2-201915162144"><br>   <img src="http://img.wanglixia.top/hexo_install_3-20191516220.png" alt="hexo_install_3-20191516220"></p>
 <ol start="3">
 <li>现在可以开始预览了,会出现提示在网址<a href="http://localhost:4000/预览" target="_blank" rel="noopener">http://localhost:4000/预览</a></li>
 </ol>
@@ -500,13 +500,13 @@ daovoice('update');
 </li>
 </ul>
 <h3 id="在coding上部署"><a href="#在coding上部署" class="headerlink" title="在coding上部署"></a>在coding上部署</h3><p>&emsp;&emsp;访问<a href="https://coding.net/" target="_blank" rel="noopener">coding官网</a>，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。</p>
-<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目:"></a>创建项目:</h4><p>   <img src="/images/blog/hexo_install_new_proj.png" alt="coding上创建项目"></p>
-<h4 id="查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："><a href="#查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：" class="headerlink" title="查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："></a>查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：</h4><p>   <img src="/images/blog/hexo_install_static_pages.png" alt="coding上查看静态pages服务"></p>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目:"></a>创建项目:</h4><p>   <img src="http://img.wanglixia.top/hexo_install_new_proj-201915162221.png" alt="hexo_install_new_proj-201915162221"></p>
+<h4 id="查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："><a href="#查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：" class="headerlink" title="查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："></a>查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：</h4><p>   <img src="http://img.wanglixia.top/hexo_install_static_pages-201915162251.png" alt="hexo_install_static_pages-201915162251"></p>
 <h4 id="接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"><a href="#接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；" class="headerlink" title="接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"></a>接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；</h4><p><em>设置Git的user name和email：</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的git用户名，可以随便起一个"</span></span><br><span class="line">git config --global user.email <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure>
 <p><em>执行以下命令，查看是否已经有了ssh密钥：cd ~/.ssh，输入第二条命令之后，连续3次enter</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱地址"</span></span><br></pre></td></tr></table></figure>
-<p><em>在<code>C:\Users\你的电脑用户名.ssh</code> 目录下，会有两个文件id_rsa和id_rsa.pub，使用记事本打开id_rsa.pub，复制里面的值，然后浏览器打开你的coding到如下页面，将复制的内容粘贴到公钥内容的文本框里面，点击保存。如下图：</em><br><img src="/images/blog/hexo_install_ssh_key1.png" alt="coding上粘贴ssh值"><br><em>测试公钥是否配置成功：<code>ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a></code>，输入之后，会提示你是否确认，输入yes，回车；提示你通过ssh协议认证。</em><br><em>修改你的站点配置文件，这个是在你的本地配置远程服务器地址，hexo项目根目录下的_config.yml，这种文件的格式非常严格，多一个空格就可能会报错。</em></p>
+<p><em>在<code>C:\Users\你的电脑用户名.ssh</code> 目录下，会有两个文件id_rsa和id_rsa.pub，使用记事本打开id_rsa.pub，复制里面的值，然后浏览器打开你的coding到如下页面，将复制的内容粘贴到公钥内容的文本框里面，点击保存。如下图：</em><br><img src="http://img.wanglixia.top/hexo_install_ssh_key1-201915162310.png" alt="hexo_install_ssh_key1-201915162310"><br><em>测试公钥是否配置成功：<code>ssh -T <a href="mailto:git@git.coding.net" target="_blank" rel="noopener">git@git.coding.net</a></code>，输入之后，会提示你是否确认，输入yes，回车；提示你通过ssh协议认证。</em><br><em>修改你的站点配置文件，这个是在你的本地配置远程服务器地址，hexo项目根目录下的_config.yml，这种文件的格式非常严格，多一个空格就可能会报错。</em></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@git.coding.net:[你的用户名]/[你的用户名].coding.me.git</span></span><br><span class="line"><span class="comment">#  repository: git@github.com:[你的用户名]/[你的用户名].github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 <p><em>执行命令,就将你的博客部署到coding上了，如果要解析为自己的域名的话，可以百度、google查看步骤。</em></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
@@ -775,7 +775,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">11.3k</span>
+    <span title="网站总字数">11.6k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

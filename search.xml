@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>好用的前端响应式框架——Bootstrap</title>
+      <link href="/2019/01/05/bootstrap-study-note/"/>
+      <url>/2019/01/05/bootstrap-study-note/</url>
+      <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Bootstrap是美国Twitter公司的设计师Mark Otto和Jacob Thornton合作基于HTML、CSS、JavaScript 开发的简洁、直观、强悍的前端开发框架，使得 Web 开发更加快捷。<br><img src="http://img.wanglixia.top/bootstrap-201916235849.png" alt="bootstrap-201916235849"><br><a id="more"></a></p><h3 id="Bootstrap的优点："><a href="#Bootstrap的优点：" class="headerlink" title="Bootstrap的优点："></a>Bootstrap的优点：</h3><ul><li>移动设备优先。</li><li>响应式设计。基于bootstrap的网站和系统，能够自适应于台式机、平板电脑和手机。</li><li>容易上手。前置技能：HTML和CSS的基础知识即可。</li><li>浏览器支持比较好。IE、FireFox、Chrome、Opera、Safari等。</li><li>文档比较完善、内置组件比较多，容易定制。</li><li>开源。</li></ul><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>Bootstrap提供多种使用方式：直接下载Bootstrap并引入；使用BootstrapCDN；包管理工具；npm、RubyGems、Composer、NuGet。这里主要说一下使用第一种方式（直接下载Bootstrap并引入），也是最常见的一种方式，也可以直接使用BootstrapCDN提供的免费CDN加速版本。</p><ul><li>下载版本：<ol><li>下载适用于生产环境的Bootstrap（不包含文档）；</li><li>下载Bootstrap源码（包含文档）；</li><li>Sass 用于快速地在 Rails、Compass 或 只针对 Sass 的项目中引入。</li></ol></li><li>下载链接：<a href="https://v3.bootcss.com/getting-started/#download-composer" target="_blank" rel="noopener">https://v3.bootcss.com/getting-started/#download-composer</a><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3>bootstrap/</li><li>css/<ul><li>bootstrap.css</li><li>bootstrap.min.css</li><li>bootstrap-theme.css</li><li>bootstrap-theme.min.css</li></ul></li><li>js/<ul><li>bootstrap.js</li><li>bootstrap.min.js<h3 id="Bootstrap使用"><a href="#Bootstrap使用" class="headerlink" title="Bootstrap使用"></a>Bootstrap使用</h3>在使用Bootstrap的html模板中进行使用。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap使用和效果预览<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 最新版本的 Bootstrap 核心 CSS 文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可选的 Bootstrap 主题文件（一般不用引入） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/css/bootstrap-theme.min.css"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 最新的 Bootstrap 核心 JavaScript 文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul></li></ul><h4 id="Bootstrap的相关概念"><a href="#Bootstrap的相关概念" class="headerlink" title="Bootstrap的相关概念"></a>Bootstrap的相关概念</h4><p>Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到 12 列。<br>前面有说过bootstrap的一个优点，那就是移动设备优先：优先设计更小的宽度，即默认设计是移动设备的样式，再使用媒体查询来设置平板电脑、台式电脑以及大台式电脑。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 超小设备（手机，小于 768px） */</span></span><br><span class="line"><span class="comment">/* Bootstrap 中默认情况下没有媒体查询 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 小型设备（平板电脑，768px 起） */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width: @screen-sm-min) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 中型设备（台式电脑，992px 起） */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width: @screen-md-min) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 大型设备（大台式电脑，1200px 起） */</span></span><br><span class="line">@<span class="keyword">media</span> (min-width: @screen-lg-min) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p><p>具体设置及行为见下表：</p><table><thead><tr><th style="text-align:left"></th><th style="text-align:left">超小设备手机（&lt;768px）</th><th style="text-align:left">小型设备平板电脑（≥768px）</th><th style="text-align:left">中型设备台式电脑（≥992px）</th><th style="text-align:left">大型设备台式电脑（≥1200px）</th></tr></thead><tbody><tr><td style="text-align:left">网格行为</td><td style="text-align:left">一直是水平的</td><td style="text-align:left">以折叠开始，断点以上是水平的</td><td style="text-align:left">以折叠开始，断点以上是水平的</td><td style="text-align:left">以折叠开始，断点以上是水平的</td></tr><tr><td style="text-align:left">最大容器宽度</td><td style="text-align:left">None (auto)</td><td style="text-align:left">750px</td><td style="text-align:left">970px</td><td style="text-align:left">1170px</td></tr><tr><td style="text-align:left">Class 前缀</td><td style="text-align:left">.col-xs-</td><td style="text-align:left">.col-sm-</td><td style="text-align:left">.col-md-</td><td style="text-align:left">.col-lg-</td></tr><tr><td style="text-align:left">列数量和</td><td style="text-align:left">12</td><td style="text-align:left">12</td><td style="text-align:left">12</td><td style="text-align:left">12</td></tr><tr><td style="text-align:left">最大列宽</td><td style="text-align:left">Auto</td><td style="text-align:left">60px</td><td style="text-align:left">78px</td><td style="text-align:left">95px</td></tr><tr><td style="text-align:left">间隙宽度</td><td style="text-align:left">30px（一个列的每边分别 15px）</td><td style="text-align:left">30px（一个列的每边分别 15px）</td><td style="text-align:left">30px（一个列的每边分别 15px）</td><td style="text-align:left">30px（一个列的每边分别 15px）</td></tr><tr><td style="text-align:left">可嵌套</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td></tr><tr><td style="text-align:left">偏移量</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td></tr><tr><td style="text-align:left">列排序</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td></tr></tbody></table><h4 id="Bootstrap怎么用？"><a href="#Bootstrap怎么用？" class="headerlink" title="Bootstrap怎么用？"></a>Bootstrap怎么用？</h4><p>在一个div中的class中定义col-<em>-</em>，第一个星号的值范围是[xs,sm,md,lg] ，第二个星号的值范围是1-12；因此设置的时候需要注意数值是否规范。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 在一个div中的class中定义col-*-*，第一个星号的值范围是[xs,sm,md,lg] ，第二个星号的值范围是1-12--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-*-*"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-*-*"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      </span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p><h4 id="Bootstrap布局组件"><a href="#Bootstrap布局组件" class="headerlink" title="Bootstrap布局组件"></a>Bootstrap布局组件</h4><ul><li>Bootstrap 字体图标</li><li>Bootstrap 下拉菜单</li><li>Bootstrap 按钮组</li><li>Bootstrap 按钮下拉菜单</li><li>Bootstrap 输入框组</li><li>Bootstrap 导航元素</li><li>Bootstrap 导航栏</li><li>Bootstrap 面包屑导航</li><li>Bootstrap 分页</li><li>Bootstrap 标签</li><li>Bootstrap 徽章</li><li>Bootstrap 超大屏幕</li><li>Bootstrap 页面标题</li><li>Bootstrap 缩略图</li><li>Bootstrap 警告</li><li>Bootstrap 进度条</li><li>Bootstrap 多媒体对象</li><li>Bootstrap 列表组</li><li>Bootstrap 面板</li><li>Bootstrap Wells<h4 id="Bootstrap插件"><a href="#Bootstrap插件" class="headerlink" title="Bootstrap插件"></a>Bootstrap插件</h4></li><li>Bootstrap 过渡效果</li><li>Bootstrap 模态框</li><li>Bootstrap 下拉菜单</li><li>Bootstrap 滚动监听</li><li>Bootstrap 标签页</li><li>Bootstrap 提示工具</li><li>Bootstrap 弹出框</li><li>Bootstrap 警告框</li><li>Bootstrap 按钮</li><li>Bootstrap 折叠</li><li>Bootstrap 轮播</li><li>Bootstrap 附加导航<h4 id="Bootstrap常用插件"><a href="#Bootstrap常用插件" class="headerlink" title="Bootstrap常用插件"></a>Bootstrap常用插件</h4></li><li>表单验证插件 bootstrapValidator</li><li>Messenger 弹框组件库<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3>文档上提供的BootstrapDialog模态框组件的实现比较繁琐，因此可以在网上找相关插件处理。<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3></li><li>Bootstrap官网：<a href="http://www.bootcss.com/" target="_blank" rel="noopener">http://www.bootcss.com/</a></li><li>Bootstrap官方文档：<a href="https://v3.bootcss.com/components/" target="_blank" rel="noopener">https://v3.bootcss.com/components/</a><h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3>在学习过程中，经常在<strong>菜鸟教程</strong><a href="http://www.runoob.com/" target="_blank" rel="noopener">http://www.runoob.com/</a>查阅资料，表示感谢。</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> 前端 </tag>
+            
+            <tag> Bootstrap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>mybatis常见错误记录</title>
       <link href="/2019/01/03/mybatis%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/"/>
       <url>/2019/01/03/mybatis%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/</url>
@@ -401,6 +426,29 @@
     </entry>
     
     <entry>
+      <title>javascript操作数组array</title>
+      <link href="/2016/12/25/javascript-array/"/>
+      <url>/2016/12/25/javascript-array/</url>
+      <content type="html"><![CDATA[<ul><li>shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。</li><li>unshift:将参数添加到原数组开头，并返回数组的长度。</li><li>pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。</li><li>push:将参数添加到原数组末尾，并返回数组的长度。<a id="more"></a><h3 id="shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。"><a href="#shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。" class="headerlink" title="shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。"></a>shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。</h3><img src="http://img.wanglixia.top/javascript-array-1-2019150759.png" alt="javascript-array-1-2019150759"><h3 id="unshift-将参数添加到原数组开头，并返回数组的长度。"><a href="#unshift-将参数添加到原数组开头，并返回数组的长度。" class="headerlink" title="unshift:将参数添加到原数组开头，并返回数组的长度。"></a>unshift:将参数添加到原数组开头，并返回数组的长度。</h3><img src="http://img.wanglixia.top/javascript-array-2-201915085.png" alt="javascript-array-2-201915085"><h3 id="pop-删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。"><a href="#pop-删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。" class="headerlink" title="pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。"></a>pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。</h3><img src="http://img.wanglixia.top/javascript-array-3-2019150810.png" alt="javascript-array-3-2019150810"><h3 id="push-将参数添加到原数组末尾，并返回数组的长度。"><a href="#push-将参数添加到原数组末尾，并返回数组的长度。" class="headerlink" title="push:将参数添加到原数组末尾，并返回数组的长度。"></a>push:将参数添加到原数组末尾，并返回数组的长度。</h3></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Mysql导出导入数据库</title>
       <link href="/2016/12/25/mysql-export-database/"/>
       <url>/2016/12/25/mysql-export-database/</url>
@@ -420,29 +468,6 @@
             <tag> 数据库 </tag>
             
             <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>javascript操作数组array</title>
-      <link href="/2016/12/25/javascript-array/"/>
-      <url>/2016/12/25/javascript-array/</url>
-      <content type="html"><![CDATA[<ul><li>shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。</li><li>unshift:将参数添加到原数组开头，并返回数组的长度。</li><li>pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。</li><li>push:将参数添加到原数组末尾，并返回数组的长度。<a id="more"></a><h3 id="shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。"><a href="#shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。" class="headerlink" title="shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。"></a>shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。</h3><img src="http://img.wanglixia.top/javascript-array-1-2019150759.png" alt="javascript-array-1-2019150759"><h3 id="unshift-将参数添加到原数组开头，并返回数组的长度。"><a href="#unshift-将参数添加到原数组开头，并返回数组的长度。" class="headerlink" title="unshift:将参数添加到原数组开头，并返回数组的长度。"></a>unshift:将参数添加到原数组开头，并返回数组的长度。</h3><img src="http://img.wanglixia.top/javascript-array-2-201915085.png" alt="javascript-array-2-201915085"><h3 id="pop-删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。"><a href="#pop-删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。" class="headerlink" title="pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。"></a>pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。</h3><img src="http://img.wanglixia.top/javascript-array-3-2019150810.png" alt="javascript-array-3-2019150810"><h3 id="push-将参数添加到原数组末尾，并返回数组的长度。"><a href="#push-将参数添加到原数组末尾，并返回数组的长度。" class="headerlink" title="push:将参数添加到原数组末尾，并返回数组的长度。"></a>push:将参数添加到原数组末尾，并返回数组的长度。</h3></li></ul>]]></content>
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 随笔 </tag>
-            
-            <tag> javascript </tag>
             
         </tags>
       

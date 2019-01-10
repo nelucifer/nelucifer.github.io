@@ -84,7 +84,7 @@ daovoice('update');
 
 
 
-  <meta name="keywords" content="随笔,hexo,github,coding,next,gitalk,gitee,码云,">
+  <meta name="keywords" content="随笔,hexo,next,gitalk,github,coding,gitee,码云,">
 
 
 
@@ -96,7 +96,7 @@ daovoice('update');
 
 
 <meta name="description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。">
-<meta name="keywords" content="随笔,hexo,github,coding,next,gitalk,gitee,码云">
+<meta name="keywords" content="随笔,hexo,next,gitalk,github,coding,gitee,码云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记使用hexo搭建个人博客（三）">
 <meta property="og:url" content="//wanglixia.top/2018/12/29/hexo-coding-github-3/index.html">
@@ -105,7 +105,7 @@ daovoice('update');
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8%E4%BF%9D%E5%AD%98%E5%90%8E.png">
-<meta property="og:updated_time" content="2019-01-05T15:03:15.191Z">
+<meta property="og:updated_time" content="2019-01-10T16:15:07.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（三）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。">
@@ -422,7 +422,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  922 字
+                  924 字
                 </span>
               
 
@@ -478,7 +478,7 @@ daovoice('update');
 <li>下载vscode，<a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">这儿是下载链接</a></li>
 <li>七牛云，<a href="https://developer.qiniu.com/" target="_blank" rel="noopener">传送门</a><h4 id="安装七牛云插件"><a href="#安装七牛云插件" class="headerlink" title="安装七牛云插件"></a>安装七牛云插件</h4></li>
 <li>安装插件：<code>qiniu-upload-image</code></li>
-<li>文件&gt;首选项&gt;设置，在右侧填写自己的配置覆盖默认配置。配置文件如下，使用的配置是七牛云里面的【密钥管理】：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 一个有效的七牛 AccessKey 签名授权。</span><br><span class="line">  &quot;qiniu.access_key&quot;: &quot;密钥管理里面的AK&quot;,</span><br><span class="line"></span><br><span class="line">  // 七牛图片上传空间。</span><br><span class="line">  &quot;qiniu.bucket&quot;: &quot;weyoung-pub&quot;,</span><br><span class="line"></span><br><span class="line">  // 七牛图床域名。</span><br><span class="line">  &quot;qiniu.domain&quot;: &quot;自己配置的图床域名，使用二级域名就行&quot;,</span><br><span class="line"></span><br><span class="line">  // 七牛图片上传工具开关</span><br><span class="line">  &quot;qiniu.enable&quot;: true,</span><br><span class="line"></span><br><span class="line">  // 七牛图片上传路径，参数化命名。</span><br><span class="line">  &quot;qiniu.remotePath&quot;: &quot;$&#123;fileName&#125;-$&#123;dateTime&#125;&quot;,</span><br><span class="line"></span><br><span class="line">  // 一个有效的七牛 SecretKey 签名授权。</span><br><span class="line">  &quot;qiniu.secret_key&quot;: &quot;密钥管理里面的SK&quot;,</span><br><span class="line">  &quot;files.autoSave&quot;: &quot;afterDelay&quot;,</span><br><span class="line">  &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Windows\\System32\\cmd.exe&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>文件&gt;首选项&gt;设置，在右侧setting.json填写自己的配置覆盖默认配置。配置文件如下，使用的配置是七牛云里面的【密钥管理】：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 一个有效的七牛 AccessKey 签名授权。</span><br><span class="line">  &quot;qiniu.access_key&quot;: &quot;密钥管理里面的AK&quot;,</span><br><span class="line"></span><br><span class="line">  // 七牛图片上传空间。</span><br><span class="line">  &quot;qiniu.bucket&quot;: &quot;weyoung-pub&quot;,</span><br><span class="line"></span><br><span class="line">  // 七牛图床域名。</span><br><span class="line">  &quot;qiniu.domain&quot;: &quot;自己配置的图床域名，使用二级域名就行&quot;,</span><br><span class="line"></span><br><span class="line">  // 七牛图片上传工具开关</span><br><span class="line">  &quot;qiniu.enable&quot;: true,</span><br><span class="line"></span><br><span class="line">  // 七牛图片上传路径，参数化命名。</span><br><span class="line">  &quot;qiniu.remotePath&quot;: &quot;$&#123;fileName&#125;-$&#123;dateTime&#125;&quot;,</span><br><span class="line"></span><br><span class="line">  // 一个有效的七牛 SecretKey 签名授权。</span><br><span class="line">  &quot;qiniu.secret_key&quot;: &quot;密钥管理里面的SK&quot;,</span><br><span class="line">  &quot;files.autoSave&quot;: &quot;afterDelay&quot;,</span><br><span class="line">  &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Windows\\System32\\cmd.exe&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h4><blockquote>
@@ -514,13 +514,13 @@ daovoice('update');
           
             <a href="/tags/hexo/" rel="tag"># hexo</a>
           
-            <a href="/tags/github/" rel="tag"># github</a>
-          
-            <a href="/tags/coding/" rel="tag"># coding</a>
-          
             <a href="/tags/next/" rel="tag"># next</a>
           
             <a href="/tags/gitalk/" rel="tag"># gitalk</a>
+          
+            <a href="/tags/github/" rel="tag"># github</a>
+          
+            <a href="/tags/coding/" rel="tag"># coding</a>
           
             <a href="/tags/gitee/" rel="tag"># gitee</a>
           
@@ -646,7 +646,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,7 +668,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -757,7 +757,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">12.8k</span>
+    <span title="网站总字数">15.0k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

@@ -109,7 +109,8 @@ daovoice('update');
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8%E4%BF%9D%E5%AD%98%E5%90%8E.png">
-<meta property="og:updated_time" content="2019-01-11T15:00:32.715Z">
+<meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-添加RSS订阅-201911123752.png">
+<meta property="og:updated_time" content="2019-01-11T15:07:54.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（三）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。本文内容如下：  使用gitalk为博客添加评论功能、 vscode 使用七牛云做图床、  Hexo Next主题SEO优化、 Hexo 添加RSS订阅">
@@ -426,7 +427,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,898 字
+                  1,924 字
                 </span>
               
 
@@ -518,7 +519,8 @@ daovoice('update');
 <h1 id="hexo-robots-txt"><a href="#hexo-robots-txt" class="headerlink" title="hexo robots.txt"></a>hexo robots.txt</h1><p>User-agent: * Allow: /<br>Allow: /archives/<br>Allow: /about/<br>Disallow: /js/<br>Disallow: /css/<br>Disallow: /fonts/<br>Disallow: /images/</p>
 <p>Sitemap: <a href="http://www.wanglixia.top/sitemap.xml" target="_blank" rel="noopener">http://www.wanglixia.top/sitemap.xml</a><br>Sitemap: <a href="http://www.wanglixia.top/baidusitemap.xml" target="_blank" rel="noopener">http://www.wanglixia.top/baidusitemap.xml</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">## 您的站点有链接未通过https检验</span><br><span class="line">因为一直使用的是http，百度验证需要使用https。我是使用coding+github双线部署的；</span><br><span class="line"></span><br><span class="line">* coding 设置强制https访问</span><br><span class="line">打开项目，【代码】-&gt;【Pages服务】-&gt;【强制 HTTPS 访问】</span><br><span class="line"></span><br><span class="line">* github 设置强制https访问</span><br><span class="line">打开项目，【setting】-&gt;【Enforce HTTPS】的勾打上；</span><br><span class="line">完成；访问一下，看下有没有变化啦！</span><br><span class="line"></span><br><span class="line">## Hexo添加RSS订阅</span><br><span class="line">### 安装feed插件</span><br><span class="line">``` bash</span><br><span class="line">npm install hexo-generator-feed</span><br></pre></td></tr></table></figure></p>
 <p>在项目根目录的<code>_config.yml</code>添加内容：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">    <span class="string">hexo-generator-feed</span></span><br><span class="line"><span class="attr">feed:</span>                       <span class="comment"># 实现博客订阅功能</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">  limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure></p>
-<p>使用<code>hexo g -d</code>生成并部署。<br>完成</p>
+<p>使用<code>hexo g -d</code>生成并部署。<br>使用方法：邮件中【新建订阅】，我的订阅地址为：<a href="https://www.wanglixia.top/atom.xml" target="_blank" rel="noopener">https://www.wanglixia.top/atom.xml</a>，如图：<br><img src="http://img.wanglixia.top/hexo-coding-github-3-添加RSS订阅-201911123752.png" alt="hexo-coding-github-3-添加RSS订阅-201911123752"></p>
+<p>完成</p>
 
       
     </div>
@@ -803,7 +805,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">15.9k</span>
+    <span title="网站总字数">16.0k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

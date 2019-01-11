@@ -455,7 +455,7 @@ daovoice('update');
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//oracle_logo-201882903737.jpg" rel="gallery_cjqqxjt9f0004hslxf8ehmjkl" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://img.wanglixia.top//oracle_logo-201882903737.jpg" rel="gallery_cjqs1r8ov000bw8lxowibe082" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://img.wanglixia.top//oracle_logo-201882903737.jpg" itemprop="contentUrl">
               </a>
             
@@ -1691,7 +1691,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,106 字
+                  1,109 字
                 </span>
               
 
@@ -1842,7 +1842,8 @@ daovoice('update');
 </tbody>
 </table>
 <hr>
-<h4 id="属性选择器-“input-name-‘objname’-”"><a href="#属性选择器-“input-name-‘objname’-”" class="headerlink" title="属性选择器 $(“input[name~-‘objname’]”)"></a>属性选择器 <code>$(“input[name~-‘objname’]”)</code></h4><table>
+<h4 id="属性选择器-“input-name-‘objname’-”"><a href="#属性选择器-“input-name-‘objname’-”" class="headerlink" title="属性选择器 $(“input[name~-‘objname’]”)"></a>属性选择器 <code>$(“input[name~-‘objname’]”)</code></h4><p>$(“[attribute|-‘value’]”)选择指定属性值等于给定字符串或以该文字串为前缀（该字符串后跟一个连字符”-“）的元素</p>
+<table>
 <thead>
 <tr>
 <th style="text-align:center">选择器</th>
@@ -1851,7 +1852,110 @@ daovoice('update');
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">|$(&quot;[attribute*=&apos;value&apos;]&quot;)|选择指定属性包含给定的子字符串的元素|</span><br><span class="line">|$(&quot;[attribute~-&apos;value&apos;]&quot;)|选择指定属性用空格分割的值中包含一个给定值的元素|</span><br><span class="line">|$(&quot;[attribute=&apos;value&apos;]&quot;)|选择指定属性是给定值的元素|</span><br><span class="line">|$(&quot;[attribute!=&apos;value&apos;]&quot;)|选择指定属性不等于给定值的元素|</span><br><span class="line">|$(&quot;[attribute^=&apos;value&apos;]&quot;)|选择指定属性是以给定字符串开始的元素|</span><br><span class="line">|$(&quot;[attribute$-&apos;value&apos;]&quot;)|选择指定属性是以给定字符串结尾的元素|</span><br><span class="line">|$(&quot;[attribute]&quot;)|选择所有具有指定属性的元素|</span><br><span class="line">|$(&quot;[attributeFilter1][attributeFilterN]&quot;)|选择匹配所有指定的属性筛选器的元素|</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 表单元素选择器</span><br><span class="line">|选择器|描述|</span><br><span class="line">|:---:|:---|</span><br><span class="line">|$(&quot;:input&quot;)|选择所有input，textarea，select和button元素|</span><br><span class="line">|$(&quot;:text&quot;)|所有文本框|</span><br><span class="line">|$(&quot;:password&quot;)|所有密码框|</span><br><span class="line">|$(&quot;:radio&quot;)|所有单选按钮|</span><br><span class="line">|$(&quot;:checkbox&quot;)|所有复选框|</span><br><span class="line">|$(&quot;:submit&quot;)|所有提交按钮|</span><br><span class="line">|$(&quot;:image&quot;)|所有图像域|</span><br><span class="line">|$(&quot;:reset&quot;)|所有重置按钮|</span><br><span class="line">|$(&quot;:button&quot;)|所有按钮|</span><br><span class="line">|$(&quot;:file&quot;)|所有文件域|</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#### 表单对象属性筛选选择器</span><br><span class="line">|选择器|描述|</span><br><span class="line">|:---:|:---|</span><br><span class="line">|$(&quot;:enabled&quot;)|匹配可用的表单元素|</span><br><span class="line">|$(&quot;:disabled&quot;)|匹配不可用的表单元素|</span><br><span class="line">|$(&quot;:checked&quot;)|匹配被选中的```&lt;input&gt;```元素|</span><br><span class="line">|$(&quot;:selected&quot;)|匹配被选中的```&lt;option&gt;```元素|</span><br><span class="line"></span><br><span class="line">### jQuery选择器之特殊选择器this</span><br><span class="line">this和$(this) 的区别？</span><br><span class="line">答：this 是JavaScript中的关键字，指的是当前的上下文对象，简单的说就是方法/属性的拥有者；</span><br><span class="line">eg:</span><br><span class="line">```js</span><br><span class="line">var ilucifer = &#123;</span><br><span class="line">name:&quot;寒江&quot;,</span><br><span class="line">getName:funcion()&#123;</span><br><span class="line">		//this,就是imooc对象</span><br><span class="line">		return this.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">ilucifer .getName();//寒江</span><br></pre></td></tr></table></figure></td>
+<td style="text-align:center">$(“[attribute*=’value’]”)</td>
+<td style="text-align:left">选择指定属性包含给定的子字符串的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attribute~-‘value’]”)</td>
+<td style="text-align:left">选择指定属性用空格分割的值中包含一个给定值的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attribute=’value’]”)</td>
+<td style="text-align:left">选择指定属性是给定值的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attribute!=’value’]”)</td>
+<td style="text-align:left">选择指定属性不等于给定值的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attribute^=’value’]”)</td>
+<td style="text-align:left">选择指定属性是以给定字符串开始的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attribute$-‘value’]”)</td>
+<td style="text-align:left">选择指定属性是以给定字符串结尾的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attribute]”)</td>
+<td style="text-align:left">选择所有具有指定属性的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“[attributeFilter1][attributeFilterN]”)</td>
+<td style="text-align:left">选择匹配所有指定的属性筛选器的元素</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="表单元素选择器"><a href="#表单元素选择器" class="headerlink" title="表单元素选择器"></a>表单元素选择器</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">选择器</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$(“:input”)</td>
+<td style="text-align:left">选择所有input，textarea，select和button元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:text”)</td>
+<td style="text-align:left">所有文本框</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:password”)</td>
+<td style="text-align:left">所有密码框</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:radio”)</td>
+<td style="text-align:left">所有单选按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:checkbox”)</td>
+<td style="text-align:left">所有复选框</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:submit”)</td>
+<td style="text-align:left">所有提交按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:image”)</td>
+<td style="text-align:left">所有图像域</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:reset”)</td>
+<td style="text-align:left">所有重置按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:button”)</td>
+<td style="text-align:left">所有按钮</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:file”)</td>
+<td style="text-align:left">所有文件域</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="表单对象属性筛选选择器"><a href="#表单对象属性筛选选择器" class="headerlink" title="表单对象属性筛选选择器"></a>表单对象属性筛选选择器</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">选择器</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$(“:enabled”)</td>
+<td style="text-align:left">匹配可用的表单元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:disabled”)</td>
+<td style="text-align:left">匹配不可用的表单元素</td>
+</tr>
+<tr>
+<td style="text-align:center">$(“:checked”)</td>
+<td style="text-align:left">匹配被选中的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">|$(&quot;:selected&quot;)|匹配被选中的```&lt;option&gt;```元素|</span><br><span class="line"></span><br><span class="line">### jQuery选择器之特殊选择器this</span><br><span class="line">this和$(this) 的区别？</span><br><span class="line">答：this 是JavaScript中的关键字，指的是当前的上下文对象，简单的说就是方法/属性的拥有者；</span><br><span class="line">eg:</span><br><span class="line">```js</span><br><span class="line">var ilucifer = &#123;</span><br><span class="line">name:&quot;寒江&quot;,</span><br><span class="line">getName:funcion()&#123;</span><br><span class="line">		//this,就是imooc对象</span><br><span class="line">		return this.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">ilucifer .getName();//寒江</span><br></pre></td></tr></table></figure></td>
 </tr>
 </tbody>
 </table>
@@ -2082,7 +2186,7 @@ daovoice('update');
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//wanglixia.top/2016/12/25/mysql-export-database/">
+    <link itemprop="mainEntityOfPage" href="//wanglixia.top/2016/12/25/javascript-array/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="寒江夜雨">
@@ -2101,7 +2205,7 @@ daovoice('update');
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/25/mysql-export-database/" itemprop="url">Mysql导出导入数据库</a></h1>
+                <a class="post-title-link" href="/2016/12/25/javascript-array/" itemprop="url">javascript操作数组array</a></h1>
         
 
         <div class="post-meta">
@@ -2167,7 +2271,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  481 字
+                  190 字
                 </span>
               
 
@@ -2183,7 +2287,7 @@ daovoice('update');
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -2205,17 +2309,21 @@ daovoice('update');
 
       
         
-          <p>要在两台不同的电脑上进行开发，数据库需要统一，由于自己第一次完整的设计表结构，因此多次更改表结构，造成了很多不必要的麻烦，<br>需要将数据库导出成sql脚本。<br>
+          <ul>
+<li>shift：删除原数组第一项，并返回删除元素的值，原数组为空则返回undefined。</li>
+<li>unshift:将参数添加到原数组开头，并返回数组的长度。</li>
+<li>pop:删除原数组最后一项，并返回删除元素的值，原数组为空则返回undefined。</li>
+<li>push:将参数添加到原数组末尾，并返回数组的长度。
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/12/25/mysql-export-database/#more" rel="contents">
+            <a class="btn" href="/2016/12/25/javascript-array/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </li></ul></div>
     
     
     
@@ -2393,7 +2501,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">15.0k</span>
+    <span title="网站总字数">15.3k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

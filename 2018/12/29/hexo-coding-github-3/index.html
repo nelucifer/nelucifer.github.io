@@ -92,7 +92,7 @@ daovoice('update');
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Mr.wang's Note" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="coder立夏的笔记" type="application/atom+xml">
 
 
 
@@ -104,12 +104,12 @@ daovoice('update');
 <meta property="og:type" content="article">
 <meta property="og:title" content="记使用hexo搭建个人博客（三）">
 <meta property="og:url" content="//wanglixia.top/2018/12/29/hexo-coding-github-3/index.html">
-<meta property="og:site_name" content="Mr.wang&#39;s Note">
+<meta property="og:site_name" content="coder立夏的笔记">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。本文内容如下：  使用gitalk为博客添加评论功能、 vscode 使用七牛云做图床、  Hexo Next主题SEO优化、">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8%E4%BF%9D%E5%AD%98%E5%90%8E.png">
-<meta property="og:updated_time" content="2019-01-11T13:51:22.006Z">
+<meta property="og:updated_time" content="2019-01-11T14:37:41.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（三）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。本文内容如下：  使用gitalk为博客添加评论功能、 vscode 使用七牛云做图床、  Hexo Next主题SEO优化、">
@@ -149,7 +149,7 @@ daovoice('update');
 
 
 
-  <title>记使用hexo搭建个人博客（三） | Mr.wang's Note</title>
+  <title>记使用hexo搭建个人博客（三） | coder立夏的笔记</title>
   
 
 
@@ -189,12 +189,12 @@ daovoice('update');
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Mr.wang's Note</span>
+        <span class="site-title">coder立夏的笔记</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">好的技术是为了更好的解决业务产生的问题</h1>
+        <h1 class="site-subtitle" itemprop="description">JavaWeb开发|热爱分享|开发学习笔记|码梦者学习笔记</h1>
       
   </div>
 
@@ -341,13 +341,13 @@ daovoice('update');
     <link itemprop="mainEntityOfPage" href="//wanglixia.top/2018/12/29/hexo-coding-github-3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="寒江夜雨">
+      <meta itemprop="name" content="coder立夏">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mr.wang's Note">
+      <meta itemprop="name" content="coder立夏的笔记">
     </span>
 
     
@@ -426,7 +426,7 @@ daovoice('update');
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,439 字
+                  1,810 字
                 </span>
               
 
@@ -442,7 +442,7 @@ daovoice('update');
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -509,10 +509,19 @@ daovoice('update');
 <li>在<code>themes/next/layout/_partials/head.swig</code>文件中，修改meta标签为站长工具里面给出的标签。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.baidu_site_verification %&#125;</span><br><span class="line">  &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;这块修改&quot; /&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>或者在 <code>themes/next/_config.yml</code> 添加或者修改，<strong>注意格式</strong><br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 百度搜索引擎优化</span></span><br><span class="line"><span class="attr">baidu_site_verification:</span> <span class="string">站长工具里面给出的标签</span></span><br></pre></td></tr></table></figure></p>
+<p>或者在 <code>themes/next/_config.yml</code> 添加或者修改，<strong>注意格式</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 百度搜索引擎优化</span></span><br><span class="line"><span class="attr">baidu_site_verification:</span> <span class="string">站长工具里面给出的标签</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>在<code>themes/next/_config.yml</code>中将<code>seo: false</code> 改为<code>true</code></li>
-<li>使用<code>hexo g -d</code>，部署到自己的网站上，如果不清楚部署的可以看前两篇文章；</li>
+<li>在<code>themes/next/_config.yml</code>中将<figure class="highlight plain"><figcaption><span>false``` 改为<code>true</code></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 使用&lt;code&gt;hexo g -d&lt;/code&gt;，部署到自己的网站上，如果不清楚部署的可以看前两篇文章；</span><br><span class="line">* 然后点击【完成验证】按钮，等待百度的审核结果</span><br><span class="line"></span><br><span class="line">#### 3. 添加robots，方便搜索蜘蛛进行检索</span><br><span class="line">&amp;emsp;&amp;emsp;百度百科：robots是网站跟爬虫间的协议，用简单直接的txt格式文本方式告诉对应的爬虫被允许的权限，也就是说robots.txt是搜索引擎中访问网站的时候要查看的第一个文件。当一个搜索蜘蛛访问一个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果存在，搜索机器人就会按照该文件中的内容来确定访问的范围；如果该文件不存在，所有的搜索蜘蛛将能够访问网站上所有没有被口令保护的页面。</span><br><span class="line"></span><br><span class="line">新建&lt;code&gt;robots.txt&lt;/code&gt;文件，添加以下文件内容，把&lt;code&gt;robots.txt&lt;/code&gt;放在的&lt;code&gt;source&lt;/code&gt;文件下。</span><br><span class="line">文件内容：</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="hexo-robots-txt"><a href="#hexo-robots-txt" class="headerlink" title="hexo robots.txt"></a>hexo robots.txt</h1><p>User-agent: * Allow: /<br>Allow: /archives/<br>Allow: /about/<br>Disallow: /js/<br>Disallow: /css/<br>Disallow: /fonts/<br>Disallow: /images/</p>
+<p>Sitemap: <a href="http://www.wanglixia.top/sitemap.xml" target="_blank" rel="noopener">http://www.wanglixia.top/sitemap.xml</a><br>Sitemap: <a href="http://www.wanglixia.top/baidusitemap.xml" target="_blank" rel="noopener">http://www.wanglixia.top/baidusitemap.xml</a><br><code>`</code></p>
+<h2 id="您的站点有链接未通过https检验"><a href="#您的站点有链接未通过https检验" class="headerlink" title="您的站点有链接未通过https检验"></a>您的站点有链接未通过https检验</h2><p>因为一直使用的是http，百度验证需要使用https。我是使用coding+github双线部署的；</p>
+<ul>
+<li><p>coding 设置强制https访问<br>打开项目，【代码】-&gt;【Pages服务】-&gt;【强制 HTTPS 访问】</p>
+</li>
+<li><p>github 设置强制https访问<br>打开项目，【setting】-&gt;【Enforce HTTPS】的勾打上；<br>完成；访问一下，看下有没有变化啦！</p>
+</li>
 </ul>
 
       
@@ -524,7 +533,7 @@ daovoice('update');
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat_qrcode.jpg" alt="寒江夜雨 wechat" style="width: 200px; max-width: 100%;">
+    <img id="wechat_subscriber_qcode" src="/images/wechat_qrcode.jpg" alt="coder立夏 wechat" style="width: 200px; max-width: 100%;">
     <div>扫描上方二维码，关注weyoung公众号，一起互动交流~~</div>
 </div>
 
@@ -662,9 +671,9 @@ daovoice('update');
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="寒江夜雨">
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="coder立夏">
             
-              <p class="site-author-name" itemprop="name">寒江夜雨</p>
+              <p class="site-author-name" itemprop="name">coder立夏</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -759,7 +768,7 @@ daovoice('update');
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题添加gitalk"><span class="nav-number">1.</span> <span class="nav-text">next主题添加gitalk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改的内容"><span class="nav-number">1.2.</span> <span class="nav-text">修改的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建gitalk-swig；"><span class="nav-number">1.2.1.</span> <span class="nav-text">新建gitalk.swig；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改comments-swig"><span class="nav-number">1.2.2.</span> <span class="nav-text">修改comments.swig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改index-swig"><span class="nav-number">1.2.3.</span> <span class="nav-text">修改index.swig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建gitalk-styl"><span class="nav-number">1.2.4.</span> <span class="nav-text">新建gitalk.styl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改third-party-styl"><span class="nav-number">1.2.5.</span> <span class="nav-text">修改third-party.styl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件-config-yml"><span class="nav-number">1.2.6.</span> <span class="nav-text">修改文件_config.yml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">1.3.</span> <span class="nav-text">参考文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode-七牛云"><span class="nav-number">2.</span> <span class="nav-text">vscode + 七牛云</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备-1"><span class="nav-number">2.1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装七牛云插件"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装七牛云插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用快捷键"><span class="nav-number">2.1.2.</span> <span class="nav-text">使用快捷键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装插件"><span class="nav-number">2.1.3.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完成"><span class="nav-number">2.1.4.</span> <span class="nav-text">完成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-Next-主题SEO优化"><span class="nav-number">3.</span> <span class="nav-text">Hexo Next 主题SEO优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SEO-？"><span class="nav-number">3.1.</span> <span class="nav-text">SEO ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#针对百度搜索引擎的优化"><span class="nav-number">3.2.</span> <span class="nav-text">针对百度搜索引擎的优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-添加百度sitemap，生成sitemap文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 添加百度sitemap，生成sitemap文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-注册百度搜索资源工具"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 注册百度搜索资源工具</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题添加gitalk"><span class="nav-number">1.</span> <span class="nav-text">next主题添加gitalk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改的内容"><span class="nav-number">1.2.</span> <span class="nav-text">修改的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建gitalk-swig；"><span class="nav-number">1.2.1.</span> <span class="nav-text">新建gitalk.swig；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改comments-swig"><span class="nav-number">1.2.2.</span> <span class="nav-text">修改comments.swig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改index-swig"><span class="nav-number">1.2.3.</span> <span class="nav-text">修改index.swig</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建gitalk-styl"><span class="nav-number">1.2.4.</span> <span class="nav-text">新建gitalk.styl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改third-party-styl"><span class="nav-number">1.2.5.</span> <span class="nav-text">修改third-party.styl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件-config-yml"><span class="nav-number">1.2.6.</span> <span class="nav-text">修改文件_config.yml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">1.3.</span> <span class="nav-text">参考文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode-七牛云"><span class="nav-number">2.</span> <span class="nav-text">vscode + 七牛云</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备-1"><span class="nav-number">2.1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装七牛云插件"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装七牛云插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用快捷键"><span class="nav-number">2.1.2.</span> <span class="nav-text">使用快捷键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装插件"><span class="nav-number">2.1.3.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完成"><span class="nav-number">2.1.4.</span> <span class="nav-text">完成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-Next-主题SEO优化"><span class="nav-number">3.</span> <span class="nav-text">Hexo Next 主题SEO优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SEO-？"><span class="nav-number">3.1.</span> <span class="nav-text">SEO ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#针对百度搜索引擎的优化"><span class="nav-number">3.2.</span> <span class="nav-text">针对百度搜索引擎的优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-添加百度sitemap，生成sitemap文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 添加百度sitemap，生成sitemap文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-注册百度搜索资源工具"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 注册百度搜索资源工具</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-robots-txt"><span class="nav-number"></span> <span class="nav-text">hexo robots.txt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#您的站点有链接未通过https检验"><span class="nav-number">1.</span> <span class="nav-text">您的站点有链接未通过https检验</span></a></li></ol></li></div>
             
 
           </div>
@@ -788,7 +797,7 @@ daovoice('update');
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">寒江夜雨</span>
+  <span class="author" itemprop="copyrightHolder">coder立夏</span>
 
   
     <span class="post-meta-divider">|</span>
@@ -798,7 +807,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.5k</span>
+    <span title="Site words total count">15.9k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,6 +47,8 @@ daovoice('update');
 
 
 
+
+  <meta name="baidu-site-verification" content="JevLvtsiii">
 
 
 
@@ -90,6 +92,8 @@ daovoice('update');
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Mr.wang's Note" type="application/atom+xml">
+
 
 
 
@@ -102,10 +106,10 @@ daovoice('update');
 <meta property="og:url" content="//wanglixia.top/2018/12/29/hexo-coding-github-3/index.html">
 <meta property="og:site_name" content="Mr.wang&#39;s Note">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。本文内容如下：  使用gitalk为博客添加评论功能、 vscode 使用七牛云做图床、  Hexo Next主题SEO优化、">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo-coding-github-3-github%E6%B3%A8%E5%86%8C%E5%BA%94%E7%94%A8%E4%BF%9D%E5%AD%98%E5%90%8E.png">
-<meta property="og:updated_time" content="2019-01-11T13:19:13.178Z">
+<meta property="og:updated_time" content="2019-01-11T13:51:22.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（三）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;使用hexo+next+github/coding+gitalk添加博客评论系统,以及hexo+next+码云+issue，这里使用的是next主题，如有问题，可以在博客下方评论。本文内容如下：  使用gitalk为博客添加评论功能、 vscode 使用七牛云做图床、  Hexo Next主题SEO优化、">
@@ -119,13 +123,13 @@ daovoice('update');
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -167,7 +171,7 @@ daovoice('update');
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -190,7 +194,7 @@ daovoice('update');
       </a>
     </div>
       
-        <p class="site-subtitle">好的技术是为了更好的解决业务产生的问题</p>
+        <h1 class="site-subtitle" itemprop="description">好的技术是为了更好的解决业务产生的问题</h1>
       
   </div>
 
@@ -215,7 +219,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            首页
+            Home
           </a>
         </li>
       
@@ -225,7 +229,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
-            关于
+            About
           </a>
         </li>
       
@@ -235,7 +239,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -245,7 +249,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
-            分类
+            Categories
           </a>
         </li>
       
@@ -255,7 +259,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            归档
+            Archives
           </a>
         </li>
       
@@ -265,7 +269,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
-            公益404
+            Commonweal 404
           </a>
         </li>
       
@@ -278,7 +282,7 @@ daovoice('update');
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
-            搜索
+            Search
           </a>
         </li>
       
@@ -297,7 +301,7 @@ daovoice('update');
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -351,7 +355,7 @@ daovoice('update');
 
         
         
-          <h1 class="post-title" itemprop="name headline">记使用hexo搭建个人博客（三）</h1>
+          <h2 class="post-title" itemprop="name headline">记使用hexo搭建个人博客（三）</h2>
         
 
         <div class="post-meta">
@@ -361,9 +365,9 @@ daovoice('update');
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T00:43:12+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-29T00:43:12+08:00">
                 2018-12-29
               </time>
             
@@ -382,7 +386,7 @@ daovoice('update');
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
@@ -419,10 +423,10 @@ daovoice('update');
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">字数统计&#58;</span>
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
                 
-                <span title="字数统计">
-                  1,236 字
+                <span title="Words count in article">
+                  1,439 字
                 </span>
               
 
@@ -435,10 +439,10 @@ daovoice('update');
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="阅读时长">
-                  5 分钟
+                <span title="Reading time">
+                  6 分钟
                 </span>
               
             </div>
@@ -493,7 +497,23 @@ daovoice('update');
 <h4 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h4><h2 id="Hexo-Next-主题SEO优化"><a href="#Hexo-Next-主题SEO优化" class="headerlink" title="Hexo Next 主题SEO优化"></a>Hexo Next 主题SEO优化</h2><h3 id="SEO-？"><a href="#SEO-？" class="headerlink" title="SEO ？"></a>SEO ？</h3><p>汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。</p>
 <h3 id="针对百度搜索引擎的优化"><a href="#针对百度搜索引擎的优化" class="headerlink" title="针对百度搜索引擎的优化"></a>针对百度搜索引擎的优化</h3><h4 id="1-添加百度sitemap，生成sitemap文件"><a href="#1-添加百度sitemap，生成sitemap文件" class="headerlink" title="1. 添加百度sitemap，生成sitemap文件"></a>1. 添加百度sitemap，生成sitemap文件</h4><p>安装两个插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save-dev</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save-dev</span><br></pre></td></tr></table></figure></p>
 <p>上面的是传统的sitemap，下面的是百度专有的sitemap。<br>测试是否安装成功。使用命令<code>hexo s</code>本地预览。<br>本地预览：[<a href="http://localhost:4000/sitemap.xml]http://localhost:4000/sitemap.xml" target="_blank" rel="noopener">http://localhost:4000/sitemap.xml]http://localhost:4000/sitemap.xml</a> 和 [<a href="http://localhost:4000/baidusitemap.xml]http://localhost:4000/baidusitemap.xml" target="_blank" rel="noopener">http://localhost:4000/baidusitemap.xml]http://localhost:4000/baidusitemap.xml</a> 显示sitemap文件内容。</p>
-<h4 id="2-注册百度搜索资源工具"><a href="#2-注册百度搜索资源工具" class="headerlink" title="2. 注册百度搜索资源工具"></a>2. 注册百度搜索资源工具</h4><p>地址：<a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">https://ziyuan.baidu.com/</a><br>添加网站之后，需要验证，验证方式有<code>文件验证</code>、<code>HTML标签验证</code>、<code>CNAME验证</code>。我使用<code>文件验证</code>进行验证。<br>下载验证文件，放到博客项目的<code>source</code>文件夹下，使用<code>hexo g -d</code>，部署到自己的网站上，如果不清楚部署的可以看前两篇文章；<br>部署之后，在站长工具页面点击验证</p>
+<h4 id="2-注册百度搜索资源工具"><a href="#2-注册百度搜索资源工具" class="headerlink" title="2. 注册百度搜索资源工具"></a>2. 注册百度搜索资源工具</h4><p>地址：<a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">https://ziyuan.baidu.com/</a><br>添加网站之后，需要验证，验证方式有<code>文件验证</code>、<code>HTML标签验证</code>、<code>CNAME验证</code>。<br>网上的例子：使用<code>文件验证</code>进行验证。</p>
+<ul>
+<li>下载验证文件，放到博客项目的<code>source</code>文件夹下，使用<code>hexo g -d</code>，部署到自己的网站上；</li>
+<li>部署之后，在站长工具页面点击验证，能够访问证明验证成功；</li>
+<li>然后点击【完成验证】按钮，为保持验证通过的状态,成功验证后请不要删除HTML文件。</li>
+</ul>
+<p><strong>我使用这个验证失败，hexo会为文件加上一些样式，验证好几次验证不通过</strong></p>
+<p>使用<code>HTML标签验证</code>进行验证。我使用的是<code>Hexo + NexT</code>。</p>
+<ul>
+<li>在<code>themes/next/layout/_partials/head.swig</code>文件中，修改meta标签为站长工具里面给出的标签。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.baidu_site_verification %&#125;</span><br><span class="line">  &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;这块修改&quot; /&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者在 <code>themes/next/_config.yml</code> 添加或者修改，<strong>注意格式</strong><br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 百度搜索引擎优化</span></span><br><span class="line"><span class="attr">baidu_site_verification:</span> <span class="string">站长工具里面给出的标签</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>在<code>themes/next/_config.yml</code>中将<code>seo: false</code> 改为<code>true</code></li>
+<li>使用<code>hexo g -d</code>，部署到自己的网站上，如果不清楚部署的可以看前两篇文章；</li>
+</ul>
 
       
     </div>
@@ -630,10 +650,10 @@ daovoice('update');
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
+            Overview
           </li>
         </ul>
       
@@ -645,7 +665,7 @@ daovoice('update');
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="寒江夜雨">
             
               <p class="site-author-name" itemprop="name">寒江夜雨</p>
-              <p class="site-description motion-element" itemprop="description">Java Web开发</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -656,7 +676,7 @@ daovoice('update');
                 <a href="/archives/">
               
                   <span class="site-state-item-count">25</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -667,7 +687,7 @@ daovoice('update');
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">分类</span>
+                  <span class="site-state-item-name">categories</span>
                 </a>
               </div>
             
@@ -678,13 +698,20 @@ daovoice('update');
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">36</span>
-                  <span class="site-state-item-name">标签</span>
+                  <span class="site-state-item-name">tags</span>
                 </a>
               </div>
             
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -741,6 +768,11 @@ daovoice('update');
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -764,9 +796,9 @@ daovoice('update');
       <i class="fa fa-area-chart"></i>
     </span>
     
-      <span class="post-meta-item-text">网站总字数&#58;</span>
+      <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="网站总字数">15.3k</span>
+    <span title="Site words total count">15.5k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
@@ -809,11 +841,6 @@ daovoice('update');
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1322,6 +1349,9 @@ daovoice('update');
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

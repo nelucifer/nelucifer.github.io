@@ -6,5 +6,5 @@ Disallow: /js/
 Disallow: /css/
 Disallow: /fonts/
 
-Sitemap: http://www.wanglixia.top/sitemap.xml
-Sitemap: http://www.wanglixia.top/baidusitemap.xml
+Sitemap: https://www.wanglixia.top/sitemap.xml
+Sitemap: https://www.wanglixia.top/baidusitemap.xml

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.wanglixia.top/gitbook-usage.html</loc>
+    
+    <lastmod>2019-01-15T12:24:45.533Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.wanglixia.top/about/index.html</loc>
     
     <lastmod>2019-01-15T12:21:16.821Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://www.wanglixia.top/redis-windows-install.html</loc>
     
     <lastmod>2019-01-15T11:49:49.265Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.wanglixia.top/gitbook-usage.html</loc>
-    
-    <lastmod>2019-01-15T11:49:49.250Z</lastmod>
     
   </url>
   

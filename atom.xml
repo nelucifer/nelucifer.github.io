@@ -518,6 +518,42 @@
   </entry>
   
   <entry>
+    <title>jQuery学习笔记（一）样式篇2</title>
+    <link href="https://www.wanglixia.top/jQuery-usage-1.html"/>
+    <id>https://www.wanglixia.top/jQuery-usage-1.html</id>
+    <published>2017-05-23T13:25:16.000Z</published>
+    <updated>2019-01-16T14:34:41.523Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://img.wanglixia.top/logo-jquery-20191111489.jpg" alt="logo-jquery-20191111489"></p><p>本文内容有：</p><ol><li>jQuery的属性与样式之html()及.text()</li><li>jQuery的属性与样式之增加样式.addClass()</li><li>jQuery的属性与样式之删除样式.removeClass()</li><li>jQuery的属性与样式之切换样式.toggleClass()</li><li>jQuery的属性与样式之样式操作.css()</li><li>.css()与.addClass()设置样式的区别</li><li>jQuery的属性与样式之.val()</li><li>jQuery的属性与样式之元素的数据存储<a id="more"></a><h3 align="center"> （一）jQuery的属性与样式之html()及.text()</h3></li></ol><h3 id="html-方法："><a href="#html-方法：" class="headerlink" title=".html()方法："></a><code>.html()</code>方法：</h3><p>&emsp;&emsp;获取集合中第一个匹配元素的HTML内容 或 设置每一个匹配元素的html内容，具体有3种用法：</p><ol><li><code>.html()</code> 不传入值，就是获取集合中第一个匹配元素的HTML内容</li><li><code>.html(htmlString)</code>  设置每一个匹配元素的html内容</li><li><code>.html(function(index, oldhtml))</code> 用来返回设置HTML内容的一个函数</li></ol><p><strong>注意事项：</strong><br><code>.html()</code>方法内部使用的是DOM的innerHTML属性来处理的，所以在设置与获取上需要注意<strong>这个操作是针对整个HTML内容（不仅仅只是文本内容）</strong></p><h3 id="text-方法"><a href="#text-方法" class="headerlink" title=".text()方法"></a><code>.text()</code>方法</h3><p>得到匹配元素集合中每个元素的文本内容结合，包括他们的后代，或设置匹配元素集合中每个元素的文本内容为指定的文本内容。，具体有3种用法：</p><ol><li><code>.text()</code> 得到匹配元素集合中每个元素的合并文本，包括他们的后代</li><li><code>.text(textString)</code> 用于设置匹配元素内容的文本</li><li><code>.text(function(index, text))</code> 用来返回设置文本内容的一个函数</li></ol><p><strong>注意事项：</strong><br><code>.text()</code>结果返回一个字符串，包含所有匹配元素的合并文本</p><h3 id="html与-text的异同"><a href="#html与-text的异同" class="headerlink" title=".html与.text的异同:"></a><code>.html</code>与<code>.text</code>的异同:</h3><ol><li><code>.html</code>与<code>.text</code>的方法操作是一样，只是在具体针对处理对象不同</li><li><code>.html</code>处理的是元素内容，<code>.text</code>处理的是文本内容</li><li><code>.html</code>只能使用在HTML文档中，<code>.text</code> 在XML 和 HTML 文档中都能使用</li><li>如果处理的对象只有一个子文本节点，那么html处理的结果与text是一样的</li></ol><p><strong>火狐不支持innerText属性，用了类似的textContent属性，.text()方法综合了2个属性的支持，所以可以兼容所有浏览器</strong></p><p></p><h3 align="center"> （二）jQuery的属性与样式之增加样式.addClass()<p></p><p>&emsp;&emsp;在HTML结构中里，多个class以空格分隔，当一个节点（或称为一个标签）含有多个class时，DOM元素响应的className属性获取的不是class名称的数组，而是一个含有空格的字符串，这就使得多class操作变得很麻烦。</p><p><strong><code>.addClass(className)</code>方法</strong></p><ol><li><code>.addClass(className) </code>: 为每个匹配元素所要增加的一个或多个样式名</li><li><code>.addClass(function(index, currentClass))</code>: 这个函数返回一个或更多用空格隔开的要增加的样式名</li></ol><p><strong>注意事项：</strong></p><p><code>.addClass()</code>方法不会替换一个样式类名。它只是简单的添加一个样式类名到元素上</p><p></p><h3 align="center"> （三）jQuery的属性与样式之删除样式.removeClass()<br>jQuery的属性与样式之删除样式.removeClass()<br>jQuery通过.addClass()方法可以很便捷的增加样式。如果需要样式之间的切换，同样jQuery提供了一个很方便的.removeClass()，它的作用是从匹配的元素中删除全部或者指定的class<br>.removeClass( )方法<p></p><ol><li>.removeClass( [className ] )：每个匹配元素移除的一个或多个用空格隔开的样式名</li><li>.removeClass( function(index, class) ) ： 一个函数，返回一个或多个将要被移除的样式名<br>注意事项<br>如果一个样式类名作为一个参数,只有这样式类会被从匹配的元素集合中删除 。 如果没有样式名作为参数，那么所有的样式类将被移除</li></ol><p></p><h3 align="center"> （四）jQuery的属性与样式之切换样式.toggleClass()<p></p><p>&emsp;&emsp;jQuery提供一个toggleClass方法用于简化互斥的逻辑，通过<code>toggleClass</code>方法动态添加删除Class，一次执行相当于<code>addClass</code>，再次执行相当于<code>removeClass</code>。</p><p>&emsp;&emsp;<code>.toggleClass()</code>方法：在匹配的元素集合中的每个元素上添加或删除一个或多个样式类,如果存在（不存在）就删除（添加）一个类。</p><ol><li><code>.toggleClass(className)</code>：在匹配的元素集合中的每个元素上用来切换的一个或多个（用空格隔开）样式类名</li><li><code>.toggleClass(className, switch)</code>：一个布尔值，用于判断样式是否应该被添加或移除</li><li><code>.toggleClass([switch])</code>：一个用来判断样式类添加还是移除的 布尔值</li><li><code>.toggleClass(function(index, class, switch) [,switch])</code>：用来返回在匹配的元素集合中的每个元素上用来切换的样式类名的一个函数。接收元素的索引位置和元素旧的样式类作为参数</li></ol><p><strong>注意事项：</strong></p><ol><li><code>toggleClass</code>是一个互斥的逻辑，也就是通过判断对应的元素上是否存在指定的Class名，如果有就删除，如果没有就增加；</li><li><code>toggleClass</code>会保留原有的Class名后新增，通过空格隔开。</li></ol><p></p><h3 align="center"> （五）jQuery的属性与样式之样式操作.css()<p></p><p>.css() 方法：获取元素样式属性的计算值或者设置元素的CSS属性<br>获取：</p><ol><li>.css( propertyName ) ：获取匹配元素集合中的第一个元素的样式属性的计算值</li><li>.css( propertyNames )：传递一组数组，返回一个对象结果<br>设置：</li><li>.css(propertyName, value )：设置CSS</li><li>.css( propertyName, function )：可以传入一个回调函数，返回取到对应的值进行处理</li><li>.css( properties )：可以传一个对象，同时设置多个样式<br>注意事项：</li><li>浏览器属性获取方式不同，在获取某些值的时候都jQuery采用统一的处理，比如颜色采用RBG，尺寸采用px</li><li>.css()方法支持驼峰写法与大小写混搭的写法，内部做了容错的处理<br>当一个数只被作为值（value）的时候， jQuery会将其转换为一个字符串，并添在字符串的结尾处添加px，例如 .css(“width”,50}) 与 .css(“width”,”50px”})一样</li></ol><p></p><h3 align="center"> （六）.css()与.addClass()设置样式的区别<p></p><p>&emsp;&emsp;对于样式的设置，我们学了addClass与css方法，那么两者之间有什么区别？</p><p><strong>可维护性：</strong></p><ol><li>&emsp;&emsp;<code>.addClass()</code>的本质是通过定义个class类的样式规则，给元素添加一个或多个类。css方法是通过JavaScript大量代码进行改变元素的样式。</li><li>&emsp;&emsp;通过<code>.addClass()</code>我们可以批量的给相同的元素设置统一规则，变动起来比较方便，可以统一修改删除。如果通过.css()方法就需要指定每一个元素是一一的修改，日后维护也要一一的修改，比较麻烦</li></ol><p><strong>灵活性：</strong></p><p>&emsp;&emsp;通过<code>.css()</code>方式可以很容易动态的去改变一个样式的属性，不需要在去繁琐的定义个class类的规则。一般来说在不确定开始布局规则，通过动态生成的HTML代码结构中，都是通过<code>.css()</code>方法处理的</p><p><strong>样式值：</strong></p><p>&emsp;&emsp;.addClass()本质只是针对class的类的增加删除，不能获取到指定样式的属性的值，.css()可以获取到指定的样式值。</p><p><strong>样式的优先级：</strong></p><p>css的样式是有优先级的，当外部样式、内部样式和内联样式同一样式规则同时应用于同一个元素的时候，优先级如下<br><strong>外部样式 &lt; 内部样式 &lt; 内联样式</strong></p><ol><li><code>.addClass()</code>方法是通过增加class名的方式，那么这个样式是在外部文件或者内部样式中先定义好的，等到需要的时候在附加到元素上；</li><li>通过<code>.css()</code>方法处理的是内联样式，直接通过元素的style属性附加到元素上的<br>通过.css方法设置的样式属性优先级要高于.addClass方法。</li></ol><p><strong>总结：</strong></p><ol><li>&emsp;&emsp;<code>.addClass</code>与<code>.css</code>方法各有利弊，一般是静态的结构，都确定了布局的规则，可以用addClass的方法，增加统一的类规则</li><li>&emsp;&emsp;如果是动态的HTML结构，在不确定规则，或者经常变化的情况下，一般多考虑.css()方式</li></ol><p></p><h3 align="center"> （七）jQuery的属性与样式之.val()<p></p><p>jQuery中有一个.val()方法主要是用于处理表单元素的值，比如 input, select 和 textarea。</p><p><strong>.val()方法</strong></p><ol><li>.val()无参数，获取匹配的元素集合中第一个元素的当前值</li><li>.val( value )，设置匹配的元素集合中每个元素的值</li><li>.val( function ) ，一个用来返回设置值的函数</li></ol><p><strong>注意事项：</strong></p><ol><li>通过.val()处理select元素， 当没有选择项被选中，它返回null</li><li>.val()方法多用来设置表单的字段的值</li><li>如果select元素有multiple（多选）属性，并且至少一个选择项被选中， .val()方法返回一个数组，这个数组包含每个选中选择项的值</li></ol><p><strong>.html(),.text()和.val()的差异总结：</strong></p><ol><li>.html(),.text(),.val()三种方法都是用来读取选定元素的内容；只不过.html()是用来读取元素的html内容（包括html标签），.text()用来读取元素的纯文本内容，包括其后代元素，.val()是用来读取表单元素的”value”值。其中.html()和.text()方法不能使用在表单元素上,而.val()只能使用在表单元素上；另外.html()方法使用在多个元素上时，只读取第一个元素；.val()方法和.html()相同，如果其应用在多个元素上时，只能读取第一个表单元素的”value”值，但是.text()和他们不一样，如果.text()应用在多个元素上时，将会读取所有选中元素的文本内容。</li><li>.html(htmlString),.text(textString)和.val(value)三种方法都是用来替换选中元素的内容，如果三个方法同时运用在多个元素上时，那么将会替换所有选中元素的内容。</li><li>.html(),.text(),.val()都可以使用回调函数的返回值来动态的改变多个元素的内容。</li></ol><p></p><h3 align="center"> （八）jQuery的属性与样式之元素的数据存储<p></p><p><strong>jQuery提供的存储接口</strong></p><ol><li>jQuery.data( element, key, value )   //静态接口,存数据</li><li>jQuery.data( element, key )  //静态接口,取数据</li></ol><p>.data( key, value ) //实例接口,存数据</p><p>.data( key ) //实例接口,存数据</p><p>&emsp;&emsp;2个方法在使用上存取都是通一个接口，传递元素，键值数据。在jQuery的官方文档中，建议用.data()方法来代替。</p><p>&emsp;&emsp;把DOM可以看作一个对象，那么我们往对象上是可以存在基本类型，引用类型的数据的，但是这里会引发一个问题，可能会存在循环引用的内存泄漏风险</p><p>&emsp;&emsp;通过jQuery提供的数据接口，就很好的处理了这个问题了，我们不需要关心它底层是如何实现，只需要按照对应的data方法使用就行了。<br>&emsp;&emsp;同样的也提供2个对应的删除接口，使用上与data方法其实是一致的，只不过是一个是增加一个是删除罢了<br>jQuery.removeData(element [, name])<br>.removeData([name])</p><h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>本文整理自慕课网jQuery基础，课程链接：<a href="https://www.imooc.com/learn/418" target="_blank" rel="noopener">https://www.imooc.com/learn/418</a>；<br>作者：Aaron艾伦<a href="https://www.imooc.com/u/290139/courses?sort=publish" target="_blank" rel="noopener">https://www.imooc.com/u/290139/courses?sort=publish</a><br>谢谢</p></h3></h3></h3></h3></h3></h3></h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://img.wanglixia.top/logo-jquery-20191111489.jpg&quot; alt=&quot;logo-jquery-20191111489&quot;&gt;&lt;/p&gt;
+&lt;p&gt;本文内容有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;jQuery的属性与样式之html()及.text()&lt;/li&gt;
+&lt;li&gt;jQuery的属性与样式之增加样式.addClass()&lt;/li&gt;
+&lt;li&gt;jQuery的属性与样式之删除样式.removeClass()&lt;/li&gt;
+&lt;li&gt;jQuery的属性与样式之切换样式.toggleClass()&lt;/li&gt;
+&lt;li&gt;jQuery的属性与样式之样式操作.css()&lt;/li&gt;
+&lt;li&gt;.css()与.addClass()设置样式的区别&lt;/li&gt;
+&lt;li&gt;jQuery的属性与样式之.val()&lt;/li&gt;
+&lt;li&gt;jQuery的属性与样式之元素的数据存储
+    
+    </summary>
+    
+      <category term="技术" scheme="https://www.wanglixia.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="随笔" scheme="https://www.wanglixia.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="前端" scheme="https://www.wanglixia.top/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="jQuery" scheme="https://www.wanglixia.top/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
     <title>jQuery学习笔记（一）样式篇1</title>
     <link href="https://www.wanglixia.top/jQuery-usage.html"/>
     <id>https://www.wanglixia.top/jQuery-usage.html</id>
@@ -544,34 +580,6 @@
       <category term="前端" scheme="https://www.wanglixia.top/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="https://www.wanglixia.top/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用SoapUI 5.3.0调试webservice接口（参数格式XML）</title>
-    <link href="https://www.wanglixia.top/soapUI-webservice.html"/>
-    <id>https://www.wanglixia.top/soapUI-webservice.html</id>
-    <published>2017-03-16T13:58:41.000Z</published>
-    <updated>2019-01-04T17:24:58.521Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近项目中经常要调试webservice接口，从朋友处了解到他们调试webservice接口时使用SoapUI，觉得十分好用，个人也对此十分感兴趣，因此简要记录一下这个工具的使用。<br><a id="more"></a></p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul><li>下载SoapUI，我使用的是5.3.0 <a href="https://www.soapui.org/downloads/latest-release.html" target="_blank" rel="noopener">下载SoapUI传送门</a></li><li>WebService 服务接口<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h3 id="新建调试项目"><a href="#新建调试项目" class="headerlink" title="新建调试项目"></a>新建调试项目</h3><img src="http://img.wanglixia.top/soapUI-webservice-1-20191423308.png" alt="soapUI-webservice-1-20191423308"><h4 id="输入项目名称及要调试的接口有效地址，输入完毕点击OK"><a href="#输入项目名称及要调试的接口有效地址，输入完毕点击OK" class="headerlink" title="输入项目名称及要调试的接口有效地址，输入完毕点击OK"></a>输入项目名称及要调试的接口有效地址，输入完毕点击OK</h4><img src="http://img.wanglixia.top/soapUI-webservice-2-201914233049.png" alt="soapUI-webservice-2-201914233049"><h4 id="soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new-request-输入名称后如下图会自动生成如下格式代码；其中-web-in0中填写入参"><a href="#soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new-request-输入名称后如下图会自动生成如下格式代码；其中-web-in0中填写入参" class="headerlink" title="soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new request,输入名称后如下图会自动生成如下格式代码；其中 web:in0中填写入参"></a>soapUI会自动获取所有已开放接口，在想要调试的接口方法上面选中右击，选择new request,输入名称后如下图会自动生成如下格式代码；其中 <a href="web:in0" target="_blank" rel="noopener">web:in0</a>中填写入参</h4><img src="http://img.wanglixia.top/soapUI-webservice-3-201914233131.png" alt="soapUI-webservice-3-201914233131"><br><em>注意：xml格式的入参最好使用 &lt;[CDATA[]]&gt; 包起来。点击左上角的绿色三角就可以调试接口了。</em><h3 id="新建测试套件-New-TestSuite"><a href="#新建测试套件-New-TestSuite" class="headerlink" title="新建测试套件 New TestSuite"></a>新建测试套件 New TestSuite</h3><h4 id="在项目名称上右击，选择-New-TestSuite-输入名称保存"><a href="#在项目名称上右击，选择-New-TestSuite-输入名称保存" class="headerlink" title="在项目名称上右击，选择 New TestSuite,输入名称保存"></a>在项目名称上右击，选择 New TestSuite,输入名称保存</h4><img src="http://img.wanglixia.top/soapUI-webservice-4-201914233313.png" alt="soapUI-webservice-4-201914233313"><h4 id="在自己新建的TestSuite名称上右击，选择-New-TestCase-输入名称保存"><a href="#在自己新建的TestSuite名称上右击，选择-New-TestCase-输入名称保存" class="headerlink" title="在自己新建的TestSuite名称上右击，选择 New TestCase,输入名称保存"></a>在自己新建的TestSuite名称上右击，选择 New TestCase,输入名称保存</h4><img src="http://img.wanglixia.top/soapUI-webservice-5-201914233350.png" alt="soapUI-webservice-5-201914233350"><h4 id="在Test-Steps上右击-选择-Add-Step-–-gt-SOAP-Request-输入名称并选择接口，名称最好容易识别一点"><a href="#在Test-Steps上右击-选择-Add-Step-–-gt-SOAP-Request-输入名称并选择接口，名称最好容易识别一点" class="headerlink" title="在Test Steps上右击 选择 Add Step –&gt;SOAP Request,输入名称并选择接口，名称最好容易识别一点"></a>在Test Steps上右击 选择 Add Step –&gt;SOAP Request,输入名称并选择接口，名称最好容易识别一点</h4><img src="http://img.wanglixia.top/soapUI-webservice-6-201914233419.png" alt="soapUI-webservice-6-201914233419"><br><img src="http://img.wanglixia.top/soapUI-webservice-7-201914233447.png" alt="soapUI-webservice-7-201914233447"><h4 id="接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。"><a href="#接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。" class="headerlink" title="接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。"></a>接下来就可以加入入参进行调试。一次简单的工具使用，记录下来，希望可以帮助到你，祝你好运。</h4></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近项目中经常要调试webservice接口，从朋友处了解到他们调试webservice接口时使用SoapUI，觉得十分好用，个人也对此十分感兴趣，因此简要记录一下这个工具的使用。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="https://www.wanglixia.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="随笔" scheme="https://www.wanglixia.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="接口" scheme="https://www.wanglixia.top/tags/%E6%8E%A5%E5%8F%A3/"/>
-    
-      <category term="SoapUI" scheme="https://www.wanglixia.top/tags/SoapUI/"/>
-    
-      <category term="Webservice" scheme="https://www.wanglixia.top/tags/Webservice/"/>
     
   </entry>
   

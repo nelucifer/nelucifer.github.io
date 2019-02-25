@@ -135,19 +135,19 @@ daovoice('update');
 
 
 
-<meta name="description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。  为什么Spring用来完成EJB完成的事情，那么这个EJB是什么玩意？概念：  EJB：Enterpr">
+<meta name="description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。">
 <meta name="keywords" content="随笔,框架,spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring系列学习之IoC与AOP">
 <meta property="og:url" content="https://www.wanglixia.top/spring学习笔记-1.html">
 <meta property="og:site_name" content="coder立夏的笔记">
-<meta property="og:description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。  为什么Spring用来完成EJB完成的事情，那么这个EJB是什么玩意？概念：  EJB：Enterpr">
+<meta property="og:description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190110204409607.jpg">
-<meta property="og:updated_time" content="2019-02-25T16:28:05.346Z">
+<meta property="og:updated_time" content="2019-02-25T17:00:07.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring系列学习之IoC与AOP">
-<meta name="twitter:description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。  为什么Spring用来完成EJB完成的事情，那么这个EJB是什么玩意？概念：  EJB：Enterpr">
+<meta name="twitter:description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190110204409607.jpg">
 
 
@@ -500,7 +500,7 @@ daovoice('update');
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>spring框架的释义：</p>
 <blockquote>
-<p>Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。</p>
+<p>Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。<br><a id="more"></a></p>
 </blockquote>
 <p>为什么Spring用来完成EJB完成的事情，那么这个EJB是什么玩意？概念：</p>
 <blockquote>
@@ -517,7 +517,6 @@ daovoice('update');
 <li>通过切面和模板减少样板式代码。</li>
 </ul>
 </blockquote>
-<a id="more"></a>
 <h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>传统的做法，每个对象负责管理它所依赖的对象的引用，这将会导致高度耦合和难以测试的代码。比如说，对象A要使用对象B，则在对象A中来控制对象B，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">A</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b = <span class="keyword">new</span> B();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b.sayHello(userName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span>+ userName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>耦合具有两面性，一方面，紧密耦合的代码难以测试、难以复用、难以理解；另一方面，一定程度的耦合又是必须的——完全没有耦合的代码什么也做不了。总之，耦合是必须的，但是应当被合理地管理。</p>
 <p>创建应用组件之间协作的行为通常称为装配。Spring有多种装配bean的方式，采用XMl、使用Java进行配置。</p>

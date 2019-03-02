@@ -135,21 +135,21 @@ daovoice('update');
 
 
 
-<meta name="description" content="前言&amp;emsp;&amp;emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。使用JSP的话，尽管JSP存在的时间很长、也特别像HTML，">
+<meta name="description" content="前言&amp;emsp;&amp;emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。">
 <meta name="keywords" content="随笔,框架,ssm,tiles,前端框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSM框架整合笔记（三）视图解析器Tiles、FreeMarker配置">
 <meta property="og:url" content="https://www.wanglixia.top/SSM框架-整合笔记2.html">
 <meta property="og:site_name" content="coder立夏的笔记">
-<meta property="og:description" content="前言&amp;emsp;&amp;emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。使用JSP的话，尽管JSP存在的时间很长、也特别像HTML，">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.wanglixia.top/ssm在码云上的tags-201932162926.png">
 <meta property="og:image" content="http://img.wanglixia.top/ssm内容Tiles分析-20193216310.png">
 <meta property="og:image" content="http://img.wanglixia.top/wechat_qrcode-2019115195545.jpg">
-<meta property="og:updated_time" content="2019-03-02T16:36:30.601Z">
+<meta property="og:updated_time" content="2019-03-02T16:42:19.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSM框架整合笔记（三）视图解析器Tiles、FreeMarker配置">
-<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。使用JSP的话，尽管JSP存在的时间很长、也特别像HTML，">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。">
 <meta name="twitter:image" content="http://img.wanglixia.top/ssm在码云上的tags-201932162926.png">
 
 
@@ -500,7 +500,7 @@ daovoice('update');
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。使用JSP的话，尽管JSP存在的时间很长、也特别像HTML，但是由于夹杂了各种标签库，显得特别混乱，因此在传统的单机应用中，在了解了常用的几个前端模板引擎（视图解析器），如Freemarker、Thymeleaf、Velocity、Tiles等：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在MVC开发模式下，View离不开模板引擎，在Java中模板引擎使用最多的就是JSP、Velocity和FreeMarker。在配置框架的过程中，一般的系统中的前端页面中总是有一些通用的头部、底部或者菜单栏，最原始的方法当然是为每个HTML页面添加需要引入的css或者js等公用资源，但是这种方式似乎太难以维护。<br><a id="more"></a><br>使用JSP的话，尽管JSP存在的时间很长、也特别像HTML，但是由于夹杂了各种标签库，显得特别混乱，因此在传统的单机应用中，在了解了常用的几个前端模板引擎（视图解析器），如Freemarker、Thymeleaf、Velocity、Tiles等：</p>
 <ul>
 <li>Velocity：自面世以来就以语法简单著称，其写法非常接近Java语法，学习成本低，而且其简单的语法给开发人员带来了很大的自由度，能够自由发挥；</li>
 <li>FreeMarker： 使用后缀为ftl（FreeMarker Template Language，FTL）和html 的模板，处理动态网页优势比较强，由于不能写Java代码，可以实现严格的MVC分离；</li>
@@ -509,7 +509,6 @@ daovoice('update');
 <li>Tiles：Apache Tiles，定义适用于所有页面的通用页面布局。但是Tiles的模板是需要和jsp结合的，内容页和模板页是独立的页面，因此不会影响HTML内容页的写法。</li>
 </ul>
 <p>本文内容：使用Tiles、FreeMarker配置前端模板引擎。</p>
-<a id="more"></a>
 <h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
 <li><p>SSM框架整合笔记（一）详细注释：<a href="https://www.wanglixia.top/ssm%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B0.html#more">https://www.wanglixia.top/ssm%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B0.html#more</a></p>
 </li>

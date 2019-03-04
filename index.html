@@ -371,6 +371,493 @@ daovoice('update');
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.wanglixia.top/ssm框架-整合笔记4.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coder立夏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coder立夏的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ssm框架-整合笔记4.html" itemprop="url">SSM框架整合笔记（五）统一异常处理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T22:20:52+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,008 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp; 在Java项目中，在控制器、业务层、数据库操作的过程中，总是会遇到各种可控和不可控的异常需要处理，如果我们在每一个异常可能出现的地方都手动使用try{}catch{}单独处理异常的话，会产生的最大的问题就是：异常处理过程中的返回错误信息、日志打印都可能不统一，导致代码冗余和不可维护。因此我们使用统一的方式处理异常：</p>
+<h2 id="本文内容"><a href="#本文内容" class="headerlink" title="本文内容"></a>本文内容</h2><h3 id="一、SpringMVC处理异常方式："><a href="#一、SpringMVC处理异常方式：" class="headerlink" title="一、SpringMVC处理异常方式："></a>一、SpringMVC处理异常方式：</h3><ul>
+<li><ol>
+<li>使用@ExceptionHandler注解：弊端：进行异常处理的方法必须与出错的方法在同一个Controller里面；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>实现HandlerExceptionResolver接口：可以进行全局的异常控制。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>使用@ControllerAdvice注解：使用了该注解之后，需要进行异常处理的方法与出错的方法就不必须在同一个Controller中了。@ControllerAdvice + @ExceptionHandler也可以实现全局的异常捕捉。</li>
+</ol>
+</li>
+</ul>
+<h3 id="二、为控制器添加通知"><a href="#二、为控制器添加通知" class="headerlink" title="二、为控制器添加通知"></a>二、为控制器添加通知</h3><blockquote>
+<p>如果要在多个控制器中处理异常，使用@ExceptionHandler注解是很有用的，但是如果多个控制器类中都会抛出异常，那么所有的控制器中都有重复相同的@ExceptionHandler方法。因此，需要创建一个基础的控制器类，所有的控制器要扩展这个类，从而继承通用的@ExceptionHandler方法。</p>
+</blockquote>
+<p>&emsp;&emsp; Spring3.2引入了一个新的解决方案：控制器通知。控制器通知是所有带有@ControllerAdvice注解的类，这个类会包含一个或多个如下类型的方法：</p>
+<ul>
+<li>@ExceptionHandler注解标注的方法；</li>
+<li>@InitBinder注解标注的方法；</li>
+<li>@ModelAttribute注解标注的方法；</li>
+</ul>
+<p>&emsp;&emsp; @ControllerAdvice可以将所有的@ExceptionHandler方法收集到一个类中，把所有的控制器异常进行一致的处理。</p>
+<p>添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```java</span><br><span class="line">package com.weyoung.framework.config;</span><br><span class="line"></span><br><span class="line">import com.weyoung.framework.exception.BusinessException;</span><br><span class="line">import com.weyoung.framework.web.Message;</span><br><span class="line">import com.weyoung.platform.pojo.UserInfo;</span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.springframework.web.bind.annotation.ControllerAdvice;</span><br><span class="line">import org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line">import org.springframework.web.bind.annotation.ModelAttribute;</span><br><span class="line">import org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line">import static com.weyoung.framework.common.Constants.SESSION_DEFAULT;</span><br><span class="line">import static com.weyoung.framework.common.ErrorConstants.EXCEPTION_SYSTEM_MSG;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @作者 weyoung</span><br><span class="line"> * @功能描述 给控制器请求添加默认常用参数，统一处理异常</span><br><span class="line"> * @日期 2019/3/4</span><br><span class="line"> */</span><br><span class="line">@ControllerAdvice</span><br><span class="line">public class ControllerAdviceHandler &#123;</span><br><span class="line"></span><br><span class="line">    private static final Logger logger = Logger.getLogger(ControllerAdviceHandler.class);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @Description // 添加用户信息，可以在Controller中获取</span><br><span class="line">     **/</span><br><span class="line">    @ModelAttribute(&quot;BasUser&quot;)</span><br><span class="line">    public UserInfo basUser(HttpServletRequest request) &#123;</span><br><span class="line">        HttpSession session = request.getSession(true);</span><br><span class="line">        UserInfo user = (UserInfo) session.getAttribute(SESSION_DEFAULT);</span><br><span class="line">        return user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @ExceptionHandler(value = Exception.class)</span><br><span class="line">    @ResponseBody</span><br><span class="line">    public Message exceptionHandler(Exception ex) &#123;</span><br><span class="line">        // 处理业务异常</span><br><span class="line">        if (ex instanceof BusinessException) &#123;</span><br><span class="line">            logger.error(&quot;BusinessException&quot;, ex);</span><br><span class="line">            // 返回业务异常code和message;</span><br><span class="line">            return Message.failed(((BusinessException) ex).getCode(), ex.getMessage());</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            logger.error(&quot;Exception&quot;, ex);</span><br><span class="line">            return Message.failed(Message.FAILED_CODE, EXCEPTION_SYSTEM_MSG);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="三、处理业务异常"><a href="#三、处理业务异常" class="headerlink" title="三、处理业务异常"></a>三、处理业务异常</h3><p>BusinessException.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.weyoung.framework.exception;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.weyoung.framework.web.Message;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @作者 weyoung</span></span><br><span class="line"><span class="comment"> * @功能描述 业务异常处理</span></span><br><span class="line"><span class="comment"> * @日期 2019/3/4</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BusinessException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BusinessException</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">        <span class="keyword">this</span>.code = Message.FAILED_CODE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BusinessException</span><span class="params">(<span class="keyword">int</span> code, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试，在Controller中throw一个Exception，发现可以进入该通知了，配置成功。</p>
+<h2 id="相关文章推荐"><a href="#相关文章推荐" class="headerlink" title="相关文章推荐"></a>相关文章推荐</h2><ul>
+<li><p><a href="https://www.wanglixia.top/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1.html#more">Spring系列学习之IoC与AOP</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/ssm%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B0.html#more">SSM框架整合笔记（一）详细注释</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/ssm%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B01.html#more">SSM框架整合笔记（二）配置Druid和Webservice</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/SSM%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B02.html#more">SSM框架整合笔记（三）配置Tiles、FreeMarker</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/SSM%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B03.html">SSM框架整合笔记（四）使用注解配置切面</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1.html#more">Spring系列学习之IoC与AOP</a></p>
+</li>
+</ul>
+<h2 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h2><p>&emsp;&emsp; 该项目持续更新中，会在代码以及该文档里面详细注释和介绍。项目托管在<code>码云</code>开源平台上，持续更新项目源码链接：<br><a href="https://gitee.com/nelucifer/ssm-note" target="_blank" rel="noopener">https://gitee.com/nelucifer/ssm-note</a>，点击<code>克隆/下载</code>获取该项目。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.wanglixia.top/Git基本使用.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coder立夏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coder立夏的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Git基本使用.html" itemprop="url">Git基本使用</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T19:45:33+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,428 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp; Git是一个开源的分布式版本控制系统，也是个内容管理系统(CMS),工作管理系统等。常见的网站如Github、Gitee、coding使用的都是Git。Git能够帮助我们记录每一次的修改和提交，创建分支、合并分支等。<br>本文主要介绍Git的基本操作和Git 图形化界面</p>
+<h2 id="Windows版安装"><a href="#Windows版安装" class="headerlink" title="Windows版安装"></a>Windows版安装</h2><ol>
+<li>下载链接：<a href="https://gitforwindows.org/" target="_blank" rel="noopener">https://gitforwindows.org/</a></li>
+</ol>
+<p>打开-&gt;安装-&gt;一路next-&gt;finish。<br><img src="http://img.wanglixia.top/git_install_1-20193420129.png" alt="git_install_1-20193420129"></p>
+<ol start="2">
+<li>安装完成后空白界面右键，如下图示，出现<figure class="highlight plain"><figcaption><span>GUI Here```和 ```Git Bash Here```两个选项：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![git_install_2-201934201420](http://img.wanglixia.top/git_install_2-201934201420.png)</span><br><span class="line"></span><br><span class="line">3. 点击```Git Bash Here```选项，弹出Git命令窗口，可以在该窗口进行Git操作；</span><br><span class="line"></span><br><span class="line">## 配置</span><br><span class="line"></span><br><span class="line">使用Git命令窗口，输入以下命令配置全局参数用户名和邮箱地址，使用该参数表示本地所有Git仓库都使用这个配置：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">git config --global user.name &quot;weyoung&quot;</span><br><span class="line">git config --global user.email &quot;ne_lucifer@163.com&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p><img src="http://img.wanglixia.top/git_工作流程-201934204551.png" alt="git_工作流程-201934204551"></p>
+<h3 id="Git的相关概念"><a href="#Git的相关概念" class="headerlink" title="Git的相关概念"></a>Git的相关概念</h3><ul>
+<li>远程仓库（remote）：Git的远程仓库；</li>
+<li>工作空间（workspace）： 仓库文件夹里面除了.git目录以外的内容；</li>
+<li>本地仓库（Repository）：使用commit命令将缓存区文件提交到本地仓库；</li>
+<li>缓存区（stage或者index）：本地修改完文件之后需要add到缓存区，一般存放在.get目录下的index文件中；</li>
+</ul>
+<h2 id="一、Git常用命令"><a href="#一、Git常用命令" class="headerlink" title="一、Git常用命令"></a>一、Git常用命令</h2><h3 id="1-创建仓库和初始化"><a href="#1-创建仓库和初始化" class="headerlink" title="1. 创建仓库和初始化"></a>1. 创建仓库和初始化</h3><p><strong>这个操作主要用于本地创建源码或源文档，然后提交推送到远程仓库。</strong><br>新建目录localRepo执行以下命令初始化为Git仓库，.git是一个隐藏的目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init localRepo</span><br></pre></td></tr></table></figure></p>
+<p>localRepo 为本地仓库<br><img src="http://img.wanglixia.top/git-init-1-201934211129.png" alt="git-init-1-201934211129"></p>
+<h3 id="2-将文件添加到版本控制"><a href="#2-将文件添加到版本控制" class="headerlink" title="2. 将文件添加到版本控制"></a>2. 将文件添加到版本控制</h3><p>在localRepo中新建一个文件README.txt，使用以下命令可以将文件添加到缓存区（暂存区）。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add README.txt</span><br><span class="line">git add *.java <span class="comment"># 这个命令就是把.java结尾的文件提交到暂存区</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-将暂存区文件提交到本地仓库"><a href="#3-将暂存区文件提交到本地仓库" class="headerlink" title="3. 将暂存区文件提交到本地仓库"></a>3. 将暂存区文件提交到本地仓库</h3><p>使用如下命令将暂存区文件提交到本地仓库，-m 后面的就是提交的说明内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &apos;这里填写提交信息&apos;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.wanglixia.top/git-commit-201934212219.png" alt="git-commit-201934212219"></p>
+<h3 id="4-取消已缓存的内容"><a href="#4-取消已缓存的内容" class="headerlink" title="4. 取消已缓存的内容"></a>4. 取消已缓存的内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD README.txt</span><br></pre></td></tr></table></figure>
+<h3 id="5-Git分支管理"><a href="#5-Git分支管理" class="headerlink" title="5. Git分支管理"></a>5. Git分支管理</h3><h4 id="5-1-创建分支命令"><a href="#5-1-创建分支命令" class="headerlink" title="5.1. 创建分支命令"></a>5.1. 创建分支命令</h4><p>创建分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名称</span><br></pre></td></tr></table></figure></p>
+<p>列出本地所有分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-2-切换分支命令"><a href="#5-2-切换分支命令" class="headerlink" title="5.2. 切换分支命令"></a>5.2. 切换分支命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名称</span><br></pre></td></tr></table></figure>
+<h4 id="5-3-删除分支"><a href="#5-3-删除分支" class="headerlink" title="5.3. 删除分支"></a>5.3. 删除分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 分支名称</span><br></pre></td></tr></table></figure>
+<h4 id="5-4-分支合并"><a href="#5-4-分支合并" class="headerlink" title="5.4. 分支合并"></a>5.4. 分支合并</h4><p>本地有多个分支且非当前分支有了更改的内容，通过以下命令合并到当前分支中。<br>如：本地有两个分支，一个newbranch、一个master（当前分支），可以将newbranch合并到master分支中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge newbranch</span><br></pre></td></tr></table></figure>
+<h4 id="5-5-查看提交历史"><a href="#5-5-查看提交历史" class="headerlink" title="5.5. 查看提交历史"></a>5.5. 查看提交历史</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-从远程仓库克隆代码到本地（常用）"><a href="#6-从远程仓库克隆代码到本地（常用）" class="headerlink" title="6. 从远程仓库克隆代码到本地（常用）"></a>6. 从远程仓库克隆代码到本地（常用）</h3><p>这个是在日常工作中比较常用的命令，如已经有了现成的Git服务器和远程仓库，我们需要把远程仓库的项目克隆到本地。<br>使用以下命令：</p>
+<p>git clone &lt;远程仓库路径&gt;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitee.com/nelucifer/ssm-note.git</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.wanglixia.top/git-clone-201934215050.png" alt="git-clone-201934215050"></p>
+<h3 id="7-从远程仓库获取更新"><a href="#7-从远程仓库获取更新" class="headerlink" title="7. 从远程仓库获取更新"></a>7. 从远程仓库获取更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br><span class="line"><span class="comment"># 示例如下：</span></span><br><span class="line">git pull origin next:master</span><br></pre></td></tr></table></figure>
+<h3 id="8-推送代码到远程仓库"><a href="#8-推送代码到远程仓库" class="headerlink" title="8. 推送代码到远程仓库"></a>8. 推送代码到远程仓库</h3><p>本地新增了一个文件，</p>
+<ul>
+<li>需要使用 <figure class="highlight plain"><figcaption><span>add``` 命令添加到缓存区；</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 然后使用 ```git commit``` 命令提交到本地仓库；</span><br><span class="line">* 最后使用 ```git push``` 命令推送到远程仓库。</span><br><span class="line"></span><br><span class="line">示例代码如下：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br><span class="line"># 示例如下</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="9-总结"><a href="#9-总结" class="headerlink" title="9. 总结"></a>9. 总结</h3><ul>
+<li><code>git commit</code>：是将本地修改过的文件提交到本地库中；</li>
+<li><code>git push</code>：是将本地库中的最新信息发送给远程库；</li>
+<li><code>git pull</code>：是从远程获取最新版本到本地，并自动merge；</li>
+<li><code>git fetch</code>：是从远程获取最新版本到本地，不会自动merge；</li>
+<li><code>git merge</code>：是用于从指定的commit(s)合并到当前分支，用来合并两个分支；</li>
+</ul>
+<h2 id="二、Git图形化工具Source-Tree"><a href="#二、Git图形化工具Source-Tree" class="headerlink" title="二、Git图形化工具Source Tree"></a>二、Git图形化工具Source Tree</h2><p>Source Tree号称是最好用的Git GUI工具，很适合上手，如下：<br>包含拉取、提交、推送、获取、添加标签、添加分支，无需使用命令，基本可满足日常开发使用：</p>
+<p><img src="http://img.wanglixia.top/SourceTree使用-20193422519.png" alt="SourceTree使用-20193422519"></p>
+<h3 id="SourceTree-下载"><a href="#SourceTree-下载" class="headerlink" title="SourceTree 下载"></a>SourceTree 下载</h3><p>SourceTree 下载地址：<a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">https://www.sourcetreeapp.com/</a></p>
+<h3 id="SourceTree-安装配置"><a href="#SourceTree-安装配置" class="headerlink" title="SourceTree 安装配置"></a>SourceTree 安装配置</h3><p>双击下载的exe文件进行安装，发现强制使用Bitbucket登录，目前免密登录的方式已经失效。老老实实注册Bitbucket吧。如果嫌比较繁琐的话，可以使用Git自带的GUI工具、tortoisegit等，也可以使用IDEA相关的软件可以使用IDEA自带的GIT工具吧。</p>
+<p><img src="http://img.wanglixia.top/SourceTree-1-201934232613.png" alt="SourceTree-1-201934232613"></p>
+<p>选择 Create one for free链接，注册账户，完成之后点击Bitbucket授权，点击下一步。</p>
+<p><img src="http://img.wanglixia.top/SourceTree-3-201934232739.png" alt="SourceTree-3-201934232739"></p>
+<p><img src="http://img.wanglixia.top/SourceTree-4-201934232850.png" alt="SourceTree-4-201934232850"></p>
+<p><img src="http://img.wanglixia.top/SourceTree-5-201934234343.png" alt="SourceTree-5-201934234343"></p>
+<p>安装完成之后，输入我们的项目的远程仓库地址：</p>
+<p><img src="http://img.wanglixia.top/SourceTree-6-201934234631.png" alt="SourceTree-6-201934234631"></p>
+<p>拉取该项目，完成项目修改之后暂存-&gt;修改描述-&gt;提交，提交时会弹出账号密码框，输入账号密码即可。<br>可以看到账户密码已经被添加了：</p>
+<p><img src="http://img.wanglixia.top/SourceTree-10-2019350734.png" alt="SourceTree-10-2019350734"></p>
+<p>完成。</p>
+<h2 id="相关文章推荐"><a href="#相关文章推荐" class="headerlink" title="相关文章推荐"></a>相关文章推荐</h2><ul>
+<li>易百教程-Git教程：<a href="https://www.yiibai.com/git/" target="_blank" rel="noopener">https://www.yiibai.com/git/</a></li>
+</ul>
+<h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>觉得好看的话，请点击下方二维码扫描加关注，或者点个好看哦~~</p>
+<p><img src="http://img.wanglixia.top/wechat_qrcode-2019115195545.jpg" alt="个人微信公众号"></p>
+<p><strong>更多联系方式</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">平台</th>
+<th style="text-align:left">链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">预览项目：</td>
+<td style="text-align:left"><a href="https://nelucifer.gitee.io/" target="_blank" rel="noopener">https://nelucifer.gitee.io/</a></td>
+</tr>
+<tr>
+<td style="text-align:left">个人微信公众号：</td>
+<td style="text-align:left">weyoung</td>
+</tr>
+<tr>
+<td style="text-align:left">segmentfault:</td>
+<td style="text-align:left"><a href="https://segmentfault.com/u/nelucifer" target="_blank" rel="noopener">https://segmentfault.com/u/nelucifer</a></td>
+</tr>
+<tr>
+<td style="text-align:left">CSDN:</td>
+<td style="text-align:left"><a href="https://me.csdn.net/wlx001" target="_blank" rel="noopener">https://me.csdn.net/wlx001</a></td>
+</tr>
+<tr>
+<td style="text-align:left">简书：</td>
+<td style="text-align:left"><a href="https://www.jianshu.com/u/99211cc23788" target="_blank" rel="noopener">https://www.jianshu.com/u/99211cc23788</a></td>
+</tr>
+<tr>
+<td style="text-align:left">掘金：</td>
+<td style="text-align:left"><a href="https://juejin.im/user/59b08c575188250f4850e80e" target="_blank" rel="noopener">https://juejin.im/user/59b08c575188250f4850e80e</a></td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.wanglixia.top/SSM框架-整合笔记3.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1818,361 +2305,6 @@ daovoice('update');
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.wanglixia.top/redis-windows-install.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="coder立夏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coder立夏的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/redis-windows-install.html" itemprop="url">redis系列——windows下redis设置及安装windows服务</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T12:44:00+08:00">
-                2019-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,098 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://img.wanglixia.top/redis-logo-2019115132039.jpg" alt="redis-logo-2019115132039"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Redis是一个开源（BSD许可），内存数据结构存储，用作数据库，缓存和消息代理。 它支持数据结构，如字符串，散列，列表，集合，带有范围查询的排序集，位图，超级日志，带有半径查询和流的地理空间索引。 Redis具有内置复制，Lua脚本，LRU驱逐，事务和不同级别的磁盘持久性，并通过Redis Sentinel提供高可用性并使用Redis Cluster自动分区。本文简单记录一下windows下redis设置及安装成windows服务。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/redis-windows-install.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.wanglixia.top/bootstrap-study-note.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="coder立夏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coder立夏的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/bootstrap-study-note.html" itemprop="url">好用的前端响应式框架——Bootstrap</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-05T15:22:57+08:00">
-                2019-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,161 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Bootstrap是美国Twitter公司的设计师Mark Otto和Jacob Thornton合作基于HTML、CSS、JavaScript 开发的简洁、直观、强悍的前端开发框架，使得 Web 开发更加快捷。<br><img src="http://img.wanglixia.top/bootstrap-201916235849.png" alt="bootstrap-201916235849"><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/bootstrap-study-note.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2225,7 +2357,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2247,7 +2379,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2332,7 +2464,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">41.0k</span>
+    <span title="网站总字数">43.4k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

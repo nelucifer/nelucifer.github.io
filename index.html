@@ -434,7 +434,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  415 字
+                  430 字
                 </span>
               
 
@@ -472,22 +472,19 @@ daovoice('update');
 
       
         
-          
-            <h2 id="修改数据库编码："><a href="#修改数据库编码：" class="headerlink" title="修改数据库编码："></a>修改数据库编码：</h2><p>utf8mb4的最低mysql版本支持版本为5.5.3+，若不是，请升级到较新版本。</p>
-<h3 id="1-先修改my-ini"><a href="#1-先修改my-ini" class="headerlink" title="1. 先修改my.ini"></a>1. 先修改my.ini</h3><p>my.ini 文件，找到以下几项或者在[client]、[mysql]、[mysqld]下面按照如下位置添加对应编码，设置为utf8mb4；我的是MySQL5.6版本，my.ini没有再安装目录，在以下目录：<code>C:\ProgramData\MySQL\MySQL Server 5.6</code></p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[client]</span> </span><br><span class="line"><span class="attr">default-character-set</span> = utf8mb4 </span><br><span class="line"><span class="section">[mysql]</span> </span><br><span class="line"><span class="attr">default-character-set</span> = utf8mb4 </span><br><span class="line"><span class="section">[mysqld]</span> </span><br><span class="line"><span class="attr">character-set-client-handshake</span> = <span class="literal">FALSE</span> </span><br><span class="line"><span class="attr">character-set-server</span> = utf8mb4 </span><br><span class="line"><span class="attr">collation-server</span> = utf8mb4_unicode_ci </span><br><span class="line"><span class="attr">init_connect</span>=<span class="string">'SET NAMES utf8mb4'</span></span><br></pre></td></tr></table></figure>
-<p>重启MySQL服务，查看编码的脚本：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">WHERE</span> Variable_name <span class="keyword">LIKE</span> <span class="string">'character\_set\_%'</span> <span class="keyword">OR</span> Variable_name <span class="keyword">LIKE</span> <span class="string">'collation%'</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-数据库连接的配置"><a href="#2-数据库连接的配置" class="headerlink" title="2. 数据库连接的配置"></a>2. 数据库连接的配置</h3><p>数据库连接参数中:<br>characterEncoding=utf8会被自动识别为utf8mb4，也可以不加这个参数，会自动检测。<br>而autoReconnect=true是必须加上的。</p>
-<h3 id="3-修改列编码"><a href="#3-修改列编码" class="headerlink" title="3. 修改列编码"></a>3. 修改列编码</h3><p>将数据库和已经建好的表也转换成utf8mb4<br>更改数据库编码：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> LX_NOTE <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span><br></pre></td></tr></table></figure></p>
-<p>更改表编码：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> TABLE_NAME SYS_MENU <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 COLLATEutf8mb4_general_ci;</span><br></pre></td></tr></table></figure></p>
-<p>如有必要，还可以更改列的编码</p>
-<h2 id="更改数据库名"><a href="#更改数据库名" class="headerlink" title="更改数据库名"></a>更改数据库名</h2><h3 id="1-！！！备份数据库！！！"><a href="#1-！！！备份数据库！！！" class="headerlink" title="1. ！！！备份数据库！！！"></a><strong>1. ！！！备份数据库！！！</strong></h3><h3 id="2-脚本-mysql-rename-sh"><a href="#2-脚本-mysql-rename-sh" class="headerlink" title="2. 脚本 mysql_rename.sh"></a>2. 脚本 mysql_rename.sh</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">mysql -uroot -p<span class="string">'lucifer'</span> --host=127.0.0.1 -e <span class="string">'create database if not exists LX_NOTE DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci'</span></span><br><span class="line"></span><br><span class="line">list_table=$(mysql -uroot -plucifer --host=127.0.0.1 -Nse <span class="string">"select table_name from information_schema.TABLES where TABLE_SCHEMA='SSM_NOTE'"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> table <span class="keyword">in</span> <span class="variable">$list_table</span>  </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="comment">#echo $TABLE</span></span><br><span class="line">    mysql -uroot -plucifer --host=127.0.0.1 -e <span class="string">"rename table SSM_NOTE.<span class="variable">$table</span> to LX_NOTE.<span class="variable">$table</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-cmd命令窗口运行该脚本，参考命令如下："><a href="#3-cmd命令窗口运行该脚本，参考命令如下：" class="headerlink" title="3. cmd命令窗口运行该脚本，参考命令如下："></a>3. cmd命令窗口运行该脚本，参考命令如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\MySQL\MySQL Server 5.6\bin&gt;e:mysql_rename.sh</span><br></pre></td></tr></table></figure>
-<h3 id="4-完成后就发现数据库已经移动过去了。"><a href="#4-完成后就发现数据库已经移动过去了。" class="headerlink" title="4. 完成后就发现数据库已经移动过去了。"></a>4. 完成后就发现数据库已经移动过去了。</h3>
-          
+          <h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><ul>
+<li>修改数据库编码；</li>
+<li>更改数据库名；
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Mysql数据库常用方式.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ul></div>
     
     
     
@@ -2360,7 +2357,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2445,7 +2442,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">63.3k</span>
+    <span title="网站总字数">63.4k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

@@ -135,18 +135,18 @@ daovoice('update');
 
 
 
-<meta name="description" content="修改数据库编码：utf8mb4的最低mysql版本支持版本为5.5.3+，若不是，请升级到较新版本。 1. 先修改my.inimy.ini 文件，找到以下几项或者在[client]、[mysql]、[mysqld]下面按照如下位置添加对应编码，设置为utf8mb4；我的是MySQL5.6版本，my.ini没有再安装目录，在以下目录：C:\ProgramData\MySQL\MySQL Server">
+<meta name="description" content="概要： 修改数据库编码； 更改数据库名；">
 <meta name="keywords" content="后端,Java,SQL,程序员,程序猿,编程,代码,开源,开发者,Developer,Programmer,Coder,立夏">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql数据库常用方式">
 <meta property="og:url" content="https://www.wanglixia.top/Mysql数据库常用方式.html">
 <meta property="og:site_name" content="coder立夏的笔记">
-<meta property="og:description" content="修改数据库编码：utf8mb4的最低mysql版本支持版本为5.5.3+，若不是，请升级到较新版本。 1. 先修改my.inimy.ini 文件，找到以下几项或者在[client]、[mysql]、[mysqld]下面按照如下位置添加对应编码，设置为utf8mb4；我的是MySQL5.6版本，my.ini没有再安装目录，在以下目录：C:\ProgramData\MySQL\MySQL Server">
+<meta property="og:description" content="概要： 修改数据库编码； 更改数据库名；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-03T13:58:36.678Z">
+<meta property="og:updated_time" content="2019-07-13T12:53:14.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql数据库常用方式">
-<meta name="twitter:description" content="修改数据库编码：utf8mb4的最低mysql版本支持版本为5.5.3+，若不是，请升级到较新版本。 1. 先修改my.inimy.ini 文件，找到以下几项或者在[client]、[mysql]、[mysqld]下面按照如下位置添加对应编码，设置为utf8mb4；我的是MySQL5.6版本，my.ini没有再安装目录，在以下目录：C:\ProgramData\MySQL\MySQL Server">
+<meta name="twitter:description" content="概要： 修改数据库编码； 更改数据库名；">
 
 
 
@@ -437,7 +437,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  415 字
+                  430 字
                 </span>
               
 
@@ -474,8 +474,11 @@ daovoice('update');
       
 
       
-        <h2 id="修改数据库编码："><a href="#修改数据库编码：" class="headerlink" title="修改数据库编码："></a>修改数据库编码：</h2><p>utf8mb4的最低mysql版本支持版本为5.5.3+，若不是，请升级到较新版本。</p>
-<h3 id="1-先修改my-ini"><a href="#1-先修改my-ini" class="headerlink" title="1. 先修改my.ini"></a>1. 先修改my.ini</h3><p>my.ini 文件，找到以下几项或者在[client]、[mysql]、[mysqld]下面按照如下位置添加对应编码，设置为utf8mb4；我的是MySQL5.6版本，my.ini没有再安装目录，在以下目录：<code>C:\ProgramData\MySQL\MySQL Server 5.6</code></p>
+        <h2 id="概要："><a href="#概要：" class="headerlink" title="概要："></a>概要：</h2><ul>
+<li>修改数据库编码；</li>
+<li>更改数据库名；<a id="more"></a>
+<h2 id="修改数据库编码："><a href="#修改数据库编码：" class="headerlink" title="修改数据库编码："></a>修改数据库编码：</h2>utf8mb4的最低mysql版本支持版本为5.5.3+，若不是，请升级到较新版本。<h3 id="1-先修改my-ini"><a href="#1-先修改my-ini" class="headerlink" title="1. 先修改my.ini"></a>1. 先修改my.ini</h3>my.ini 文件，找到以下几项或者在[client]、[mysql]、[mysqld]下面按照如下位置添加对应编码，设置为utf8mb4；我的是MySQL5.6版本，my.ini没有再安装目录，在以下目录：<code>C:\ProgramData\MySQL\MySQL Server 5.6</code></li>
+</ul>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[client]</span> </span><br><span class="line"><span class="attr">default-character-set</span> = utf8mb4 </span><br><span class="line"><span class="section">[mysql]</span> </span><br><span class="line"><span class="attr">default-character-set</span> = utf8mb4 </span><br><span class="line"><span class="section">[mysqld]</span> </span><br><span class="line"><span class="attr">character-set-client-handshake</span> = <span class="literal">FALSE</span> </span><br><span class="line"><span class="attr">character-set-server</span> = utf8mb4 </span><br><span class="line"><span class="attr">collation-server</span> = utf8mb4_unicode_ci </span><br><span class="line"><span class="attr">init_connect</span>=<span class="string">'SET NAMES utf8mb4'</span></span><br></pre></td></tr></table></figure>
 <p>重启MySQL服务，查看编码的脚本：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">WHERE</span> Variable_name <span class="keyword">LIKE</span> <span class="string">'character\_set\_%'</span> <span class="keyword">OR</span> Variable_name <span class="keyword">LIKE</span> <span class="string">'collation%'</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="2-数据库连接的配置"><a href="#2-数据库连接的配置" class="headerlink" title="2. 数据库连接的配置"></a>2. 数据库连接的配置</h3><p>数据库连接参数中:<br>characterEncoding=utf8会被自动识别为utf8mb4，也可以不加这个参数，会自动检测。<br>而autoReconnect=true是必须加上的。</p>
@@ -643,7 +646,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -705,7 +708,7 @@ daovoice('update');
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改数据库编码："><span class="nav-number">1.</span> <span class="nav-text">修改数据库编码：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-先修改my-ini"><span class="nav-number">1.1.</span> <span class="nav-text">1. 先修改my.ini</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数据库连接的配置"><span class="nav-number">1.2.</span> <span class="nav-text">2. 数据库连接的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-修改列编码"><span class="nav-number">1.3.</span> <span class="nav-text">3. 修改列编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改数据库名"><span class="nav-number">2.</span> <span class="nav-text">更改数据库名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-！！！备份数据库！！！"><span class="nav-number">2.1.</span> <span class="nav-text">1. ！！！备份数据库！！！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-脚本-mysql-rename-sh"><span class="nav-number">2.2.</span> <span class="nav-text">2. 脚本 mysql_rename.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cmd命令窗口运行该脚本，参考命令如下："><span class="nav-number">2.3.</span> <span class="nav-text">3. cmd命令窗口运行该脚本，参考命令如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-完成后就发现数据库已经移动过去了。"><span class="nav-number">2.4.</span> <span class="nav-text">4. 完成后就发现数据库已经移动过去了。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概要："><span class="nav-number">1.</span> <span class="nav-text">概要：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改数据库编码："><span class="nav-number">2.</span> <span class="nav-text">修改数据库编码：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-先修改my-ini"><span class="nav-number">2.1.</span> <span class="nav-text">1. 先修改my.ini</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数据库连接的配置"><span class="nav-number">2.2.</span> <span class="nav-text">2. 数据库连接的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-修改列编码"><span class="nav-number">2.3.</span> <span class="nav-text">3. 修改列编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改数据库名"><span class="nav-number">3.</span> <span class="nav-text">更改数据库名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-！！！备份数据库！！！"><span class="nav-number">3.1.</span> <span class="nav-text">1. ！！！备份数据库！！！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-脚本-mysql-rename-sh"><span class="nav-number">3.2.</span> <span class="nav-text">2. 脚本 mysql_rename.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cmd命令窗口运行该脚本，参考命令如下："><span class="nav-number">3.3.</span> <span class="nav-text">3. cmd命令窗口运行该脚本，参考命令如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-完成后就发现数据库已经移动过去了。"><span class="nav-number">3.4.</span> <span class="nav-text">4. 完成后就发现数据库已经移动过去了。</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -744,7 +747,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">63.3k</span>
+    <span title="网站总字数">63.4k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

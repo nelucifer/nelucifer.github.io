@@ -144,7 +144,7 @@ daovoice('update');
 <meta property="og:description" content="前言&amp;emsp;&amp;emsp; 缓存（Caching）可以存储经常会用到的信息，在需要的时候，直接返回这些信息。Spring对缓存的支持有两种方式：1）注解驱动的缓存；2）XML声明的缓存；本文使用第二种方式来实际进行配置。 本文内容 缓存内容详解 配置Ehcache缓存 配置Mybatis Generator  缓存内容详解&amp;emsp;&amp;emsp; 使用@EnableCaching和cache:a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.wanglixia.top/ehcache-1-20193103302.png">
-<meta property="og:updated_time" content="2019-05-11T03:05:59.016Z">
+<meta property="og:updated_time" content="2019-07-03T13:58:36.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSM框架整合笔记（六）缓存配置Ehcache">
 <meta name="twitter:description" content="前言&amp;emsp;&amp;emsp; 缓存（Caching）可以存储经常会用到的信息，在需要的时候，直接返回这些信息。Spring对缓存的支持有两种方式：1）注解驱动的缓存；2）XML声明的缓存；本文使用第二种方式来实际进行配置。 本文内容 缓存内容详解 配置Ehcache缓存 配置Mybatis Generator  缓存内容详解&amp;emsp;&amp;emsp; 使用@EnableCaching和cache:a">
@@ -461,7 +461,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,148 字
+                  3,276 字
                 </span>
               
 
@@ -477,7 +477,7 @@ daovoice('update');
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -624,6 +624,9 @@ daovoice('update');
 <p>SysMenuController.java 中添加如下代码，观察start 和 end方法之间会不会打印sql以及中间打印时间的日志。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"sysMenuList"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;SysMenu&gt; <span class="title">getSysMenuList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SysMenu sysMenu = <span class="keyword">new</span> SysMenu();</span><br><span class="line">    sysMenu.setMenuId(<span class="string">"01"</span>);</span><br><span class="line">    logger.info(<span class="string">"-----------------------------------------------findMenuList start-----------------------------------"</span>);</span><br><span class="line">    List&lt;SysMenu&gt; menuList = sysMenuService.findMenuList(sysMenu);</span><br><span class="line">    logger.info(<span class="string">"-----------------------------------------------findMenuList end-----------------------------------"</span>);</span><br><span class="line">    <span class="keyword">return</span> menuList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>具体效果如下：</p>
 <p><img src="http://img.wanglixia.top/ehcache-1-20193103302.png" alt="ehcache-1-20193103302"></p>
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.webresources.Cache.backgroundProcess The background cache eviction process was unable to free [10] percent of the cache for Context [/lx_note] - consider increasing the maximum size of the cache. After eviction approximately [9,686] KB of data remained in the cache.</span><br></pre></td></tr></table></figure>
+<p>并没有报错，只是Console打印出来信息，提示不能自动释放10%的缓存，需要调大cache的最大容量；</p>
+<p>解决方法：<br>Tomcat8 的conf/目录下的context.xml添加配置,默认大小是10240即10M，这边给调大了10倍。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Resources cachingAllowed=&quot;true&quot; cacheMaxSize=&quot;102400&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="相关文章推荐"><a href="#相关文章推荐" class="headerlink" title="相关文章推荐"></a>相关文章推荐</h2><ul>
 <li><p><a href="https://www.wanglixia.top/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1.html#more">Spring系列学习之IoC与AOP</a></p>
 </li>
@@ -792,7 +795,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -814,7 +817,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -876,7 +879,7 @@ daovoice('update');
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文内容"><span class="nav-number">2.</span> <span class="nav-text">本文内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存内容详解"><span class="nav-number">3.</span> <span class="nav-text">缓存内容详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何启用缓存"><span class="nav-number">3.1.</span> <span class="nav-text">如何启用缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置缓存管理器"><span class="nav-number">3.2.</span> <span class="nav-text">配置缓存管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、为方法添加注解支持缓存"><span class="nav-number">3.3.</span> <span class="nav-text">一、为方法添加注解支持缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#填充缓存"><span class="nav-number">3.3.1.</span> <span class="nav-text">填充缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义缓存key"><span class="nav-number">3.3.2.</span> <span class="nav-text">自定义缓存key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件化缓存"><span class="nav-number">3.3.3.</span> <span class="nav-text">条件化缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除缓存条目"><span class="nav-number">3.3.4.</span> <span class="nav-text">移除缓存条目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用XML声明缓存"><span class="nav-number">3.4.</span> <span class="nav-text">二、使用XML声明缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#填充缓存-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">填充缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义缓存key-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">自定义缓存key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除缓存条目-1"><span class="nav-number">3.4.3.</span> <span class="nav-text">移除缓存条目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Ehcache缓存"><span class="nav-number">4.</span> <span class="nav-text">配置Ehcache缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试缓存配置"><span class="nav-number">4.1.</span> <span class="nav-text">测试缓存配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章推荐"><span class="nav-number">5.</span> <span class="nav-text">相关文章推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码下载"><span class="nav-number">6.</span> <span class="nav-text">源码下载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文内容"><span class="nav-number">2.</span> <span class="nav-text">本文内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存内容详解"><span class="nav-number">3.</span> <span class="nav-text">缓存内容详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何启用缓存"><span class="nav-number">3.1.</span> <span class="nav-text">如何启用缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置缓存管理器"><span class="nav-number">3.2.</span> <span class="nav-text">配置缓存管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、为方法添加注解支持缓存"><span class="nav-number">3.3.</span> <span class="nav-text">一、为方法添加注解支持缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#填充缓存"><span class="nav-number">3.3.1.</span> <span class="nav-text">填充缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义缓存key"><span class="nav-number">3.3.2.</span> <span class="nav-text">自定义缓存key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件化缓存"><span class="nav-number">3.3.3.</span> <span class="nav-text">条件化缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除缓存条目"><span class="nav-number">3.3.4.</span> <span class="nav-text">移除缓存条目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用XML声明缓存"><span class="nav-number">3.4.</span> <span class="nav-text">二、使用XML声明缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#填充缓存-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">填充缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义缓存key-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">自定义缓存key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除缓存条目-1"><span class="nav-number">3.4.3.</span> <span class="nav-text">移除缓存条目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Ehcache缓存"><span class="nav-number">4.</span> <span class="nav-text">配置Ehcache缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试缓存配置"><span class="nav-number">4.1.</span> <span class="nav-text">测试缓存配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题处理"><span class="nav-number">4.2.</span> <span class="nav-text">问题处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题一"><span class="nav-number">4.2.1.</span> <span class="nav-text">问题一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章推荐"><span class="nav-number">5.</span> <span class="nav-text">相关文章推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码下载"><span class="nav-number">6.</span> <span class="nav-text">源码下载</span></a></li></ol></div>
             
 
           </div>
@@ -915,7 +918,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">56.8k</span>
+    <span title="网站总字数">63.3k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

@@ -135,18 +135,18 @@ daovoice('update');
 
 
 
-<meta name="description" content="前言在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；处理办法，在{id}中添加：  1234567```java@RequestMapping(value = &amp;quot;/queryById/&amp;#123;id:.+&amp;#125;&amp;quot;, method = RequestMethod.GET)@ResponseBodypublic M">
+<meta name="description" content="前言在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；处理办法，在{id}中添加:.+，在@RequestMapping的value中使用SpEL来表示，value中的{id}换成{id:.+} ：123456@RequestMapping(value = &quot;/queryById/&amp;#123;id:.+&amp;#125;&quot;, method = R">
 <meta name="keywords" content="随笔,框架,ssm,springmvc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springmvc使用常见问题">
 <meta property="og:url" content="https://www.wanglixia.top/springmvc使用常见问题.html">
 <meta property="og:site_name" content="coder立夏的笔记">
-<meta property="og:description" content="前言在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；处理办法，在{id}中添加：  1234567```java@RequestMapping(value = &amp;quot;/queryById/&amp;#123;id:.+&amp;#125;&amp;quot;, method = RequestMethod.GET)@ResponseBodypublic M">
+<meta property="og:description" content="前言在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；处理办法，在{id}中添加:.+，在@RequestMapping的value中使用SpEL来表示，value中的{id}换成{id:.+} ：123456@RequestMapping(value = &quot;/queryById/&amp;#123;id:.+&amp;#125;&quot;, method = R">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T15:05:05.616Z">
+<meta property="og:updated_time" content="2019-05-11T03:46:32.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springmvc使用常见问题">
-<meta name="twitter:description" content="前言在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；处理办法，在{id}中添加：  1234567```java@RequestMapping(value = &amp;quot;/queryById/&amp;#123;id:.+&amp;#125;&amp;quot;, method = RequestMethod.GET)@ResponseBodypublic M">
+<meta name="twitter:description" content="前言在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；处理办法，在{id}中添加:.+，在@RequestMapping的value中使用SpEL来表示，value中的{id}换成{id:.+} ：123456@RequestMapping(value = &quot;/queryById/&amp;#123;id:.+&amp;#125;&quot;, method = R">
 
 
 
@@ -459,7 +459,7 @@ daovoice('update');
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  97 字
+                  111 字
                 </span>
               
 
@@ -496,7 +496,7 @@ daovoice('update');
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；<br>处理办法，在{id}中添加<figure class="highlight plain"><figcaption><span>：  </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```java</span><br><span class="line">@RequestMapping(value = &quot;/queryById/&#123;id:.+&#125;&quot;, method = RequestMethod.GET)</span><br><span class="line">@ResponseBody</span><br><span class="line">public Message queryById(@PathVariable String id) throws Exception &#123;</span><br><span class="line">    SysMenu sysMenu = sysMenuService.queryById(id);</span><br><span class="line">    return Message.success(sysMenu);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在SpringMvc中使用@PathVariable有句号或小数点时，会导致最后一个小数点以及后面的值丢失；<br>处理办法，在{id}中添加<code>:.+</code>，在@RequestMapping的value中使用SpEL来表示，value中的{id}换成{id:.+} ：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/queryById/&#123;id:.+&#125;"</span>, method = RequestMethod.GET)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Message <span class="title">queryById</span><span class="params">(@PathVariable String id)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    SysMenu sysMenu = sysMenuService.queryById(id);</span><br><span class="line">    <span class="keyword">return</span> Message.success(sysMenu);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/weixin_35852328/article/details/81204316" target="_blank" rel="noopener">SpringMvc的@PathVariable有句号或小数点时，取值不全解决办法</a></p>
 
       
@@ -557,8 +557,8 @@ daovoice('update');
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/linux使用1.html" rel="next" title="linux安装jdk环境-CentOS">
-                <i class="fa fa-chevron-left"></i> linux安装jdk环境-CentOS
+              <a href="/nosql-mongodb.html" rel="next" title="Nosql使用笔记-windows下安装MongoDB">
+                <i class="fa fa-chevron-left"></i> Nosql使用笔记-windows下安装MongoDB
               </a>
             
           </div>
@@ -651,7 +651,7 @@ daovoice('update');
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -673,7 +673,7 @@ daovoice('update');
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -774,7 +774,7 @@ daovoice('update');
     
       <span class="post-meta-item-text">网站总字数&#58;</span>
     
-    <span title="网站总字数">56.8k</span>
+    <span title="网站总字数">63.3k</span>
   
 </div>
   <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>

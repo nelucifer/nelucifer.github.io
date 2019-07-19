@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title>[目录]基础知识目录</title>
+      <link href="/%E7%9B%AE%E5%BD%95-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%9B%AE%E5%BD%95.html"/>
+      <url>/%E7%9B%AE%E5%BD%95-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%9B%AE%E5%BD%95.html</url>
+      <content type="html"><![CDATA[<h2 id="基础知识系列博客目录"><a href="#基础知识系列博客目录" class="headerlink" title="基础知识系列博客目录"></a>基础知识系列博客目录</h2><a id="more"></a><h2 id="语言知识"><a href="#语言知识" class="headerlink" title="语言知识"></a>语言知识</h2><h3 id="Java相关"><a href="#Java相关" class="headerlink" title="Java相关"></a>Java相关</h3><h4 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h4><h4 id="Java并发编程"><a href="#Java并发编程" class="headerlink" title="Java并发编程"></a>Java并发编程</h4><h4 id="Java垃圾回收"><a href="#Java垃圾回收" class="headerlink" title="Java垃圾回收"></a>Java垃圾回收</h4><h4 id="Java虚拟机"><a href="#Java虚拟机" class="headerlink" title="Java虚拟机"></a>Java虚拟机</h4><h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><h4 id="Spring基础"><a href="#Spring基础" class="headerlink" title="Spring基础"></a>Spring基础</h4><ul><li style="list-style: none"><input type="checkbox" checked> AOP</li><li style="list-style: none"><input type="checkbox"> IoC和DI</li></ul><h4 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h4><h4 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h4><h4 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h4><h4 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h4><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul><li style="list-style: none"><input type="checkbox"> 索引原理</li><li style="list-style: none"><input type="checkbox"> 数据库优化</li><li style="list-style: none"><input type="checkbox"> 如何建立索引</li><li style="list-style: none"><input type="checkbox"> 主从数据库如何搭建</li><li style="list-style: none"><input type="checkbox"> 存过、函数、视图的区别以及写法</li><li style="list-style: none"><input type="checkbox"> 常用工具方法</li></ul><h4 id="MSSQL"><a href="#MSSQL" class="headerlink" title="MSSQL"></a>MSSQL</h4><h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h3 id="Restful"><a href="#Restful" class="headerlink" title="Restful"></a>Restful</h3><h4 id="swagger"><a href="#swagger" class="headerlink" title="swagger"></a>swagger</h4>]]></content>
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> Oracle </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Mysql数据库常用方式</title>
       <link href="/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F.html"/>
       <url>/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F.html</url>
@@ -1103,6 +1136,39 @@
     </entry>
     
     <entry>
+      <title>Java基础知识</title>
+      <link href="/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html"/>
+      <url>/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.html</url>
+      <content type="html"><![CDATA[<h3 id="一、Java相关概念"><a href="#一、Java相关概念" class="headerlink" title="一、Java相关概念"></a>一、Java相关概念</h3><h4 id="1、Java特点"><a href="#1、Java特点" class="headerlink" title="1、Java特点"></a>1、Java特点</h4><ul><li>面向对象，语法简单；</li><li>在语言定义阶段、字节码检查阶段、程序执行阶段进行三级代码安全检查机制；</li><li>与平台无关：跨平台；</li><li>解释、和编译两种运行方式；</li><li>多线程：<ul><li>Java内置了语言级多线程功能，支持多线程；</li></ul></li><li>动态执行：<ul><li>Java执行代码是在运行时动态载入的；<a id="more"></a><h4 id="2、Java-虚拟机"><a href="#2、Java-虚拟机" class="headerlink" title="2、Java 虚拟机"></a>2、Java 虚拟机</h4>Java虚拟机（Java virtual machine，JVM），编译后的Java程序指令不直接在硬件系统的CPU中执行，而是有JVM执行。<br>JVM的具体实现包括：</li></ul></li><li>指令集（等价于CPU的指令集）</li><li>寄存器组</li><li>类文件格式</li><li>栈</li><li>垃圾收集堆</li><li>内存区。<br>JVM的代码格式为压缩的字节码，Java主要的类型检查是在编译时由字节码校验器完成的。<br>JVM的实现叫做Java运行时系统或者运行时环境（runtime environment），即运行时。<h4 id="3、Java虚拟机的性能"><a href="#3、Java虚拟机的性能" class="headerlink" title="3、Java虚拟机的性能"></a>3、Java虚拟机的性能</h4>在程序执行时，Hotspot对每个字节码执行进行分析，根据其执行次数，动态决定它的执行方式。多次重复执行的指令。则立即编译为可执行代码，否则，使用解释执行的方式。</li></ul><h4 id="4、垃圾收集"><a href="#4、垃圾收集" class="headerlink" title="4、垃圾收集"></a>4、垃圾收集</h4><p>内存漏洞：内存得不到释放，系统中没有内存可用时程序就会崩溃。<br>Java中的垃圾收集是自动进行的。</p><h4 id="5、Java的组成部分"><a href="#5、Java的组成部分" class="headerlink" title="5、Java的组成部分"></a>5、Java的组成部分</h4><ol><li>Java解释器的三项主要工作：<ul><li>下载代码：由类下载器完成；</li><li>校验代码：由字节码校验器完成；</li><li>运行代码：由运行时解释器完成；</li></ul></li><li><p>类下载器：<br>Java运行时系统区别对待来自不同源的类文件。类下载器把本地文件系统的类名空间和网络源输入的类名空间区分开来，以增加安全性。</p></li><li><p>字节码校验器：<br> 通过网络传送的所有类文件都要经过字节码校验器的检验。校验器主要检查;</p><ul><li>类遵从JVM的类文件格式；</li><li>不出现访问违例情况；</li><li>代码不会引起运算栈溢出；</li><li>所有运算代码的参数类型正确；</li><li>不会发生非法数据转换；</li><li>对象域访问是合法的；</li></ul></li></ol><h4 id="6、Jdk安装后的目录结构"><a href="#6、Jdk安装后的目录结构" class="headerlink" title="6、Jdk安装后的目录结构"></a>6、Jdk安装后的目录结构</h4><ul><li>bin：Java开发工具，包括Java编译器、解释器等；<ul><li>javac：Java编译器，用来将Java程序编译成字节码；</li><li>java：Java解释器，执行已经转换成字节码的Java应用程序；</li><li>jdb：Java调试器，用来调试Java程序；</li><li>javap：反编译，将类文件还原回方法和变量；</li><li>javadoc：文档生成器，创建HTML文件；</li><li>appletviewer：Applet解释器。</li></ul></li><li>demo：示例程序；</li><li>lib：Java开发类库；</li><li>jre：Java运行环境，包括Java虚拟机、运行类库等；</li></ul><h3 id="二、Java-基本数据类型"><a href="#二、Java-基本数据类型" class="headerlink" title="二、Java 基本数据类型"></a>二、Java 基本数据类型</h3><ul><li>数据类型：<ul><li>基本数据类型<ul><li>数值类型<ul><li>整数类型：byte、short、int、long</li><li>浮点数类型：float、double</li></ul></li><li>字符类型：char</li><li>布尔类型：boolean</li></ul></li><li>复合数据类型：<ul><li>类类型：class</li><li>数组：</li><li>接口类型：interface</li></ul></li></ul></li></ul><p><img src="http://img.wanglixia.top/数据类型-201972012037.png" alt="数据类型-201972012037"></p><h3 id="三、面向对象（OOP）"><a href="#三、面向对象（OOP）" class="headerlink" title="三、面向对象（OOP）"></a>三、面向对象（OOP）</h3><p>面向对象的概念：对象、抽象数据类型、类、类型层次（子类）、继承性、多态性。<br>面向对象的方法学包括：</p><ul><li>面向对象的分析（object-oriented analysis，OOA）；</li><li>面向对象的设计（object-oriented design，OOD）；</li><li>面向对象的程序设计（object-oriented program，OOP）；</li></ul><p>OOP把问题看成是相互作用的事物的集合，用属性来描述事物，对事物的操作定义为方法，事物被称为对象，把属性称为数据，即对象=数据+方法。对象在程序中通过抽象数据来描述，这个抽象数据类型就是类。</p><p>OOP的三大技术：</p><ul><li>封装：将数据和对数据的操作捆绑在一起成为类，即封装；</li><li>继承：将一个已有类中的数据和方法保留，并加上自己特殊的数据和方法，从而构建成一个新类，即继承；<ul><li>C++具有多重继承能力，而Java只允许单重继承；</li><li>Java的多重继承能力可以通过接口来实现。</li></ul></li><li>多态：在一个类或多个类中，可以让多个方法使用同一个名字，从而具有多态性。</li></ul><h4 id="1、Object-类"><a href="#1、Object-类" class="headerlink" title="1、Object 类"></a>1、Object 类</h4><p>Object类是Java中所有类的父类，Object是唯一没有父类的类。</p><h4 id="2、Java中的限定修饰符"><a href="#2、Java中的限定修饰符" class="headerlink" title="2、Java中的限定修饰符"></a>2、Java中的限定修饰符</h4><ul><li>public：可以被其他任何对象访问；</li><li>private：类中的private成员只能被这个类本身访问，类外不可见；</li><li>protected：只可以被同一包及其子类的实例对象访问；</li><li>friendly：限定符如果不写的话，默认就是friendly，可以被其所在包中的各类访问；</li></ul><table><thead><tr><th style="text-align:left">类型</th><th style="text-align:left">无修饰符</th><th style="text-align:left">private</th><th style="text-align:left">protected</th><th style="text-align:left">public</th></tr></thead><tbody><tr><td style="text-align:left">同一类</td><td style="text-align:left">是</td><td style="text-align:left">是</td><td style="text-align:left">是</td><td style="text-align:left">是</td></tr><tr><td style="text-align:left">同一包中的子类</td><td style="text-align:left">是</td><td style="text-align:left">否</td><td style="text-align:left">是</td><td style="text-align:left">是</td></tr><tr><td style="text-align:left">同一类中的非子类</td><td style="text-align:left">是</td><td style="text-align:left">否</td><td style="text-align:left">是</td><td style="text-align:left">是</td></tr><tr><td style="text-align:left">不同包中的子类</td><td style="text-align:left">否</td><td style="text-align:left">否</td><td style="text-align:left">是</td><td style="text-align:left">是</td></tr><tr><td style="text-align:left">不同包中的非子类</td><td style="text-align:left">否</td><td style="text-align:left">否</td><td style="text-align:left">否</td><td style="text-align:left">是</td></tr></tbody></table><h4 id="3、与OOP有关的关键字"><a href="#3、与OOP有关的关键字" class="headerlink" title="3、与OOP有关的关键字"></a>3、与OOP有关的关键字</h4><ul><li>static：可修饰数据成员，也可修饰成员方法，表明其索命的对象是静态的。<br>静态成员与类相对应，被类的所有对象共享，定义了类之后即已存在；类中定义的公有静态变量相当于全局变量。</li><li>final：用final修饰的类不能再派生子类。</li><li>abstract：用abstract可以修饰类或成员方法，表明被修饰的成分是抽象的；</li><li>this：指代本类；</li><li>super：指代父类；</li></ul><p>对象引用：Java系统在内存中为实例分配相应的空间后会将存储地址返回，称此存储地址为对象的引用，也称为引用变量。</p><h3 id="四、运算符"><a href="#四、运算符" class="headerlink" title="四、运算符"></a>四、运算符</h3><ul><li>算数运算符：加（+）、减（-）、乘（*）、除（/）、取模（%）；</li><li>关系运算符：大于（&gt;）、大于等于（&gt;=）、小于（&lt;）、小于等于（&lt;=）、等于（==）、不等于（!=）；</li><li>逻辑运算符：逻辑与（&amp;）、逻辑或（||）、逻辑非（!）</li><li>位运算符： 只能操作整型和字符型数据进行操作。<ul><li>按位取反（~）：</li><li>按位与（&amp;）：</li><li>按位或（|）：</li><li>异或（^）：</li><li>右移（&gt;&gt;）：右每移一位，相当于被2除一次。128&gt;&gt;1得到64</li><li>左移（&lt;&lt;）：</li><li>无符号右移（&gt;&gt;&gt;）：逻辑右移，左侧空位用0填充；<br>算数右移不改变原数的符号，逻辑右移不能保证这一点。</li></ul></li><li>扩展赋值运算符（+=、-=、*=、/=、%=、&amp;=、|=、^=、&gt;&gt;=、&lt;&lt;=、&gt;&gt;&gt;=）</li><li>条件运算符：（?:）</li><li>点运算符：（.）</li><li>实例运算符：（instanceof）</li><li>new 运算符</li><li>数组下标运算符：（[]）</li></ul><h3 id="五、数组、向量和字符串"><a href="#五、数组、向量和字符串" class="headerlink" title="五、数组、向量和字符串"></a>五、数组、向量和字符串</h3><h4 id="1、数组初始化"><a href="#1、数组初始化" class="headerlink" title="1、数组初始化"></a>1、数组初始化</h4><p>静态初始化（定义时初始化）和动态初始化；</p><ul><li>int[] ages = {12,13};</li><li>String names[] = {"John","June"}</li></ul><h4 id="2、多维数组"><a href="#2、多维数组" class="headerlink" title="2、多维数组"></a>2、多维数组</h4><ul><li>int intArray[][];</li><li>int intArray[][] = {{2,3},{1,2}};</li></ul><p>数组复制：<code>System.arraycopy</code></p><h3 id="六、向量类Vector"><a href="#六、向量类Vector" class="headerlink" title="六、向量类Vector"></a>六、向量类Vector</h3><p>Vector：允许不同类型的元素共存于一个变长数组中，是可变大小的数组。<br>使用场景：</p><ul><li>需要处理的对象数目不定；</li><li>需要将不同类的对象组合成一个数据序列；</li><li>需要做频繁的对象序列中元素的插入和删除；</li><li>经常需要定位序列中的对象和其他查找操作；</li><li>在不同的类之间传递大量的数据。<br>局限性：<br>其中的对象不能是简单数据类型；</li></ul><h4 id="1、-和equals方法的区别"><a href="#1、-和equals方法的区别" class="headerlink" title="1、==和equals方法的区别"></a>1、==和equals方法的区别</h4><p> “==”判定两字符串对象是否是同一实例，即它们在内存中的存储空间是否相同。</p><h4 id="2、StringBuffer"><a href="#2、StringBuffer" class="headerlink" title="2、StringBuffer"></a>2、StringBuffer</h4><p>StringBuffer用来处理可变字符串。</p><h3 id="七、对象和类"><a href="#七、对象和类" class="headerlink" title="七、对象和类"></a>七、对象和类</h3><h4 id="1、按值传递"><a href="#1、按值传递" class="headerlink" title="1、按值传递"></a>1、按值传递</h4><p>Java只“按值”传送自变量，即方法调用不会改变自变量的值。 当对象实例作为自变量传送给方法时，自变量的值是对对象的引用，也就是说，传递给方法的是引用值。在方法内，这个引用值是不会变化的，但可以修改该引用指向的对象内容。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PassTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">float</span> ptValue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line"></span><br><span class="line">        PassTest pt = <span class="keyword">new</span> PassTest();</span><br><span class="line"></span><br><span class="line">        val = <span class="number">11</span>;</span><br><span class="line"></span><br><span class="line">        pt.changeInt(val);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Int Value is:"</span> + val);</span><br><span class="line"></span><br><span class="line">        str = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line"></span><br><span class="line">        pt.changeStr(str);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Str Value is:"</span> + str);</span><br><span class="line"></span><br><span class="line">        pt.ptValue = <span class="number">101f</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 通过对象引用改值</span></span><br><span class="line">        pt.changeObjValue(pt);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Current ptValue is:"</span> + pt.ptValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeInt</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        value = <span class="number">55</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeStr</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">        value = <span class="keyword">new</span> String(<span class="string">"different"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeObjValue</span><span class="params">(PassTest ref)</span> </span>&#123;</span><br><span class="line">        ref.ptValue = <span class="number">99f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>运行结果：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Int Value is:11</span><br><span class="line">Str Value is:hello</span><br><span class="line">Current ptValue is:99.0</span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 0</span><br></pre></td></tr></table></figure><h4 id="2、重载"><a href="#2、重载" class="headerlink" title="2、重载"></a>2、重载</h4><p>重载：允许对多个方法使用同一个方法名。方法之间区别于：</p><ul><li>方法名；</li><li>参数列表；</li><li>返回值；</li></ul><h4 id="3、对象的构造和初始化"><a href="#3、对象的构造和初始化" class="headerlink" title="3、对象的构造和初始化"></a>3、对象的构造和初始化</h4><p>调用构造方法时，步骤如下：</p><ol><li>分配新对象的空间，并进行默认的初始化；</li><li>执行显式的成员初始化；</li><li>执行构造方法。<br>构造方法不能说明为native、abstract、synchronized或final，也不能从父类继承构造方法。</li></ol><p>构造方法的特性总结如下：</p><ul><li>构造方法的名字与类名相同；</li><li>没有返回值类型；</li><li>必须为所有的变量赋初值；</li><li>通常要说明为public类型的，即共有的；</li><li>可以按需包含参数列表。</li></ul><p><strong>每个类必须有一个构造方法，默认构造方法的参数列表及方法体均为空。</strong></p><h4 id="4、finalize-方法"><a href="#4、finalize-方法" class="headerlink" title="4、finalize()方法"></a>4、finalize()方法</h4><p>finalize() 方法属于Object类，它可被所有类使用。在对对象实例进行垃圾收集之前，Java自动调用对象的finalize()方法，它相当于C++中的析构方法，用来释放对象所占用的系统资源。</p><h4 id="5、单重继承"><a href="#5、单重继承" class="headerlink" title="5、单重继承"></a>5、单重继承</h4><p>一个类如果有父类，则其父类只能有一个。</p>]]></content>
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> Oracle </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>使用SoapUI 5.3.0调试webservice接口（参数格式XML）</title>
       <link href="/soapUI-webservice.html"/>
       <url>/soapUI-webservice.html</url>
@@ -1259,9 +1325,9 @@
       
         <tags>
             
-            <tag> 随笔 </tag>
-            
             <tag> java </tag>
+            
+            <tag> 随笔 </tag>
             
             <tag> excel </tag>
             

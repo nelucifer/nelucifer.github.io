@@ -145,7 +145,7 @@ daovoice('update');
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.wanglixia.top/bootstrap-table-1-2019323123635.png">
 <meta property="og:image" content="http://img.wanglixia.top/bootstrap-table-2-2019323233029.png">
-<meta property="og:updated_time" content="2019-09-19T12:18:30.412Z">
+<meta property="og:updated_time" content="2019-09-19T15:16:05.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bootstrap-table使用">
 <meta name="twitter:description" content="Bootstrap-Table导出插件bootstrap-table-export使用方式 一、Bootstrap-table-export插件使用 二、Bootstrap-table 表头和表格错位问题 三、表格添加自定义按钮 四、Bootstrap中tab页及插件使用">
@@ -296,6 +296,26 @@ daovoice('update');
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
@@ -506,12 +526,12 @@ daovoice('update');
 <li>四、Bootstrap中tab页及插件使用<a id="more"></a>
 </li>
 </ul>
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><h4 id="一、Bootstrap-table-export插件使用"><a href="#一、Bootstrap-table-export插件使用" class="headerlink" title="一、Bootstrap-table-export插件使用"></a>一、Bootstrap-table-export插件使用</h4><p>Bootstrap-table-export插件下载：<a href="https://bootstrap-table.com/docs" target="_blank" rel="noopener">https://bootstrap-table.com/docs</a>；<br>在该文档的extensions目录下，可以看到可以使用的依赖插件列表，其中就包括Export文件。<br><img src="http://img.wanglixia.top/bootstrap-table-1-2019323123635.png" alt="bootstrap-table-1-2019323123635"></p>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><h4 id="一、Bootstrap-table-export插件使用"><a href="#一、Bootstrap-table-export插件使用" class="headerlink" title="一、Bootstrap-table-export插件使用"></a>一、Bootstrap-table-export插件使用</h4><p>Bootstrap-table-export插件下载：<a href="https://bootstrap-table.com/docs" rel="external nofollow noopener noreferrer" target="_blank">https://bootstrap-table.com/docs</a>；<br>在该文档的extensions目录下，可以看到可以使用的依赖插件列表，其中就包括Export文件。<br><img src="http://img.wanglixia.top/bootstrap-table-1-2019323123635.png" alt="bootstrap-table-1-2019323123635"></p>
 <p>导出支持以下格式：<br><code>[‘json’, ‘xml’, ‘png’, ‘csv’, ‘txt’, ‘sql’, ‘doc’, ‘excel’,’xlsx’, ‘pdf’]</code><br>默认支持，其他的需要单独引入插件：<br><code>[‘json’, ‘xml’, ‘csv’, ‘txt’, ‘sql’, ‘excel’]</code></p>
 <ol>
 <li>找到<code>dist\extensions\export\bootstrap-table-export.min.js</code>文件，引入项目中；</li>
 <li>使用该插件还需要引入以下依赖：<ul>
-<li>tableExport.jquery.plugin：下载地址：<a href="https://github.com/hhurz/tableExport.jquery.plugin" target="_blank" rel="noopener">https://github.com/hhurz/tableExport.jquery.plugin</a>；<ul>
+<li>tableExport.jquery.plugin：下载地址：<a href="https://github.com/hhurz/tableExport.jquery.plugin" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/hhurz/tableExport.jquery.plugin</a>；<ul>
 <li>把<code>tableExport.min.js</code>文件引入项目中；</li>
 </ul>
 </li>
@@ -519,8 +539,8 @@ daovoice('update');
 <li><code>\libs\FileSaver\FileSaver.min.js</code>；</li>
 </ul>
 </li>
-<li>jquery.base64.js：下载地址：<a href="http://plugins.jquery.com/base64/" target="_blank" rel="noopener">http://plugins.jquery.com/base64/</a>，把<code>jquery.base64.js</code>文件引入项目中；</li>
-<li>xlsx.full.min.js：支持的下载格式，如<code> [‘json’, ‘xml’, ‘csv’, ‘txt’, ‘sql’, ‘excel’]</code>，下载地址：<a href="https://github.com/handevelop/js-xlsx-master" target="_blank" rel="noopener">https://github.com/handevelop/js-xlsx-master</a>;</li>
+<li>jquery.base64.js：下载地址：<a href="http://plugins.jquery.com/base64/" rel="external nofollow noopener noreferrer" target="_blank">http://plugins.jquery.com/base64/</a>，把<code>jquery.base64.js</code>文件引入项目中；</li>
+<li>xlsx.full.min.js：支持的下载格式，如<code> [‘json’, ‘xml’, ‘csv’, ‘txt’, ‘sql’, ‘excel’]</code>，下载地址：<a href="https://github.com/handevelop/js-xlsx-master" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/handevelop/js-xlsx-master</a>;</li>
 </ul>
 </li>
 </ol>
@@ -538,8 +558,8 @@ daovoice('update');
 <h4 id="四、Bootstrap中tab页及插件使用"><a href="#四、Bootstrap中tab页及插件使用" class="headerlink" title="四、Bootstrap中tab页及插件使用"></a>四、Bootstrap中tab页及插件使用</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line">    $.extend($, &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 添加标签页</span></span><br><span class="line"><span class="comment">         * @param tabItem &#123;id: '标签页id', name: '标签页name', url: 'iframe要加载的url',closable 是否可关闭&#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        addTab: <span class="function"><span class="keyword">function</span> (<span class="params">tabItem</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> theOriginalId = tabItem.id;</span><br><span class="line">            <span class="keyword">var</span> newId = theOriginalId.replace(<span class="regexp">/\./g</span>, <span class="string">""</span>);</span><br><span class="line">            <span class="keyword">var</span> tabId = <span class="string">'tab_title_'</span> + newId;</span><br><span class="line">            <span class="keyword">var</span> panelId = <span class="string">'tab_panel_'</span> + newId;</span><br><span class="line">            <span class="keyword">var</span> iframeId = <span class="string">'tab_iframe_'</span> + newId;</span><br><span class="line">            <span class="keyword">if</span> (!$(<span class="string">'#'</span> + tabId)[<span class="number">0</span>]) &#123;</span><br><span class="line">                $(<span class="string">"li[id^=tab_title_]"</span>).removeClass(<span class="string">'active'</span>);</span><br><span class="line">                $(<span class="string">'.content-wrapper &gt; .tab-content'</span>).children($(<span class="string">"div[id^=tab_panel_]"</span>)).removeClass(<span class="string">'active'</span>);</span><br><span class="line">                $(<span class="string">'.content-wrapper &gt; .nav.nav-tabs'</span>).append(</span><br><span class="line">                    $(<span class="string">'&lt;li&gt;'</span>).attr(&#123;<span class="string">'id'</span>: tabId&#125;).addClass(<span class="string">'active'</span>)</span><br><span class="line">                        .append($(<span class="string">'&lt;a&gt;'</span>).attr(&#123;<span class="string">'href'</span>: <span class="string">'#'</span> + panelId, <span class="string">'data-toggle'</span>: <span class="string">'tab'</span>&#125;)</span><br><span class="line">                            .append($(<span class="string">'&lt;span&gt;'</span>).text(tabItem.name))</span><br><span class="line">                            .append(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                                <span class="keyword">if</span> (tabItem.closable) &#123;</span><br><span class="line">                                    <span class="keyword">return</span> $(<span class="string">'&lt;i&gt;'</span>).addClass(<span class="string">'glyphicon glyphicon-remove small'</span>).attr(&#123;<span class="string">'tabclose'</span>: tabId&#125;)</span><br><span class="line">                                        .css(&#123;<span class="attr">position</span>: <span class="string">'absolute'</span>, <span class="attr">right</span>: <span class="string">'4px'</span>, <span class="attr">top</span>: <span class="string">'4px'</span>, <span class="string">'cursor'</span>: <span class="string">'pointer'</span>&#125;)</span><br><span class="line">                                        .on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">                                            $.closeTab(tabId);</span><br><span class="line">                                        &#125;);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;))</span><br><span class="line">                )</span><br><span class="line">                $(<span class="string">'.content-wrapper &gt; .tab-content'</span>).append(</span><br><span class="line">                    $(<span class="string">'&lt;div&gt;'</span>).attr(&#123;<span class="string">'role'</span>: <span class="string">'tabpanel'</span>, <span class="string">'id'</span>: panelId&#125;).addClass(<span class="string">'tab-pane active'</span>)</span><br><span class="line">                        .append($(<span class="string">'&lt;iframe&gt;'</span>).attr(&#123;<span class="string">'id'</span>: iframeId, <span class="attr">frameborder</span>: <span class="string">'0'</span>, <span class="string">'src'</span>: tabItem.url&#125;)</span><br><span class="line">                            .css(&#123;<span class="string">'overflow-x'</span>: <span class="string">'hidden'</span>, <span class="string">'overflow-y'</span>: <span class="string">'hidden'</span>, <span class="string">'width'</span>: <span class="string">'100%'</span>, <span class="string">'height'</span>: <span class="string">'100%'</span>&#125;)</span><br><span class="line">                            .on(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                                $(<span class="keyword">this</span>).parent().height($.ContentHeight());</span><br><span class="line">                            &#125;))</span><br><span class="line">                )</span><br><span class="line">                $(<span class="string">'#'</span> + tabId).children(<span class="string">'a[data-toggle=tab]'</span>).tab(<span class="string">'show'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        closeTab: <span class="function"><span class="keyword">function</span> (<span class="params">tabId</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> closeId = tabId;</span><br><span class="line">            <span class="keyword">var</span> panelId = <span class="string">'tab_panel_'</span> + closeId.substring(<span class="number">10</span>);</span><br><span class="line">            <span class="keyword">if</span> ($(<span class="string">'#'</span> + panelId).hasClass(<span class="string">'active'</span>)) &#123;</span><br><span class="line">                $(<span class="string">'#'</span> + closeId).prev().children(<span class="string">'a'</span>).tab(<span class="string">'show'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            $(<span class="string">"#"</span> + closeId).remove();</span><br><span class="line">            $(<span class="string">"#"</span> + panelId).remove();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 <p>使用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.addTab(&#123;</span><br><span class="line">    id: <span class="string">'bootstrap_tab_id_'</span>,</span><br><span class="line">    name: <span class="string">'标签页名称'</span>,</span><br><span class="line">    url: <span class="string">'标签页加载的url'</span>,</span><br><span class="line">    closable: <span class="literal">true</span>  <span class="comment">// 是否可关闭</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h2 id="相关文档："><a href="#相关文档：" class="headerlink" title="相关文档："></a>相关文档：</h2><ul>
-<li>bootstrap-table文档和相关插件：<a href="https://bootstrap-table.com/docs/extensions/export/" target="_blank" rel="noopener">https://bootstrap-table.com/docs/extensions/export/</a></li>
-<li>Bootstrap可关闭标签页，主要参考bootstrap-closable-tab：<a href="https://github.com/zyqwst/bootstrap-closable-tab" target="_blank" rel="noopener">https://github.com/zyqwst/bootstrap-closable-tab</a></li>
+<li>bootstrap-table文档和相关插件：<a href="https://bootstrap-table.com/docs/extensions/export/" rel="external nofollow noopener noreferrer" target="_blank">https://bootstrap-table.com/docs/extensions/export/</a></li>
+<li>Bootstrap可关闭标签页，主要参考bootstrap-closable-tab：<a href="https://github.com/zyqwst/bootstrap-closable-tab" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/zyqwst/bootstrap-closable-tab</a></li>
 </ul>
 
       
@@ -735,19 +755,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -818,9 +838,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1334,6 +1354,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

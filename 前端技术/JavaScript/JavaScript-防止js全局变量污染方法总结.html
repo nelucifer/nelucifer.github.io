@@ -297,6 +297,26 @@ daovoice('update');
         </li>
       
         
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
@@ -496,7 +516,7 @@ daovoice('update');
       
 
       
-        <p><strong>转载自<a href="http://blog.csdn.net/xllily_11/article/details/52816699" target="_blank" rel="noopener">防止js全局变量污染方法总结-待续</a></strong><br>javaScript 可以随意定义保存所有应用资源的全局变量。但全局变量可以削弱程序灵活性，增大了模块之间的耦合性。<br>在多人协作时，如果定义过多的全局变量 有可能造成全局变量冲突，也就是全局变量污染问题,以下是两种解决办法<br><a id="more"></a></p>
+        <p><strong>转载自<a href="http://blog.csdn.net/xllily_11/article/details/52816699" rel="external nofollow noopener noreferrer" target="_blank">防止js全局变量污染方法总结-待续</a></strong><br>javaScript 可以随意定义保存所有应用资源的全局变量。但全局变量可以削弱程序灵活性，增大了模块之间的耦合性。<br>在多人协作时，如果定义过多的全局变量 有可能造成全局变量冲突，也就是全局变量污染问题,以下是两种解决办法<br><a id="more"></a></p>
 <h3 id="定义全局变量命名空间"><a href="#定义全局变量命名空间" class="headerlink" title="定义全局变量命名空间"></a>定义全局变量命名空间</h3><p>只创建一个全局变量，并定义该变量为当前应用容器，把其他全局变量追加在该命名空间下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MY=&#123;&#125;;</span><br><span class="line">    my.name=&#123;</span><br><span class="line">    big_name:<span class="string">"zhangsan"</span>,</span><br><span class="line">    small_name:<span class="string">"lisi"</span></span><br><span class="line">&#125;;</span><br><span class="line">my.work=&#123;</span><br><span class="line">    school_work:<span class="string">"study"</span>,</span><br><span class="line">    family_work:<span class="string">"we are"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="利用匿名函数将脚本包裹起来"><a href="#利用匿名函数将脚本包裹起来" class="headerlink" title="利用匿名函数将脚本包裹起来"></a>利用匿名函数将脚本包裹起来</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> exp=&#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> name=<span class="string">"aa"</span>;</span><br><span class="line">    exp.method=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">&#125;;</span><br><span class="line">    <span class="built_in">window</span>.ex=exp;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 
@@ -691,19 +711,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -774,9 +794,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1290,6 +1310,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

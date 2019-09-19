@@ -149,7 +149,7 @@ daovoice('update');
 <meta property="og:image" content="http://img.wanglixia.top/redis-windows-install-安装RDM-3-2019110165151.png">
 <meta property="og:image" content="http://img.wanglixia.top/redis-windows-install-测试连接-4-2019110165446.png">
 <meta property="og:image" content="http://img.wanglixia.top/redis-windows-install-连接成功-5-201911018212.png">
-<meta property="og:updated_time" content="2019-09-19T12:26:42.947Z">
+<meta property="og:updated_time" content="2019-09-19T15:16:05.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis系列——windows下redis设置及安装windows服务">
 <meta name="twitter:description" content="前言Redis是一个开源（BSD许可），内存数据结构存储，用作数据库，缓存和消息代理。 它支持数据结构，如字符串，散列，列表，集合，带有范围查询的排序集，位图，超级日志，带有半径查询和流的地理空间索引。 Redis具有内置复制，Lua脚本，LRU驱逐，事务和不同级别的磁盘持久性，并通过Redis Sentinel提供高可用性并使用Redis Cluster自动分区。本文简单记录一下windows">
@@ -300,6 +300,26 @@ daovoice('update');
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
@@ -512,7 +532,7 @@ daovoice('update');
 </li>
 <li>官网介绍: Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.<br>Google 翻译：Redis是一个开源（BSD许可），内存数据结构存储，用作数据库，缓存和消息代理。 它支持数据结构，如字符串，散列，列表，集合，带有范围查询的排序集，位图，超级日志，带有半径查询和流的地理空间索引。 Redis具有内置复制，Lua脚本，LRU驱逐，事务和不同级别的磁盘持久性，并通过Redis Sentinel提供高可用性并使用Redis Cluster自动分区。</li>
 </ul>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h3 id="下载windows版的redis（解压版），下载地址：https-github-com-ServiceStack-redis-windows-tree-master-downloads"><a href="#下载windows版的redis（解压版），下载地址：https-github-com-ServiceStack-redis-windows-tree-master-downloads" class="headerlink" title="下载windows版的redis（解压版），下载地址：https://github.com/ServiceStack/redis-windows/tree/master/downloads"></a>下载windows版的redis（解压版），下载地址：<a href="https://github.com/ServiceStack/redis-windows/tree/master/downloads" target="_blank" rel="noopener">https://github.com/ServiceStack/redis-windows/tree/master/downloads</a></h3><h3 id="下载Redis可视化工具-Redis-Desktop-Manager，"><a href="#下载Redis可视化工具-Redis-Desktop-Manager，" class="headerlink" title="下载Redis可视化工具 Redis Desktop Manager，"></a>下载Redis可视化工具 Redis Desktop Manager，</h3><h4 id="下载地址：https-redisdesktop-com-download"><a href="#下载地址：https-redisdesktop-com-download" class="headerlink" title="下载地址：https://redisdesktop.com/download"></a>下载地址：<a href="https://redisdesktop.com/download" target="_blank" rel="noopener">https://redisdesktop.com/download</a></h4><h4 id="百度网盘：链接：https-pan-baidu-com-s-1vcRywB4JTA2xPCUvh0n1DA-提取码：y1vv"><a href="#百度网盘：链接：https-pan-baidu-com-s-1vcRywB4JTA2xPCUvh0n1DA-提取码：y1vv" class="headerlink" title="百度网盘：链接：https://pan.baidu.com/s/1vcRywB4JTA2xPCUvh0n1DA 提取码：y1vv"></a>百度网盘：链接：<a href="https://pan.baidu.com/s/1vcRywB4JTA2xPCUvh0n1DA" target="_blank" rel="noopener">https://pan.baidu.com/s/1vcRywB4JTA2xPCUvh0n1DA</a> 提取码：y1vv</h4><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="解压redis-64-3-0-503-zip；cmd命令进入该目录"><a href="#解压redis-64-3-0-503-zip；cmd命令进入该目录" class="headerlink" title="解压redis-64.3.0.503.zip；cmd命令进入该目录"></a>解压<strong>redis-64.3.0.503.zip</strong>；cmd命令进入该目录</h3><div class="table-container">
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h3 id="下载windows版的redis（解压版），下载地址：https-github-com-ServiceStack-redis-windows-tree-master-downloads"><a href="#下载windows版的redis（解压版），下载地址：https-github-com-ServiceStack-redis-windows-tree-master-downloads" class="headerlink" title="下载windows版的redis（解压版），下载地址：https://github.com/ServiceStack/redis-windows/tree/master/downloads"></a>下载windows版的redis（解压版），下载地址：<a href="https://github.com/ServiceStack/redis-windows/tree/master/downloads" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/ServiceStack/redis-windows/tree/master/downloads</a></h3><h3 id="下载Redis可视化工具-Redis-Desktop-Manager，"><a href="#下载Redis可视化工具-Redis-Desktop-Manager，" class="headerlink" title="下载Redis可视化工具 Redis Desktop Manager，"></a>下载Redis可视化工具 Redis Desktop Manager，</h3><h4 id="下载地址：https-redisdesktop-com-download"><a href="#下载地址：https-redisdesktop-com-download" class="headerlink" title="下载地址：https://redisdesktop.com/download"></a>下载地址：<a href="https://redisdesktop.com/download" rel="external nofollow noopener noreferrer" target="_blank">https://redisdesktop.com/download</a></h4><h4 id="百度网盘：链接：https-pan-baidu-com-s-1vcRywB4JTA2xPCUvh0n1DA-提取码：y1vv"><a href="#百度网盘：链接：https-pan-baidu-com-s-1vcRywB4JTA2xPCUvh0n1DA-提取码：y1vv" class="headerlink" title="百度网盘：链接：https://pan.baidu.com/s/1vcRywB4JTA2xPCUvh0n1DA 提取码：y1vv"></a>百度网盘：链接：<a href="https://pan.baidu.com/s/1vcRywB4JTA2xPCUvh0n1DA" rel="external nofollow noopener noreferrer" target="_blank">https://pan.baidu.com/s/1vcRywB4JTA2xPCUvh0n1DA</a> 提取码：y1vv</h4><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="解压redis-64-3-0-503-zip；cmd命令进入该目录"><a href="#解压redis-64-3-0-503-zip；cmd命令进入该目录" class="headerlink" title="解压redis-64.3.0.503.zip；cmd命令进入该目录"></a>解压<strong>redis-64.3.0.503.zip</strong>；cmd命令进入该目录</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -771,19 +791,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -854,9 +874,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1370,6 +1390,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

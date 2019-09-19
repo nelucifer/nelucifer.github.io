@@ -149,7 +149,7 @@ daovoice('update');
 <meta property="og:image" content="http://img.wanglixia.top/hexo_install_new_proj-201915162221.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo_install_static_pages-201915162251.png">
 <meta property="og:image" content="http://img.wanglixia.top/hexo_install_ssh_key1-201915162310.png">
-<meta property="og:updated_time" content="2019-09-19T12:15:31.457Z">
+<meta property="og:updated_time" content="2019-09-19T15:16:05.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记使用hexo搭建个人博客（一）">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上.">
@@ -300,6 +300,26 @@ daovoice('update');
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
@@ -505,7 +525,7 @@ daovoice('update');
       
         <p>&emsp;&emsp;作为一个码农来说，笔记是必不可少的，一是为了记录，二是为了分享。特意将使用hexo+github/coding免费搭建个人博客的过程也记录了一下，网上类似的文章太多了，有些配置的版本不一样，本文记录hexo环境的搭建及部署到coding/github上.</p>
 <a id="more"></a>
-<h3 id="Hexo是什么？"><a href="#Hexo是什么？" class="headerlink" title="Hexo是什么？"></a>Hexo是什么？</h3><p>&emsp;&emsp;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>&emsp;&emsp;<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">详情可参考Hexo官方文档</a></p>
+<h3 id="Hexo是什么？"><a href="#Hexo是什么？" class="headerlink" title="Hexo是什么？"></a>Hexo是什么？</h3><p>&emsp;&emsp;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>&emsp;&emsp;<a href="https://hexo.io/zh-cn/docs/index.html" rel="external nofollow noopener noreferrer" target="_blank">详情可参考Hexo官方文档</a></p>
 <h3 id="环境及版本"><a href="#环境及版本" class="headerlink" title="环境及版本"></a>环境及版本</h3><ul>
 <li>系统: windows 10 </li>
 <li>git: version 2.9.0.windows.1</li>
@@ -526,7 +546,7 @@ daovoice('update');
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 <p>   <img src="http://img.wanglixia.top/hexo_install_2-201915162144.png" alt="hexo_install_2-201915162144"><br>   <img src="http://img.wanglixia.top/hexo_install_3-20191516220.png" alt="hexo_install_3-20191516220"></p>
 <ol>
-<li>现在可以开始预览了,会出现提示在网址<a href="http://localhost:4000/预览" target="_blank" rel="noopener">http://localhost:4000/预览</a></li>
+<li>现在可以开始预览了,会出现提示在网址<a href="http://localhost:4000/预览" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:4000/预览</a></li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>&emsp;&emsp;在项目根目录，有个_config.yml,这个是站点配置文件，一些重要的配置都是在这里进行的。 详细的通用配置就参考官网吧，就不重复说了。下面主要记录一下一些个性化的功能。</p>
@@ -539,7 +559,7 @@ daovoice('update');
 </ul>
 </li>
 </ul>
-<h3 id="在coding上部署"><a href="#在coding上部署" class="headerlink" title="在coding上部署"></a>在coding上部署</h3><p>&emsp;&emsp;访问<a href="https://coding.net/" target="_blank" rel="noopener">coding官网</a>，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。</p>
+<h3 id="在coding上部署"><a href="#在coding上部署" class="headerlink" title="在coding上部署"></a>在coding上部署</h3><p>&emsp;&emsp;访问<a href="https://coding.net/" rel="external nofollow noopener noreferrer" target="_blank">coding官网</a>，注册账号，注册时的用户名，就是你访问自己博客地址的主体部分，注意点哦。</p>
 <h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目:"></a>创建项目:</h4><p>   <img src="http://img.wanglixia.top/hexo_install_new_proj-201915162221.png" alt="hexo_install_new_proj-201915162221"></p>
 <h4 id="查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："><a href="#查看静态pages服务，Coding-Pages-已经运行在-https-你的用户名-coding-me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：" class="headerlink" title="查看静态pages服务，Coding Pages 已经运行在 https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示："></a>查看静态pages服务，Coding Pages 已经运行在 <a href="https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：" target="_blank" rel="noopener">https://[你的用户名].coding.me时，说明你配置成功了，我这边是解析自己的域名，略有点不一样。如下图所示：</a></h4><p>   <img src="http://img.wanglixia.top/hexo_install_static_pages-201915162251.png" alt="hexo_install_static_pages-201915162251"></p>
 <h4 id="接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"><a href="#接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；" class="headerlink" title="接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；"></a>接下来就要开始准备把项目发布到coding上面了，需要先获取SSHKey，然后修改站点配置文件为coding的项目对应的ssh地址；</h4><p><em>设置Git的user name和email：</em></p>
@@ -747,19 +767,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -830,9 +850,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1346,6 +1366,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

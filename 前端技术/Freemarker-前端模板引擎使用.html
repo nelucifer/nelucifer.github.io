@@ -145,7 +145,7 @@ daovoice('update');
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.wanglixia.top/Freemarker-1-201914234817.png">
 <meta property="og:image" content="http://img.wanglixia.top/Freemarker-3-201914235828.png">
-<meta property="og:updated_time" content="2019-09-19T12:16:15.502Z">
+<meta property="og:updated_time" content="2019-09-19T15:16:05.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端模板引擎Freemarker的使用（一）">
 <meta name="twitter:description" content="介绍：FreeMarker 是一款 模板引擎： 即一种基于模板和要改变的数据， 并用来生成输出文本(HTML网页，电子邮件，配置文件，源代码等)的通用工具。 它不是面向最终用户的，而是一个Java类库，是一款程序员可以嵌入他们所开发产品的组件。模板编写为FreeMarker Template Language (FTL)。它是简单的，专用的语言， 不是 像PHP那样成熟的编程语言。 那就意味着要">
@@ -296,6 +296,26 @@ daovoice('update');
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
@@ -505,7 +525,7 @@ daovoice('update');
 <p>记录Freemarker在项目中的配置与使用<br><a id="more"></a></p>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
 <li>框架：Spring+SpringMvc+Mybatis</li>
-<li>Freemarker：<a href="http://freemarker.foofun.cn/" target="_blank" rel="noopener">官网介绍</a><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="Maven中需要引入的依赖"><a href="#Maven中需要引入的依赖" class="headerlink" title="Maven中需要引入的依赖"></a>Maven中需要引入的依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- freemarker的版本号 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">freemarker.version</span>&gt;</span>2.3.20<span class="tag">&lt;/<span class="name">freemarker.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;freemarker.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>Freemarker：<a href="http://freemarker.foofun.cn/" rel="external nofollow noopener noreferrer" target="_blank">官网介绍</a><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="Maven中需要引入的依赖"><a href="#Maven中需要引入的依赖" class="headerlink" title="Maven中需要引入的依赖"></a>Maven中需要引入的依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- freemarker的版本号 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">freemarker.version</span>&gt;</span>2.3.20<span class="tag">&lt;/<span class="name">freemarker.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;freemarker.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="视图解析器，一般在spring-mvc-xml中配置"><a href="#视图解析器，一般在spring-mvc-xml中配置" class="headerlink" title="视图解析器，一般在spring-mvc.xml中配置"></a>视图解析器，一般在spring-mvc.xml中配置</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ViewResolver For FreeMarker --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"freemarkerResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.springframework.web.servlet.view.freemarker.FreeMarkerView<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".ftl"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"contentType"</span> <span class="attr">value</span>=<span class="string">"text/html;charset=utf-8"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"requestContextAttribute"</span> <span class="attr">value</span>=<span class="string">"request"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"order"</span> <span class="attr">value</span>=<span class="string">"0"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -531,7 +551,7 @@ daovoice('update');
 <p>处理方法：模板路径不对，需要找到模板所在文件夹的上一级再往下找。<br><img src="http://img.wanglixia.top/Freemarker-3-201914235828.png" alt="Freemarker-3-201914235828"></p>
 <h4 id="freemarker默认配置使用时，如果传到前端的值为null或者不存在，后台会报错。"><a href="#freemarker默认配置使用时，如果传到前端的值为null或者不存在，后台会报错。" class="headerlink" title="freemarker默认配置使用时，如果传到前端的值为null或者不存在，后台会报错。"></a>freemarker默认配置使用时，如果传到前端的值为null或者不存在，后台会报错。</h4><p>处理方法：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"freemarkerConfig"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"templateLoaderPath"</span> <span class="attr">value</span>=<span class="string">"/template/"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"freemarkerSettings"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 设置默认的编码方式，原先是GBK，需要设置成utf-8 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--用于解决前端报空指针问题--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"classic_compatible"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"defaultEncoding"</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"template_exception_handler"</span>&gt;</span>rethrow<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>增加了一行：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"classic_compatible"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>参考链接：<a href="http://blog.csdn.net/achilles12345/article/details/38085225" target="_blank" rel="noopener">点击查看原文</a><br>问题原因：在freemarker中的空值的处理，默认情况以${xxx}的方式取值会报错，我们一般都采用${xxx?if_exists} 的方式去处理，烦死人了。经过查资料，很多人都建议使用classic_compatible=true的方式来处理，目测单词的意思应该是：“兼容传统模式”的意思。但是经过使用发现这个属性设置为true时，也有很多其他问题，比如boolean值的处理，比如include指令必须使用绝对路径，总之也会带来很多烦人的事情。最后找到源码，在Freemarker源码的Configurable类的isClassicCompatible方法上找到了详细的注释，这里翻译下，不过本人英语比较差，可能会有错误，如果有人不确定可以去看源码。</p>
+<p>参考链接：<a href="http://blog.csdn.net/achilles12345/article/details/38085225" rel="external nofollow noopener noreferrer" target="_blank">点击查看原文</a><br>问题原因：在freemarker中的空值的处理，默认情况以${xxx}的方式取值会报错，我们一般都采用${xxx?if_exists} 的方式去处理，烦死人了。经过查资料，很多人都建议使用classic_compatible=true的方式来处理，目测单词的意思应该是：“兼容传统模式”的意思。但是经过使用发现这个属性设置为true时，也有很多其他问题，比如boolean值的处理，比如include指令必须使用绝对路径，总之也会带来很多烦人的事情。最后找到源码，在Freemarker源码的Configurable类的isClassicCompatible方法上找到了详细的注释，这里翻译下，不过本人英语比较差，可能会有错误，如果有人不确定可以去看源码。</p>
 <blockquote>
 <p>  原注释大意如下：<br>   该方法返回Freemarker模板解析引擎是否工作在“Classic Compatibile”模式下。如果这个模式被激活，则Freemarker模板解析引擎将以以下的方式工作：（类似于1.7.x这个版本的运行方式，这个也是1.7.x的版本被称为“经典的Freemarker”的由来）。（译者注：以下的1、2、3、4、5、6是译者自己加的，方便读者看）<br>   处理未定义的表达式，也就是说”expr”为null值。<br>   1、作为像表达式“<assign varname="expr">”、“${expr}”、“ otherexpr == expr“、“otherexpr != expr”条件表达式或者是“hash[expr]”表达式的参数，这个参数将被当成空字符来对待。（译者注：这里注意空字符和null是不一样的).<br>   2、作为“<list expr as item>”、“<foreach item in expr>”这样的表达式的参数，其循环体将不会被执行，和list的长度为0是一样的。<br>   3、作为“<if>”或者其他布尔表达式命令的参数，空值将被当成是false来处理。非布尔数据模型或者逻辑操作数也可以放在“<if>”表达式中，空模型（长度为零的字符串，空的数组或者hash集合）都被当成是false来对待，其他情况下都被当成是true来处理。<br>   4、当布尔值被当成字符串（比如用${…}输出，或者是和其他字符串连接），true值将被转换成“true”字符串处理，false值将被转换成空字符串。<br>   5、提供给<list>和<foreach>的标量数据模型参数将被当成只包含一个该模型的list来处理。（译者注：就是说，传给<list>和<foreach>的参数不是list或者数组类型的，而是单个元素，则会被当成只有一个元素的list或者数组）<br>   6、“<include>”标签的路径参数将被作为绝对路径处理。（译者注：这里很多网上的文档都没有提过，是本人经过观察发现的，然后从源码和其注释中找到的。在这种情况下，如果传入的ftl路径是相对路径，则会报找不到文件的异常）。<br>   在其他方面，甚至是在兼容模式下，这个Freemaker解析引擎是2.1引擎，你不会因此而丢掉其他新的功能。<br>  以上就是译文， 那么如果我们设置了全局的classic_compatible属性，而在某个页面上又不想遵守这个属性该怎么办呢？这样就可以在当前这个页面上采用以下的办法，让当前的页面不再支持传统模式：&lt;#setting classic_compatible=false&gt;</include></foreach></list></foreach></list></if></if></foreach></list></assign></p>
 </blockquote>
@@ -727,19 +747,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -810,9 +830,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1326,6 +1346,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

@@ -143,7 +143,7 @@ daovoice('update');
 <meta property="og:site_name" content="coder立夏的笔记">
 <meta property="og:description" content="介绍GitBook是Markdown与HTML完美的结合。  百科介绍：GitBook是一个基于Node.js的命令行工具，可通过Markdown来制作电子书、在线文档等。GitBook支持输出多种格式：  PDF： 需要安装gitbook-pdf依赖； eBook： 需要安装ebook-convert； 单HTML网页： 支持将内容输出为单页的HTML。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T12:30:39.755Z">
+<meta property="og:updated_time" content="2019-09-19T15:16:05.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人人都可快速上手的GitBook使用笔记（持续更新中）">
 <meta name="twitter:description" content="介绍GitBook是Markdown与HTML完美的结合。  百科介绍：GitBook是一个基于Node.js的命令行工具，可通过Markdown来制作电子书、在线文档等。GitBook支持输出多种格式：  PDF： 需要安装gitbook-pdf依赖； eBook： 需要安装ebook-convert； 单HTML网页： 支持将内容输出为单页的HTML。">
@@ -293,6 +293,26 @@ daovoice('update');
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
@@ -518,8 +538,8 @@ daovoice('update');
 <li>GitBook version: 3.2.3</li>
 </ul>
 <h2 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h2><ul>
-<li>Gitbook好用的插件：<a href="https://plugins.gitbook.com/" target="_blank" rel="noopener">https://plugins.gitbook.com/</a></li>
-<li>Gitbook使用文档：<a href="https://github.com/GitbookIO/gitbook" target="_blank" rel="noopener">https://github.com/GitbookIO/gitbook</a></li>
+<li>Gitbook好用的插件：<a href="https://plugins.gitbook.com/" rel="external nofollow noopener noreferrer" target="_blank">https://plugins.gitbook.com/</a></li>
+<li>Gitbook使用文档：<a href="https://github.com/GitbookIO/gitbook" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/GitbookIO/gitbook</a></li>
 </ul>
 <h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><p>GitBook的初始化，编译和预览等均需要在命令行进行，就像hexo编写个人博客一样。</p>
 <h3 id="安装GitBook工具"><a href="#安装GitBook工具" class="headerlink" title="安装GitBook工具"></a>安装GitBook工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gitbook-cli -g</span><br></pre></td></tr></table></figure>
@@ -531,7 +551,7 @@ daovoice('update');
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook init</span><br></pre></td></tr></table></figure>
 <h3 id="编译成html"><a href="#编译成html" class="headerlink" title="编译成html"></a>编译成html</h3><p>生成的文件在上述目录下的_book文件夹下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook build</span><br></pre></td></tr></table></figure>
-<h3 id="本地进行预览"><a href="#本地进行预览" class="headerlink" title="本地进行预览"></a>本地进行预览</h3><p>浏览器中打开<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>进行预览。</p>
+<h3 id="本地进行预览"><a href="#本地进行预览" class="headerlink" title="本地进行预览"></a>本地进行预览</h3><p>浏览器中打开<a href="http://localhost:4000" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:4000</a>进行预览。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook serve</span><br></pre></td></tr></table></figure>
 <h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitbook update <span class="comment"># 更新gitbook</span></span><br></pre></td></tr></table></figure>
 <h3 id="手动给GitBook添加book-json"><a href="#手动给GitBook添加book-json" class="headerlink" title="手动给GitBook添加book.json"></a>手动给GitBook添加book.json</h3><p>因为使用<code>gitbook init</code>生成的目录默认是没有book.json的，那么要引入其他的插件的话就需要自己<strong>手动</strong>在<strong>根目录</strong>创建一个<code>book.json</code>，<br>配置之后需要使用<code>gitbook install</code>安装<code>book.json</code>中配置的插件。<br>基本格式如下：</p>
@@ -851,19 +871,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -934,9 +954,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1450,6 +1470,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

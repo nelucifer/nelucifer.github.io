@@ -143,7 +143,7 @@ daovoice('update');
 <meta property="og:site_name" content="coder立夏的笔记">
 <meta property="og:description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T12:15:57.130Z">
+<meta property="og:updated_time" content="2019-09-19T15:16:05.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring系列学习之IoC与AOP">
 <meta name="twitter:description" content="前言spring框架的释义：  Spring框架是由于软件开发的复杂性而创建的。Spring使用的是基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅仅限于服务器端的开发。从简单性、可测试性和松耦合性角度而言，绝大部分Java应用都可以从Spring中受益。">
@@ -293,6 +293,26 @@ daovoice('update');
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
           </a>
         </li>
       
@@ -504,7 +524,7 @@ daovoice('update');
 <blockquote>
 <p>EJB：Enterprise JavaBean，对于商务软件来说，其核心部分就是她的业务逻辑，业务逻辑抽象了整个商务过程的流程，并使用计算机语言将他们实现。<br>……<br>J2EE对于这个问题的处理方法是将业务逻辑从客户端软件中抽取出来，封装在一个组件中。这个组件运行在一个独立的服务器上，客户端软件通过网络调用组件提供的服务来实现业务逻辑，而客户端软件的仅仅负责发送调用请求和显示处理结果。在J2EE中，这个运行在一个独立的服务器上，并封装了业务逻辑的组件就是EJB组件。</p>
 </blockquote>
-<p>从上面的概念中，可以理解为EJB概念说的就是C/S软件，简单来说EJB 就是将那些”类”放到一个服务器上，用C/S 形式的软件客户端对服务器上的”类”进行调用。<br>感兴趣的可以看下这篇文章<a href="https://blog.csdn.net/jojo52013145/article/details/5783677" target="_blank" rel="noopener">https://blog.csdn.net/jojo52013145/article/details/5783677</a></p>
+<p>从上面的概念中，可以理解为EJB概念说的就是C/S软件，简单来说EJB 就是将那些”类”放到一个服务器上，用C/S 形式的软件客户端对服务器上的”类”进行调用。<br>感兴趣的可以看下这篇文章<a href="https://blog.csdn.net/jojo52013145/article/details/5783677" rel="external nofollow noopener noreferrer" target="_blank">https://blog.csdn.net/jojo52013145/article/details/5783677</a></p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Spirng中的两个核心概念：依赖注入DI（dependency injection）和面向切面编程AOP（aspect-oriented programming）。 </p>
 <blockquote>
 <p>为了降低Java开发的复杂性，Spring采取了以下四种关键策略：</p>
@@ -630,9 +650,9 @@ daovoice('update');
 <h3 id="二、Spring借助AspectJ的切点表达式语言来定义Spring切面"><a href="#二、Spring借助AspectJ的切点表达式语言来定义Spring切面" class="headerlink" title="二、Spring借助AspectJ的切点表达式语言来定义Spring切面"></a>二、Spring借助AspectJ的切点表达式语言来定义Spring切面</h3><p>Spring AOP所支持的AspectJ切点指示器<br>|AspectJ指示器|描述|<br>|:—|:—|<br>|arg()|限制连接点匹配参数为指定类型的执行方法|<br>|@args()|限制连接点匹配参数由指定注解标注的执行方法|<br>|execution()|用于匹配是连接点的执行方法|<br>|this()|限制连接点匹配AOP代理的bean引用为指定类型的类|<br>|target|限制连接点匹配目标对象为指定类型的类|<br>|@target()|限制连接点匹配特定的执行对象，这些对象对应的类要具有指定类型的注解|<br>|within()|限制连接点匹配指定的类型|<br>|@within()|限制连接点匹配指定注解所标注的类型（当使用Spring AOP时，方法定义在由指定的注解所标注的类里）|<br>|@annotation|限定匹配带有指定注解的连接点|</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">execution(* concert.Performance.perform(..))</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">*：返回任意类型；</span></span><br><span class="line"><span class="comment">concert.Performance：方法所属的类；</span></span><br><span class="line"><span class="comment">perform：方法；</span></span><br><span class="line"><span class="comment">..：使用任意参数；</span></span><br><span class="line"><span class="comment">execution：在方法执行时触发；</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul>
-<li><p>Spring常用的三种注入方式:<a href="https://blog.csdn.net/a909301740/article/details/78379720" target="_blank" rel="noopener">https://blog.csdn.net/a909301740/article/details/78379720</a></p>
+<li><p>Spring常用的三种注入方式:<a href="https://blog.csdn.net/a909301740/article/details/78379720" rel="external nofollow noopener noreferrer" target="_blank">https://blog.csdn.net/a909301740/article/details/78379720</a></p>
 </li>
-<li><p>IoC基础——跟我学Spring3<a href="https://jinnianshilongnian.iteye.com/blog/1413846" target="_blank" rel="noopener">https://jinnianshilongnian.iteye.com/blog/1413846</a></p>
+<li><p>IoC基础——跟我学Spring3<a href="https://jinnianshilongnian.iteye.com/blog/1413846" rel="external nofollow noopener noreferrer" target="_blank">https://jinnianshilongnian.iteye.com/blog/1413846</a></p>
 </li>
 <li><p>Spring 实战（第四版） [美]Craig Walls 著 张卫滨 译</p>
 </li>
@@ -657,7 +677,7 @@ daovoice('update');
 <tbody>
 <tr>
 <td style="text-align:left">预览项目：</td>
-<td style="text-align:left"><a href="https://nelucifer.gitee.io/" target="_blank" rel="noopener">https://nelucifer.gitee.io/</a></td>
+<td style="text-align:left"><a href="https://nelucifer.gitee.io/" rel="external nofollow noopener noreferrer" target="_blank">https://nelucifer.gitee.io/</a></td>
 </tr>
 <tr>
 <td style="text-align:left">个人微信公众号：</td>
@@ -665,19 +685,19 @@ daovoice('update');
 </tr>
 <tr>
 <td style="text-align:left">segmentfault:</td>
-<td style="text-align:left"><a href="https://segmentfault.com/u/nelucifer" target="_blank" rel="noopener">https://segmentfault.com/u/nelucifer</a></td>
+<td style="text-align:left"><a href="https://segmentfault.com/u/nelucifer" rel="external nofollow noopener noreferrer" target="_blank">https://segmentfault.com/u/nelucifer</a></td>
 </tr>
 <tr>
 <td style="text-align:left">CSDN:</td>
-<td style="text-align:left"><a href="https://me.csdn.net/wlx001" target="_blank" rel="noopener">https://me.csdn.net/wlx001</a></td>
+<td style="text-align:left"><a href="https://me.csdn.net/wlx001" rel="external nofollow noopener noreferrer" target="_blank">https://me.csdn.net/wlx001</a></td>
 </tr>
 <tr>
 <td style="text-align:left">简书：</td>
-<td style="text-align:left"><a href="https://www.jianshu.com/u/99211cc23788" target="_blank" rel="noopener">https://www.jianshu.com/u/99211cc23788</a></td>
+<td style="text-align:left"><a href="https://www.jianshu.com/u/99211cc23788" rel="external nofollow noopener noreferrer" target="_blank">https://www.jianshu.com/u/99211cc23788</a></td>
 </tr>
 <tr>
 <td style="text-align:left">掘金：</td>
-<td style="text-align:left"><a href="https://juejin.im/user/59b08c575188250f4850e80e" target="_blank" rel="noopener">https://juejin.im/user/59b08c575188250f4850e80e</a></td>
+<td style="text-align:left"><a href="https://juejin.im/user/59b08c575188250f4850e80e" rel="external nofollow noopener noreferrer" target="_blank">https://juejin.im/user/59b08c575188250f4850e80e</a></td>
 </tr>
 </tbody>
 </table>
@@ -739,8 +759,8 @@ daovoice('update');
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/后端技术/SSM框架-整合笔记/SSM框架-整合笔记0-详细注释.html" rel="next" title="SSM框架整合笔记（一）——详细注释">
-                <i class="fa fa-chevron-left"></i> SSM框架整合笔记（一）——详细注释
+              <a href="/后端技术/Java系列/Java系列-Spring学习笔记2-Spring核心组件.html" rel="next" title="Spring系列学习之Spring核心组件">
+                <i class="fa fa-chevron-left"></i> Spring系列学习之Spring核心组件
               </a>
             
           </div>
@@ -749,8 +769,8 @@ daovoice('update');
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/后端技术/Java系列/Java系列-Spring学习笔记2-Spring核心组件.html" rel="prev" title="Spring系列学习之Spring核心组件">
-                Spring系列学习之Spring核心组件 <i class="fa fa-chevron-right"></i>
+              <a href="/后端技术/SSM框架-整合笔记/SSM框架-整合笔记1-Druid和Webservice配置.html" rel="prev" title="SSM框架整合笔记（二）Druid和Webservice配置">
+                SSM框架整合笔记（二）Druid和Webservice配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -876,19 +896,19 @@ daovoice('update');
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-globe"></i>微博</a>
                   </span>
@@ -959,9 +979,9 @@ daovoice('update');
     <span title="网站总字数">81.3k</span>
   
 </div>
-  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
 <div style="width:300px;margin:0 auto; padding:5px 0;0;0">
-  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" rel="external nofollow noopener noreferrer">
     <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
     <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
   </a>
@@ -1475,6 +1495,21 @@ daovoice('update');
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

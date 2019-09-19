@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0eeeae6f.js","daovoice")
+ daovoice('init', {
+  app_id: "2037418b"
+});
+daovoice('update');
+ </script>
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="SSHN0K8KRe">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="随笔,框架,ssm,异常,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="coder立夏的笔记" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言&amp;emsp;&amp;emsp; 缓存（Caching）可以存储经常会用到的信息，在需要的时候，直接返回这些信息。Spring对缓存的支持有两种方式：1）注解驱动的缓存；2）XML声明的缓存；本文使用第二种方式来实际进行配置。 本文内容 缓存内容详解 配置Ehcache缓存 配置Mybatis Generator  缓存内容详解&amp;emsp;&amp;emsp; 使用&amp;lt;code&amp;gt;@EnableCac">
+<meta name="keywords" content="随笔,框架,ssm,异常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM框架整合笔记（六）缓存配置Ehcache">
+<meta property="og:url" content="https://www.wanglixia.top/后端技术/SSM框架-整合笔记/SSM框架-整合笔记5-缓存配置Ehcache.html">
+<meta property="og:site_name" content="coder立夏的笔记">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp; 缓存（Caching）可以存储经常会用到的信息，在需要的时候，直接返回这些信息。Spring对缓存的支持有两种方式：1）注解驱动的缓存；2）XML声明的缓存；本文使用第二种方式来实际进行配置。 本文内容 缓存内容详解 配置Ehcache缓存 配置Mybatis Generator  缓存内容详解&amp;emsp;&amp;emsp; 使用&amp;lt;code&amp;gt;@EnableCac">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.wanglixia.top/ehcache-1-20193103302.png">
+<meta property="og:updated_time" content="2019-09-19T12:13:33.891Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM框架整合笔记（六）缓存配置Ehcache">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp; 缓存（Caching）可以存储经常会用到的信息，在需要的时候，直接返回这些信息。Spring对缓存的支持有两种方式：1）注解驱动的缓存；2）XML声明的缓存；本文使用第二种方式来实际进行配置。 本文内容 缓存内容详解 配置Ehcache缓存 配置Mybatis Generator  缓存内容详解&amp;emsp;&amp;emsp; 使用&amp;lt;code&amp;gt;@EnableCac">
+<meta name="twitter:image" content="http://img.wanglixia.top/ehcache-1-20193103302.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.wanglixia.top/后端技术/SSM框架-整合笔记/SSM框架-整合笔记5-缓存配置Ehcache.html">
+
+
+
+
+
+  <title>SSM框架整合笔记（六）缓存配置Ehcache | coder立夏的笔记</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?298dfa29c2b74da18e40d1a1bf312a6d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">coder立夏的笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">JavaWeb开发|热爱分享|开发学习笔记|码梦者学习笔记</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.wanglixia.top/后端技术/SSM框架-整合笔记/SSM框架-整合笔记5-缓存配置Ehcache.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="coder立夏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="coder立夏的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SSM框架整合笔记（六）缓存配置Ehcache</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T22:25:53+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,263 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp; 缓存（Caching）可以存储经常会用到的信息，在需要的时候，直接返回这些信息。Spring对缓存的支持有两种方式：1）注解驱动的缓存；2）XML声明的缓存；本文使用第二种方式来实际进行配置。</p>
+<h2 id="本文内容"><a href="#本文内容" class="headerlink" title="本文内容"></a>本文内容</h2><ul>
+<li>缓存内容详解</li>
+<li>配置Ehcache缓存</li>
+<li>配置Mybatis Generator</li>
+</ul>
+<h2 id="缓存内容详解"><a href="#缓存内容详解" class="headerlink" title="缓存内容详解"></a>缓存内容详解</h2><p>&emsp;&emsp; 使用&lt;code&gt;@EnableCaching&lt;/code&gt;和<code><cache:annotation-driven></cache:annotation-driven></code> 的工作方式是相同的，都会创建一个切面并触发Spring缓存注解的切点。根据所使用的注解以及缓存的状态，这个切面会从缓存中获取数据，将数据添加到缓存之中或者从缓存中移除某个值。在启用注解驱动的缓存时，还声明了一个缓存管理器的bean。缓存管理器是Spring缓存抽象的核心，能够与多个流行的缓存实现进行集成。</p>
+<a id="more"></a>
+<h3 id="如何启用缓存"><a href="#如何启用缓存" class="headerlink" title="如何启用缓存"></a>如何启用缓存</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 使用<span class="doctag">@EnableCaching</span>启用注解驱动的缓存</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Mr.wang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/3/9</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableCaching</span>  <span class="comment">// 启用缓存</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CachingConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CacheManager <span class="title">cacheManager</span><span class="params">()</span> </span>&#123;    <span class="comment">// 声明缓存管理器</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentMapCacheManager();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>XML方式配置方式如下<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Ehcache配置--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 启用缓存 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">cache:annotation-driven</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 声明缓存管理器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"cacheManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.cache.concurrent.ConcurrentMapCacheManager"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>ConcurrentMapCacheManager 使用 java.util.concurrent.ConcurrentHashMap 作为缓存存储，这个缓存存储是基于内存的，因此其生命周期是与应用关联的，不太适合于生产级别的大型企业级应用程序，因此有其他的缓存管理器方案可供使用。</p>
+<h3 id="配置缓存管理器"><a href="#配置缓存管理器" class="headerlink" title="配置缓存管理器"></a>配置缓存管理器</h3><p>Spring中内置了如下几种缓存管理器实现：</p>
+<ol>
+<li>SimpleCacheManager</li>
+<li>NoOpCacheManager</li>
+<li>ConcurrentMapCacheManager</li>
+<li>CompositeCacheManager</li>
+<li>EhCacheCacheManager<br>…</li>
+</ol>
+<p>SpringData提供的缓存管理器：</p>
+<ol>
+<li>RedisCacheManager（来自于Spring Data Redis项目）</li>
+<li>GemfireCacheManager（来自于Spring Data GemFire项目）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> net.sf.ehcache.CacheManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cache.annotation.EnableCaching;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cache.ehcache.EhCacheCacheManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cache.ehcache.EhCacheManagerFactoryBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.io.ClassPathResource;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 使用<span class="doctag">@EnableCaching</span>启用注解驱动的缓存</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> Mr.wang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/3/9</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableCaching</span>  <span class="comment">// 启用缓存</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CachingConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> EhCacheCacheManager <span class="title">cacheManager</span><span class="params">(CacheManager cm)</span> </span>&#123;    <span class="comment">// 配置EhCacheCacheManager</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> EhCacheCacheManager(cm);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> EhCacheManagerFactoryBean <span class="title">ehcache</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        EhCacheManagerFactoryBean ehCacheFactoryBean = <span class="keyword">new</span> EhCacheManagerFactoryBean();</span><br><span class="line">        ehCacheFactoryBean.setConfigLocation(<span class="keyword">new</span> ClassPathResource(<span class="string">""</span>));</span><br><span class="line">        <span class="keyword">return</span> ehCacheFactoryBean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以通过CompositeCacheManager使用多个缓存管理器。</p>
+<h3 id="一、为方法添加注解支持缓存"><a href="#一、为方法添加注解支持缓存" class="headerlink" title="一、为方法添加注解支持缓存"></a>一、为方法添加注解支持缓存</h3><p>以下注解如果放在单独的方法上时，注解所描述的缓存行为只作用于这个方法上，如果放在类级别，那么缓存行为就会应用到这个类的所有方法上。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">注解</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">@Cacheable</td>
+<td style="text-align:left">Spring在调用方法之前，首先应该在缓存中查找方法的返回值。如果这个值能够找到，就会返回缓存的值。否则，这个方法就会被调用，返回值就会放到缓存之中</td>
+</tr>
+<tr>
+<td style="text-align:left">@CachePut</td>
+<td style="text-align:left">Spring应该将方法的返回值放到缓存中，在方法的调用前并不会检查缓存，方法始终会被调用</td>
+</tr>
+<tr>
+<td style="text-align:left">@CacheEvict</td>
+<td style="text-align:left">Spring应该在缓存中清除一个或多个条目</td>
+</tr>
+<tr>
+<td style="text-align:left">@Caching</td>
+<td style="text-align:left">一个分组的注解，能够同时应用多个其他的缓存注解</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="填充缓存"><a href="#填充缓存" class="headerlink" title="填充缓存"></a>填充缓存</h4><p>@Cacheable和@CachePut注解都可以填充缓存。</p>
+<p>示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable</span>(value=<span class="string">"spittleCache"</span>)</span><br><span class="line"><span class="function">Spittle <span class="title">findOne</span><span class="params">(<span class="keyword">long</span> id)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="自定义缓存key"><a href="#自定义缓存key" class="headerlink" title="自定义缓存key"></a>自定义缓存key</h4><p>默认的缓存key要基于方法的参数来确定，参数是一个map，那么其缓存的key也是这个map，因此需要把默认的key改为map的key，而不是这个map，所以需要自定义缓存key。 </p>
+<p>Spring 提供了多个用来定义缓存规则的SpEL扩展<br>|表达式|描述|<br>|:—-|:—-|<br>|#root.args|传递给缓存方法的参数，形式为数组|<br>|#root.caches|该方法执行时所对应的缓存，形式为数组|<br>|#root.target|目标对象|<br>|#root.targetClass|目标对象的类，是#root.target.class的简写形式|<br>|#root.method|缓存方法|<br>|#root.methodName|缓存方法的名字，是#root.method.name的简写形式|<br>|#result|方法调用的返回值（不能用在@Cacheable主街上）|<br>|#Argument|任意的方法参数名（如#argName）或参数索引（如#a0或#p0）|</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable</span>(value=<span class="string">"spittleCache"</span> key=<span class="string">"#result.id"</span>)</span><br><span class="line"><span class="function">Spittle <span class="title">save</span><span class="params">(Spittle spittle)</span></span>;</span><br></pre></td></tr></table></figure>
+<h4 id="条件化缓存"><a href="#条件化缓存" class="headerlink" title="条件化缓存"></a>条件化缓存</h4><blockquote>
+<p>前面说的是通过为方法添加Spring的缓存注解，Spring就会围绕着这个方法创建一个缓存切面。条件化缓存是说将缓存功能关闭的一些场景。@Cacheable和@CachePut提供两个属性用以实现条件化缓存：unless和condition。如果unless属性的SpEL表达式计算结果为true，缓存方法返回的数据不会放到缓存中。如果condition属性的SpEL表达式计算结果为false，对于这个方法缓存就会被禁用掉。</p>
+</blockquote>
+<p>unless属性只能阻止将对象放进缓存，但是在这个方法调用的时候，依然会去缓存中进行查找。如果condition的表达式计算结果为false，这个方法调用时，缓存是被禁用的，也就不会去缓存中查找，返回值也不会放进缓存中。</p>
+<p>例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// unless用法，对于属性中包含NoCache的Spittle对象，不对其进行缓存</span></span><br><span class="line"><span class="meta">@Cacheable</span>(value=<span class="string">"spittleCache"</span> unless=<span class="string">"#result.message.contains('NoCache')"</span>)</span><br><span class="line"><span class="function">Spittle <span class="title">findOne</span><span class="params">(<span class="keyword">long</span> id)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// condition用法，如果findOne方法调用时，参数值小于10，不会在缓存中进行查找，返回的数据也不会放进缓存中</span></span><br><span class="line"><span class="meta">@Cacheable</span>(value=<span class="string">"spittleCache"</span> </span><br><span class="line">    unless=<span class="string">"#result.message.contains('NoCache')"</span></span><br><span class="line">    condition=<span class="string">"#id &gt;= 10"</span>)</span><br><span class="line"><span class="function">Spittle <span class="title">findOne</span><span class="params">(<span class="keyword">long</span> id)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h4 id="移除缓存条目"><a href="#移除缓存条目" class="headerlink" title="移除缓存条目"></a>移除缓存条目</h4><p>@CacheEvict不会往缓存中添加任何东西，且如果带有该注解的方法被调用的话，缓存中的一个或更多的条目会被移除。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CacheEvict</span>(<span class="string">"spittleCache"</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">long</span> spittleId)</span></span>;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：@Cacheable和@CacheEvict必须应用在返回值非void的方法上，@CacheEvict可以放在任意的方法上，甚至void方法</strong></p>
+<p><strong>@Cacheable注解的属性，指定哪些缓存条目应该被移除掉</strong><br>|属性|类型|描述|<br>|:—-|:—-|:—-|<br>|value|String[]|要使用的缓存名称|<br>|key|String|SpEL表达式，用来计算自定义的缓存key|<br>|condition|String|SpEL表达式，如果得到的值是false的话，缓存不会应用到方法调用上|<br>|allEntries|boolean|如果为true的话，特定缓存的所有条目都会被移除掉|<br>|beforeInvoication|boolean|如果为true的话，在方法调用之前移除条目，如果为false（默认值）的话，在方法成功调用之后再移除条目|</p>
+<h3 id="二、使用XML声明缓存"><a href="#二、使用XML声明缓存" class="headerlink" title="二、使用XML声明缓存"></a>二、使用XML声明缓存</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元素</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><cache:annotation-driven></cache:annotation-driven></td>
+<td style="text-align:left">启用注解驱动的缓存，等同于Java配置中的@EnableCaching</td>
+</tr>
+<tr>
+<td style="text-align:left"><cache:advice></cache:advice></td>
+<td style="text-align:left">定义缓存通知。结合<aop:advisor>，将通知应用到切点上</aop:advisor></td>
+</tr>
+<tr>
+<td style="text-align:left"><cache:caching></cache:caching></td>
+<td style="text-align:left">在缓存通知中定义缓存规则</td>
+</tr>
+<tr>
+<td style="text-align:left"><cache:cacheable></cache:cacheable></td>
+<td style="text-align:left">指明某个方法要进行缓存。等同于@Cacheable注解</td>
+</tr>
+<tr>
+<td style="text-align:left"><cache:cache-put></cache:cache-put></td>
+<td style="text-align:left">指明某个方法要填充缓存，但不会考虑缓存中时候已有匹配的值，等同于@CachePut注解</td>
+</tr>
+<tr>
+<td style="text-align:left"><cache:cache-evict></cache:cache-evict></td>
+<td style="text-align:left">指明某个方法要从缓存中移除一项或多项，等同于@CacheEvict注解</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="填充缓存-1"><a href="#填充缓存-1" class="headerlink" title="填充缓存"></a>填充缓存</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache:cacheable</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--示例--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">cache:cacheable</span> <span class="attr">cache</span>=<span class="string">"spittleCache"</span> <span class="attr">method</span>=<span class="string">"findRecent"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="自定义缓存key-1"><a href="#自定义缓存key-1" class="headerlink" title="自定义缓存key"></a>自定义缓存key</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache:cache-put</span> <span class="attr">cache</span>=<span class="string">"spittleCache"</span> <span class="attr">method</span>=<span class="string">"save"</span> <span class="attr">key</span>=<span class="string">"#result.id"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="移除缓存条目-1"><a href="#移除缓存条目-1" class="headerlink" title="移除缓存条目"></a>移除缓存条目</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache:cache-evict</span> <span class="attr">cache</span>=<span class="string">"spittleCache"</span> <span class="attr">method</span>=<span class="string">"remove"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置Ehcache缓存"><a href="#配置Ehcache缓存" class="headerlink" title="配置Ehcache缓存"></a>配置Ehcache缓存</h2><p>Ehcache的主要特性有:</p>
+<ol>
+<li>快速、精干，简单；</li>
+<li>多种缓存策略；</li>
+<li>缓存数据有两级:内存和磁盘，因此无需担心容量问题；</li>
+<li>缓存数据会在虚拟机重启的过程中写入磁盘；</li>
+<li>可以通过RMI、可插入API等方式进行分布式缓存；</li>
+<li>具有缓存和缓存管理器的侦听借口；</li>
+<li>支持多缓存管理器实例，以及一个实例的多个缓存区域；</li>
+<li>提供Hibernate 的缓存实现；</li>
+</ol>
+<p>上面的声明应该改为以下方式</p>
+<p>pom.xml添加配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Ehcache --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.ehcache<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ehcache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.caches<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-ehcache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>添加spring-ehcache.xml并配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:cache</span>=<span class="string">"http://www.springframework.org/schema/cache"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/cache</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/cache/spring-cache.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Ehcache缓存配置文件<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--Ehcache配置--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 启用缓存 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cache:annotation-driven</span> <span class="attr">cache-manager</span>=<span class="string">"cacheManager"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 声明缓存管理器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ehcache"</span> <span class="attr">class</span>=<span class="string">"org.springframework.cache.ehcache.EhCacheManagerFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:config/ehcache.xml"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- true:一个cacheManager对象共享，false：多个对象独立 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"shared"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span> <span class="comment">&lt;!-- 这里是关键！！！没有必错 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"cacheManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.cache.ehcache.EhCacheCacheManager"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cacheManager"</span> <span class="attr">ref</span>=<span class="string">"ehcache"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>spring-config.xml中添加配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 加载Ehcache缓存配置文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">resource</span>=<span class="string">"classpath:config/spring-ehcache.xml"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在resources/config文件夹下添加ehcache.xml并添加配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="comment">&lt;!-- 这个name和updateCheck 都按这样配置最好，不然启动时会在前台报错403，IOException--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ehcache</span> <span class="attr">name</span>=<span class="string">"ehcache"</span> <span class="attr">updateCheck</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 缓存位置 java.io.tmpdir:Java临时目录 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">diskStore</span> <span class="attr">path</span>=<span class="string">"java.io.tmpdir/ehcache"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 默认缓存 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">defaultCache</span></span></span><br><span class="line"><span class="tag">            <span class="attr">maxEntriesLocalHeap</span>=<span class="string">"10000"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">eternal</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">timeToIdleSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">timeToLiveSeconds</span>=<span class="string">"120"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">diskPersistent</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">maxEntriesLocalDisk</span>=<span class="string">"10000000"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">diskExpiryThreadIntervalSeconds</span>=<span class="string">"120"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">memoryStoreEvictionPolicy</span>=<span class="string">"LRU"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">defaultCache</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--name：Cache的唯一标识</span></span><br><span class="line"><span class="comment">        maxElementsInMemory：内存中最大缓存对象数。</span></span><br><span class="line"><span class="comment">        maxElementsOnDisk：磁盘中最大缓存对象数，若是0表示无穷大。</span></span><br><span class="line"><span class="comment">        eternal：Element是否永久有效，一但设置了，timeout将不起作用。</span></span><br><span class="line"><span class="comment">        overflowToDisk：配置此属性，当内存中Element数量达到maxElementsInMemory时，Ehcache将会Element写到磁盘中。</span></span><br><span class="line"><span class="comment">        timeToIdleSeconds：设置Element在失效前的允许闲置时间。仅当element不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。</span></span><br><span class="line"><span class="comment">        timeToLiveSeconds：设置Element在失效前允许存活时间。最大时间介于创建时间和失效时间之间。仅当element不是永久有效时使用，默认是0.，也就是element存活时间无穷大。</span></span><br><span class="line"><span class="comment">        diskPersistent：是否缓存虚拟机重启期数据。（Server重启时将缓存序列化到本地，后再加载，保证缓存在重启后依然有效）。</span></span><br><span class="line"><span class="comment">        diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。</span></span><br><span class="line"><span class="comment">        diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。</span></span><br><span class="line"><span class="comment">        memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。这里比较遗憾，Ehcache并没有提供一个用户定制策略的接口，仅仅支持三种指定策略，感觉做的不够理想。--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 系统缓存，用来缓存菜单、字典等 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"systemCatch"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">maxElementsInMemory</span>=<span class="string">"1000"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">eternal</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">timeToIdleSeconds</span>=<span class="string">"10"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">timeToLiveSeconds</span>=<span class="string">"30"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">diskPersistent</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">memoryStoreEvictionPolicy</span>=<span class="string">"LRU"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ehcache</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这三个文件配置完了之后，Ehcache的配置也就完成了，下面我们说一下测试的方法。</p>
+<h3 id="测试缓存配置"><a href="#测试缓存配置" class="headerlink" title="测试缓存配置"></a>测试缓存配置</h3><p>SysMenuServiceImpl.java 中添加如下代码。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysMenuServiceImpl</span> <span class="keyword">extends</span> <span class="title">BaseService</span>&lt;<span class="title">SysMenu</span>&gt; <span class="keyword">implements</span> <span class="title">SysMenuService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = Logger.getLogger(SysMenuServiceImpl.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    SysMenuDao sysMenuDao;</span><br><span class="line">    <span class="comment">// value对应ehcache.xml中的cache name，key就是这个缓存条目的key</span></span><br><span class="line">    <span class="meta">@Cacheable</span>(value=<span class="string">"systemCatch"</span>, key=<span class="string">"'SysMenuServiceImpl.systemCatch'"</span>)</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;SysMenu&gt; <span class="title">findMenuList</span><span class="params">(SysMenu sysMenu)</span> </span>&#123;</span><br><span class="line">        List&lt;SysMenu&gt; sysMenus = sysMenuDao.queryMenuList(sysMenu);</span><br><span class="line">        Long timestamp = System.currentTimeMillis();</span><br><span class="line">        logger.error(<span class="string">"timestamp&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;"</span> + timestamp);</span><br><span class="line">        <span class="keyword">return</span> sysMenus;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SysMenuController.java 中添加如下代码，观察start 和 end方法之间会不会打印sql以及中间打印时间的日志。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"sysMenuList"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;SysMenu&gt; <span class="title">getSysMenuList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SysMenu sysMenu = <span class="keyword">new</span> SysMenu();</span><br><span class="line">    sysMenu.setMenuId(<span class="string">"01"</span>);</span><br><span class="line">    logger.info(<span class="string">"-----------------------------------------------findMenuList start-----------------------------------"</span>);</span><br><span class="line">    List&lt;SysMenu&gt; menuList = sysMenuService.findMenuList(sysMenu);</span><br><span class="line">    logger.info(<span class="string">"-----------------------------------------------findMenuList end-----------------------------------"</span>);</span><br><span class="line">    <span class="keyword">return</span> menuList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>具体效果如下：</p>
+<p><img src="http://img.wanglixia.top/ehcache-1-20193103302.png" alt="ehcache-1-20193103302"></p>
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.webresources.Cache.backgroundProcess The background cache eviction process was unable to free [10] percent of the cache for Context [/lx_note] - consider increasing the maximum size of the cache. After eviction approximately [9,686] KB of data remained in the cache.</span><br></pre></td></tr></table></figure>
+<p>并没有报错，只是Console打印出来信息，提示不能自动释放10%的缓存，需要调大cache的最大容量；</p>
+<p>解决方法：<br>Tomcat8 的conf/目录下的context.xml添加配置,默认大小是10240即10M，这边给调大了10倍。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Resources cachingAllowed=&quot;true&quot; cacheMaxSize=&quot;102400&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="相关文章推荐"><a href="#相关文章推荐" class="headerlink" title="相关文章推荐"></a>相关文章推荐</h2><ul>
+<li><p><a href="https://www.wanglixia.top/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1.html#more">Spring系列学习之IoC与AOP</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/ssm%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B0.html#more">SSM框架整合笔记（一）详细注释</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/ssm%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B01.html#more">SSM框架整合笔记（二）配置Druid和Webservice</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/SSM%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B02.html#more">SSM框架整合笔记（三）配置Tiles、FreeMarker</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/SSM%E6%A1%86%E6%9E%B6-%E6%95%B4%E5%90%88%E7%AC%94%E8%AE%B03.html">SSM框架整合笔记（四）使用注解配置切面</a></p>
+</li>
+<li><p><a href="https://www.wanglixia.top/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1.html#more">Spring系列学习之IoC与AOP</a></p>
+</li>
+</ul>
+<h2 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h2><p>&emsp;&emsp; 该项目持续更新中，会在代码以及该文档里面详细注释和介绍。项目托管在<code>码云</code>开源平台上，持续更新项目源码链接：<br><a href="https://gitee.com/nelucifer/ssm-note" target="_blank" rel="noopener">https://gitee.com/nelucifer/ssm-note</a>，点击<code>克隆/下载</code>获取该项目。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat_qrcode.jpg" alt="coder立夏 wechat" style="width: 200px; max-width: 100%;">
+    <div>扫描上方二维码，关注weyoung公众号，一起互动交流~~</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+          
+            <a href="/tags/框架/" rel="tag"># 框架</a>
+          
+            <a href="/tags/ssm/" rel="tag"># ssm</a>
+          
+            <a href="/tags/异常/" rel="tag"># 异常</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/后端技术/SSM框架-整合笔记/SSM框架-整合笔记4-统一异常处理.html" rel="next" title="SSM框架整合笔记（五）统一异常处理">
+                <i class="fa fa-chevron-left"></i> SSM框架整合笔记（五）统一异常处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/后端技术/SSM框架-整合笔记/SSM框架-整合笔记6-配置Mybatis Generator.html" rel="prev" title="SSM框架整合笔记（七）配置Mybatis Generator">
+                SSM框架整合笔记（七）配置Mybatis Generator <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+        <div id="gitalk-container"></div>
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="coder立夏">
+            
+              <p class="site-author-name" itemprop="name">coder立夏</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/nelucifer/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ne_lucifer@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/nelucifer/home" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文内容"><span class="nav-number">2.</span> <span class="nav-text">本文内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存内容详解"><span class="nav-number">3.</span> <span class="nav-text">缓存内容详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何启用缓存"><span class="nav-number">3.1.</span> <span class="nav-text">如何启用缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置缓存管理器"><span class="nav-number">3.2.</span> <span class="nav-text">配置缓存管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、为方法添加注解支持缓存"><span class="nav-number">3.3.</span> <span class="nav-text">一、为方法添加注解支持缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#填充缓存"><span class="nav-number">3.3.1.</span> <span class="nav-text">填充缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义缓存key"><span class="nav-number">3.3.2.</span> <span class="nav-text">自定义缓存key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件化缓存"><span class="nav-number">3.3.3.</span> <span class="nav-text">条件化缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除缓存条目"><span class="nav-number">3.3.4.</span> <span class="nav-text">移除缓存条目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用XML声明缓存"><span class="nav-number">3.4.</span> <span class="nav-text">二、使用XML声明缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#填充缓存-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">填充缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义缓存key-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">自定义缓存key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除缓存条目-1"><span class="nav-number">3.4.3.</span> <span class="nav-text">移除缓存条目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Ehcache缓存"><span class="nav-number">4.</span> <span class="nav-text">配置Ehcache缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试缓存配置"><span class="nav-number">4.1.</span> <span class="nav-text">测试缓存配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题处理"><span class="nav-number">4.2.</span> <span class="nav-text">问题处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题一"><span class="nav-number">4.2.1.</span> <span class="nav-text">问题一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章推荐"><span class="nav-number">5.</span> <span class="nav-text">相关文章推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码下载"><span class="nav-number">6.</span> <span class="nav-text">源码下载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </main></div>
+    
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">coder立夏</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">网站总字数&#58;</span>
+    
+    <span title="网站总字数">81.3k</span>
+  
+</div>
+  <p style="margin:0 auto;">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+<div style="width:300px;margin:0 auto; padding:5px 0;0;0">
+  <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002000662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="http://img.wanglixia.top//beian_icon-20188584140.png" style="float:left;">
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px px; color:#939393;">陕公网安备 61019002000662号</p>
+  </a>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'b79d1b15d0292ba468d1',
+          clientSecret: 'abbe86946d2706c9a649bbff9bbef48dd7399eec',
+          repo: 'nelucifer.github.io',
+          owner: 'nelucifer',
+          admin: ['nelucifer'],
+          id: decodeURI(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
